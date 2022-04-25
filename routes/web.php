@@ -19,3 +19,9 @@ Route::get('/', function () {
 Route::get('/homepage', function () {
     return view('homepage');
 });
+Route::get('/hotelDetails', function () {
+    return view('hoteldetails');
+});
+Route::get('/imagegallery', function () {
+    return view('imagegallery');
+});
