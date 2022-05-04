@@ -1,3 +1,5 @@
+@extends('layouts.app')
+
 
 <html>
 <head>
@@ -8,16 +10,9 @@
  
 </head>
 <body>
-    <div class="header">
-        <nav>
-            <img src="images/logo.png" class="logo">
-            <ul class="nav-links">
-                <li><a href="#">Trending Place</a></li>
-                <li><a href="#">Place to Stay</a></li>
-                <li><a href="#">Become a Host</a></li>
-            </ul>
-            <a href="{{ route('register') }}" class="register-btn">Register Now</a>
-        </nav>  
+@section('content')
+<div class="header">
+ 
         <div class="container">
             <h1>Find your Stay here in Suitescape</h1>
             <div class="searchbar">
@@ -46,6 +41,10 @@
             </div>
         </div>
     </div>
+
+
+
+
     <div class="container">
         <h2 class="title-sub">Exclusives</h2>
             <div class="exclusive">
@@ -162,3 +161,4 @@
 
 </body>
 </html>
+@endsection
