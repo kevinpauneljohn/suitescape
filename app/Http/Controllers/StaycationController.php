@@ -1,13 +1,13 @@
 <?php
-    
+
 namespace App\Http\Controllers;
-    
+
 use App\Models\Staycation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-    
+
 class StaycationController extends Controller
-{ 
+{
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +32,7 @@ class StaycationController extends Controller
         return view('staycations.index',compact('staycations'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -42,7 +42,7 @@ class StaycationController extends Controller
     {
         return view('staycations.create');
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -57,13 +57,13 @@ class StaycationController extends Controller
             'price' => 'required',
             'userid' => 'required',
         ]);
-    
+
         Staycation::create($request->all());
-    
+
         return redirect()->route('staycations.index')
                         ->with('success','Staycation created successfully.');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -74,7 +74,7 @@ class StaycationController extends Controller
     {
         return view('staycations.show',compact('staycation'));
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -85,7 +85,7 @@ class StaycationController extends Controller
     {
         return view('staycations.edit',compact('staycation'));
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -100,13 +100,13 @@ class StaycationController extends Controller
             'detail' => 'required',
             'price' => 'required',
         ]);
-    
+
         $staycation->update($request->all());
-    
+
         return redirect()->route('staycations.index')
                         ->with('success','Staycation updated successfully');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -116,8 +116,23 @@ class StaycationController extends Controller
     public function destroy(Staycation $staycation)
     {
         $staycation->delete();
-    
+
         return redirect()->route('staycations.index')
                         ->with('success','Staycation deleted successfully');
     }
+
+
+
+    public function calendar()
+    {
+        
+
+        return view('staycations.calendar');
+    }
+
+
+
+
+
+
 }
