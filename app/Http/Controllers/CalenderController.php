@@ -1,43 +1,53 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use App\Models\calendar as ModelsCalendar;
-
+use App\Models\CalendarEvents;
 class CalenderController extends Controller
 {
-    public function index(Request $request) {
-        if($request->ajax()) {
-            $calendar = ModelsCalendar::whereDate('start_date', '>=', $request->start)->whereDate('end_date', '<=', $request->end)->get(['id', 'title', 'start_date', 'end_date']);
-            return response()->json($calendar);
+    public function index(Request $request)
+    {
+        if($request->ajax()) {  
+            $data = CalendarEvents::whereDate('event_start', '>=', $request->start)
+                ->whereDate('event_end',   '<=', $request->end)
+                ->get(['id', 'event_name', 'event_start', 'event_end']);
+            return response()->json($data);
         }
-        return view('calender');
+        return view('staycations.calendar');
     }
-    public function ajax(Request $request) {
+ 
+    public function calendarEvents(Request $request)
+    {
+ 
         switch ($request->type) {
-            case 'add':
-                $calendar = ModelsCalendar::create([
-                    'title' => $request->title,
-                    'start_date' => $request->start,
-                    'end_date' => $request->end,
-                ]);
-                return response()->json($calendar);
-                break;
-            case 'update':
-                $calendar = ModelsCalendar::find($request->id)->update([
-                    'title' => $request->title,
-                    'start_date' => $request->start,
-                    'end_date' => $request->end,
-                ]);
-                return response()->json($calendar);
-                break;
-            case 'delete':
-                $calendar = ModelsCalendar::find($request->id)->delete();
-                return response()->json($calendar);
-                break;
+           case 'create':
+              $event = CalendarEvents::create([
+                  'event_name' => $request->event_name,
+                  'event_start' => $request->event_start,
+                  'event_end' => $request->event_end,
+              ]);
+ 
+              return response()->json($event);
+             break;
+  
+           case 'edit':
+              $event = CalendarEvents::find($request->id)->update([
+                  'event_name' => $request->event_name,
+                  'event_start' => $request->event_start,
+                  'event_end' => $request->event_end,
+              ]);
+ 
+              return response()->json($event);
+             break;
+  
+           case 'delete':
+              $event = CalendarEvents::find($request->id)->delete();
+  
+              return response()->json($event);
+             break;
+             
            default:
-               break;
+             # ...
+             break;
         }
     }
 }

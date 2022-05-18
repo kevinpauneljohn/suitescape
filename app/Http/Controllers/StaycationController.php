@@ -27,9 +27,23 @@ class StaycationController extends Controller
      */
     public function index()
     {
+        if(auth()->user()->role('admin') || auth()->user()->role('Super-Admin')){
+            $staycations = Staycation::latest()->paginate(5);
+
+            return view('staycations.index',compact('staycations'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+        }
         $staycations = Staycation::where('userid', Auth::id())->latest()->paginate(5);
 
         return view('staycations.index',compact('staycations'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    public function indexes()
+    {
+        $staycations = Staycation::latest()->paginate(5);
+
+            return view('home',compact('staycations'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -55,6 +69,9 @@ class StaycationController extends Controller
             'name' => 'required',
             'detail' => 'required',
             'price' => 'required',
+            'mainImg' => 'required',
+            'subImg1' => 'required',
+            'address' => 'required',
             'userid' => 'required',
         ]);
 

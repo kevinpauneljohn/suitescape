@@ -18,6 +18,12 @@ return new class extends Migration
             $table->string('name');
             $table->text('detail');
             $table->float('price');
+            $table->string('mainImg');
+            $table->string('subImg1');
+            $table->string('subImg2')->nullable();
+            $table->string('subImg3')->nullable();
+            $table->string('subImg4')->nullable();
+            $table->string('address');
             $table->integer('userid');
             $table->timestamps();
 

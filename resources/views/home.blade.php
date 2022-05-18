@@ -48,76 +48,16 @@
     <div class="container">
         <h2 class="title-sub">Exclusives</h2>
             <div class="exclusive">
+            @foreach ($staycations as $staycation)
                 <div>
-                    <img src="images/image-1.png">
+                    <img src="{{ asset("images/{$staycation->mainImg}") }}">
                     <span>
-                        <h4>Tarlac</h4>
-                        <p>Price = P1000</p>
+                        <h4>{{ $staycation->name }}</h4>
+                        <p>Price = P {{ $staycation->price }}</p>
                     </span>
                 </div>
-                <div>
-                    <img src="images/image-2.png">
-                    <span>
-                        <h4>Tarlac</h4>
-                        <p>Price = P1000</p>
-                    </span>
-                </div>
-                <div>
-                    <img src="images/image-3.png">
-                    <span>
-                        <h4>Tarlac</h4>
-                        <p>Price = P1000</p>
-                    </span>
-                </div>
-                <div>
-                    <img src="images/image-4.png">
-                    <span>
-                        <h4>Tarlac</h4>
-                        <p>Price = P1000</p>
-                    </span>
-                </div>
-                <div>
-                    <img src="images/image-5.png">
-                    <span>
-                        <h4>Tarlac</h4>
-                        <p>Price = P1000</p>
-                    </span>
-                </div>
-                <div>
-                    <img src="images/image-6.png">
-                    <span>
-                        <h4>Tarlac</h4>
-                        <p>Price = P1000</p>
-                    </span>
-                </div>
-                <div>
-                    <img src="images/image-7.png">
-                    <span>
-                        <h4>Tarlac</h4>
-                        <p>Price = P1000</p>
-                    </span>
-                </div>
-                <div>
-                    <img src="images/image-8.png">
-                    <span>
-                        <h4>Tarlac</h4>
-                        <p>Price = P1000</p>
-                    </span>
-                </div>
-                <div>
-                    <img src="images/image-9.png">
-                    <span>
-                        <h4>Tarlac</h4>
-                        <p>Price = P1000</p>
-                    </span>
-                </div>
-                <div>
-                    <img src="images/image-10.png">
-                    <span>
-                        <h4>Tarlac</h4>
-                        <p>Price = P1000</p>
-                    </span>
-                </div>
+                
+                @endforeach
          </div>
          <h2 class="title-sub">Popular Places</h2>
          <div class="popular">

@@ -18,6 +18,12 @@ class Staycation extends Model
         'name',
         'detail',
         'price',
+        'mainImg',
+        'subImg1',
+        'subImg2',
+        'subImg3',
+        'subImg4',
+        'address',
         'userid',
     ];
 

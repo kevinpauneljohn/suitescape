@@ -29,14 +29,13 @@ Route::get('/imagegallery', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //for role management
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('staycations', StaycationController::class);
-    Route::get('/calendar', 'App\Http\Controllers\StaycationController@calendar')->name('staycations.calendar');
+    // Route::get('/calendar', 'App\Http\Controllers\StaycationController@calendar')->name('staycations.calendar');
     // Route::get('/index', 'StaycationController@index')->name('staycations.index');
 });
 
@@ -67,6 +66,8 @@ Route::group(['prefix' => 'teams', 'namespace' => 'Teamwork'], function()
     Route::get('accept/{token}', [App\Http\Controllers\Teamwork\AuthController::class, 'acceptInvite'])->name('teams.accept_invite');
 
 
-    Route::get('calendar', [CalenderController::class, 'index']);
-    Route::post('calendarAjax', [CalenderController::class, 'ajax']);
+    
 });
+Route::get('calendar-event', [CalenderController::class, 'index'])->name('calendar.index');
+Route::post('calendar-crud-ajax', [CalenderController::class, 'calendarEvents']);
+Route::get('home', [StaycationController::class, 'indexes']);

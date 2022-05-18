@@ -17,6 +17,9 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 </head>
 <body>
     <div id="app">
@@ -43,18 +46,22 @@
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
 
-                        @role('Admin')
+                        @can('user-edit')
                         <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
+                        @endcan
+                        @can('role-edit')
                             <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Role</a></li>
+                        @endcan
+                        @can('staycation-list')
                             <li><a class="nav-link" href="{{ route('staycations.index') }}">Manage Staycations</a></li>
+                        @endcan
 
-                        @else
-                            <li><a class="nav-link" href="{{ route('staycations.index') }}">Manage Staycations</a></li>
-                            <li><a class="nav-link" href="{{ route('staycations.calendar') }}">Calendar</a></li>
-                        @endrole
+                            
+                       
 
 
                         @role('Host')
+                        <li><a class="nav-link" href="{{ route('calendar.index') }}">Calendar</a></li>
                         <a class="nav-link" href="{{ url('/home') }}">
                                         {{ __('Switch to Guesting') }}
                                     </a>
@@ -66,7 +73,7 @@
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->fname }} <span class="caret"></span>
                                 </a>
 
 

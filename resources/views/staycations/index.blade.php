@@ -32,7 +32,7 @@
             @endrole
         </tr>
 	    @foreach ($staycations as $staycation)
-	    <tr>
+	    <tr> 
 	        <td>{{ ++$i }}</td>
 	        <td>{{ $staycation->name }}</td>
 	        <td>{{ $staycation->detail }}</td>

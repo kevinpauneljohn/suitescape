@@ -24,7 +24,7 @@
 <table class="table table-bordered">
  <tr>
    <th>No</th>
-   <th>Name</th>
+   <th>Full Name</th>
    <th>Email</th>
    <th>Roles</th>
    <th width="280px">Action</th>
@@ -32,7 +32,7 @@
  @foreach ($data as $key => $user)
   <tr>
     <td>{{ ++$i }}</td>
-    <td>{{ $user->name }}</td>
+    <td>{{ $user->fname ." ". $user->lname }}</td>
     <td>{{ $user->email }}</td>
     <td>
       @if(!empty($user->getRoleNames()))
