@@ -1,5 +1,5 @@
 <html>
-    <head>
+<head>
     <link rel="stylesheet" href="style.css">
     <script src="js.js"></script>
     <meta charset="utf-8">
@@ -9,11 +9,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    </head>
+</head>
     <body>
+        <!--- display:none din to guyss -->
     <div class="divFilter" id="divFilter">
-    <button type="button" onclick="closefilterBox()">Close</button>
+    <span class="closebutton"onclick="closefilterBox()">&times;</span>
+    <div class="filterBox">
     <label class="filter">Wifi<input type="checkbox"name="wifi"></label>
     <label class="filter">Kitchen<input type="checkbox"name="kitchen"></label>
     <label class="filter">Air Conditioning<input type="checkbox"name="aircondition"></label>
@@ -22,6 +23,26 @@
     <label class="filter">Free Parking<input type="checkbox"name="freeparking"></label>
     <label class="filter">Dedicated Workspace<input type="checkbox"name="dedicatedworkspace"></label>
     <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    <label class="filter">Dryer<input type="checkbox"name="dryer"></label>
+    </div>
     </div>
 
         <!-- it really starts here -->
@@ -32,9 +53,40 @@
                 </div>
                 <div class="searchbar-header">
                  <input type="text"class="inputlocation"placeholder="Location">
-                 <input type="text"class="inputdate"placeholder="CheckIn-CheckOut">
-                 <input type="text"class="inputguest"placeholder="Guest">
+                 <input type="date"class="inputdate"name="checkIn">
+                 <input type="date"class="inputdate"name="checkOut">
+                 <b id="inputguest-imagegallery"class="inputguest-imagegallery"placeholder="Guest"onclick="showguestImagegallery()"><span style="font-size:15px;">Guest:</span>
+                <b id="inputguestgallery">1guest</b>
+                <b id="inputchildrenHeader-imagegallery"></b>
+                <b id="inputinfantHeader-imagegallery"></b>
+                </b>
                 </div>
+<div class="addguestheader-imagegallery" id="addguestheader-imagegallery">
+<table>
+<tr>
+<td><b>Guest</b><p>Age 13+</p></td>
+<td><input type="button"value="-"class="qtybutton"onclick="asd('minus','guest')">
+<label id="guestQtygallery"value="1">1</label>
+<input type="button"value="+"class="qtybutton"onclick="asd('add','guest')"></td>
+</tr>
+<tr>
+<td><b>Children</b><p>Ages 2-12</p></td>
+<td><input type="button"value="-"class="qtybutton"onclick="asd('minus','children')">
+<label id="childrenQtyheader-imagegallery"value="0">0</label>
+<input type="button"value="+"class="qtybutton"onclick="asd('add','children')"></td>
+</tr>
+<tr>
+<td><b>Infants</b><p>Under 2</p></td>
+<td><input type="button"value="-"class="qtybutton"onclick="asd('minus','infant')">
+<label id="infantQtyheader-imagegallery"value="0">0</label>
+<input type="button"value="+"class="qtybutton"onclick="asd('add','infant')"></td>
+</tr>
+
+</table>
+<p>This place has a maximum of # guest.</p>
+<input type="button" onclick="closeaddguest('addguestheader-imagegallery')"value="Close"class="addguest-closebutton">
+</div>
+
             </div>
             <div class="headBox2">
                     <ul>
@@ -64,11 +116,11 @@
 
 
 
-
-            <div class="content">
-
-                <div class="container">
-                    <div id="myCarousel" class="carousel slide itemBox sizeCarousel">
+        <div class="content">
+                <div class="hotelWrapper">
+                <div class="carousel-info-box">
+                <div class="carouselBox">
+                    <div id="myCarousel" class="carousel slide itemBox">
                       <!-- Indicators -->
                       <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -83,11 +135,11 @@
                         </div>
 
                         <div class="item">
-                          <img src="hotelImage2.jpg" alt="Image2"class="carouselImage">
+                          <img src="hotelImage2.jpg" alt="Image2">
                         </div>
 
                         <div class="item">
-                          <img src="hotelImage3.jpg" alt="Image3"class="carouselImage">
+                          <img src="hotelImage3.jpg" alt="Image3">
                         </div>
                       </div>
 
@@ -102,7 +154,7 @@
                         <span class="sr-only">Next</span>
                       </a>
                     </div>
-
+                  </div>
                     <a href="hotelDetails"target="_blank" ><div class="info">
                         <p>Rental Unit</p>
                         <p><b>Title</b></p>
@@ -111,195 +163,256 @@
                         <p>Price: </p>
                         <span class="glyphicon">&#xe007; Review</span>
                     </div></a>
+
                   </div>
 
+                  <!-- copy-->
+                  <div class="carousel-info-box">
+                    <div class="carouselBox">
+                        <div id="myCarousel1" class="carousel slide itemBox">
+                          <!-- Indicators -->
+                          <ol class="carousel-indicators">
+                            <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel1" data-slide-to="1"></li>
+                            <li data-target="#myCarousel1" data-slide-to="2"></li>
+                          </ol>
 
-                  <!-- copy -->
-                  <div class="container">
-                    <div id="myCarousel1" class="carousel slide itemBox sizeCarousel">
-                      <!-- Indicators -->
-                      <ol class="carousel-indicators">
-                        <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel1" data-slide-to="1"></li>
-                        <li data-target="#myCarousel1" data-slide-to="2"></li>
-                      </ol>
+                          <!-- Wrapper for slides -->
+                          <div class="carousel-inner">
+                            <div class="item active">
+                              <img src="hotelImage1.jpg" alt="Image1">
+                            </div>
 
-                      <!-- Wrapper for slides -->
-                      <div class="carousel-inner">
-                        <div class="item active">
-                          <img src="hotelImage1.jpg" alt="Image1">
-                        </div>
+                            <div class="item">
+                              <img src="hotelImage2.jpg" alt="Image2"class="carouselImage">
+                            </div>
 
-                        <div class="item">
-                          <img src="hotelImage2.jpg" alt="Image2"class="carouselImage">
-                        </div>
+                            <div class="item">
+                              <img src="hotelImage3.jpg" alt="Image3"class="carouselImage">
+                            </div>
+                          </div>
 
-                        <div class="item">
-                          <img src="hotelImage3.jpg" alt="Image3"class="carouselImage">
+
+                          <!-- Left and right controls -->
+                          <a class="left carousel-control controlVisibility" href="#myCarousel1" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="right carousel-control controlVisibility" href="#myCarousel1" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
                         </div>
                       </div>
+                        <a href="hotelDetails"target="_blank" ><div class="info">
+                            <p>Rental Unit</p>
+                            <p><b>Title</b></p>
+                            <p>Guest | Studio | Bath</p>
+                            <p>Wifi | Air Conditioning | Free Parking</p>
+                            <p>Price: </p>
+                            <span class="glyphicon">&#xe007; Review</span>
+                        </div></a>
+
+                      </div>
+                  <!-- copy-->
+ <div class="carousel-info-box">
+  <div class="carouselBox">
+      <div id="myCarousel2" class="carousel slide itemBox">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel2" data-slide-to="1"></li>
+          <li data-target="#myCarousel2" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="hotelImage1.jpg" alt="Image1">
+          </div>
+
+          <div class="item">
+            <img src="hotelImage2.jpg" alt="Image2"class="carouselImage">
+          </div>
+
+          <div class="item">
+            <img src="hotelImage3.jpg" alt="Image3"class="carouselImage">
+          </div>
+        </div>
 
 
-                      <!-- Left and right controls -->
-                      <a class="left carousel-control controlVisibility" href="#myCarousel1" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="right carousel-control controlVisibility" href="#myCarousel1" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </div>
+        <!-- Left and right controls -->
+        <a class="left carousel-control controlVisibility" href="#myCarousel2" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control controlVisibility" href="#myCarousel2" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+      <a href="hotelDetails"target="_blank" ><div class="info">
+          <p>Rental Unit</p>
+          <p><b>Title</b></p>
+          <p>Guest | Studio | Bath</p>
+          <p>Wifi | Air Conditioning | Free Parking</p>
+          <p>Price: </p>
+          <span class="glyphicon">&#xe007; Review</span>
+      </div></a>
 
-                    <a href="hotelDetails"target="_blank" ><div class="info">
-                        <p>Rental Unit</p>
-                        <p><b>Title</b></p>
-                        <p>Guest | Studio | Bath</p>
-                        <p>Wifi | Air Conditioning | Free Parking</p>
-                        <p>Price: </p>
-                        <span class="glyphicon">&#xe007; Review</span>
-                    </div></a>
+    </div>
+    <!-- copy-->
+    <div class="carousel-info-box">
+      <div class="carouselBox">
+          <div id="myCarousel3" class="carousel slide itemBox">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel3" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel3" data-slide-to="1"></li>
+              <li data-target="#myCarousel3" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="hotelImage1.jpg" alt="Image1">
+              </div>
+
+              <div class="item">
+                <img src="hotelImage2.jpg" alt="Image2"class="carouselImage">
+              </div>
+
+              <div class="item">
+                <img src="hotelImage3.jpg" alt="Image3"class="carouselImage">
+              </div>
+            </div>
+
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control controlVisibility" href="#myCarousel3" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control controlVisibility" href="#myCarousel3" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+          <a href="hotelDetails"target="_blank" ><div class="info">
+              <p>Rental Unit</p>
+              <p><b>Title</b></p>
+              <p>Guest | Studio | Bath</p>
+              <p>Wifi | Air Conditioning | Free Parking</p>
+              <p>Price: </p>
+              <span class="glyphicon">&#xe007; Review</span>
+          </div></a>
+
+        </div>
+         <!-- copy-->
+        <div class="carousel-info-box">
+          <div class="carouselBox">
+              <div id="myCarousel4" class="carousel slide itemBox">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel4" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel4" data-slide-to="1"></li>
+                  <li data-target="#myCarousel4" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                  <div class="item active">
+                    <img src="hotelImage1.jpg" alt="Image1">
                   </div>
 
-<!-- copy -->
-                <div class="container">
-                    <div id="myCarousel2" class="carousel slide itemBox sizeCarousel">
-                      <!-- Indicators -->
-                      <ol class="carousel-indicators">
-                        <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel2" data-slide-to="1"></li>
-                        <li data-target="#myCarousel2" data-slide-to="2"></li>
-                      </ol>
-
-                      <!-- Wrapper for slides -->
-                      <div class="carousel-inner">
-                        <div class="item active">
-                          <img src="hotelImage1.jpg" alt="Image1">
-                        </div>
-
-                        <div class="item">
-                          <img src="hotelImage2.jpg" alt="Image2"class="carouselImage">
-                        </div>
-
-                        <div class="item">
-                          <img src="hotelImage3.jpg" alt="Image3"class="carouselImage">
-                        </div>
-                      </div>
-
-
-                      <!-- Left and right controls -->
-                      <a class="left carousel-control controlVisibility" href="#myCarousel2" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="right carousel-control controlVisibility" href="#myCarousel2" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </div>
-
-                    <a href="hotelDetails"target="_blank" ><div class="info">
-                        <p>Rental Unit</p>
-                        <p><b>Title</b></p>
-                        <p>Guest | Studio | Bath</p>
-                        <p>Wifi | Air Conditioning | Free Parking</p>
-                        <p>Price: </p>
-                        <span class="glyphicon">&#xe007; Review</span>
-                    </div></a>
+                  <div class="item">
+                    <img src="hotelImage2.jpg" alt="Image2"class="myCarousel4">
                   </div>
 
-                  <!-- copy -->
-                  <div class="container">
-                    <div id="myCarousel3" class="carousel slide itemBox sizeCarousel">
-                      <!-- Indicators -->
-                      <ol class="carousel-indicators">
-                        <li data-target="#myCarousel3" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel3" data-slide-to="1"></li>
-                        <li data-target="#myCarousel3" data-slide-to="2"></li>
-                      </ol>
-
-                      <!-- Wrapper for slides -->
-                      <div class="carousel-inner">
-                        <div class="item active">
-                          <img src="hotelImage1.jpg" alt="Image1">
-                        </div>
-
-                        <div class="item">
-                          <img src="hotelImage2.jpg" alt="Image2"class="carouselImage">
-                        </div>
-
-                        <div class="item">
-                          <img src="hotelImage3.jpg" alt="Image3"class="carouselImage">
-                        </div>
-                      </div>
-
-
-                      <!-- Left and right controls -->
-                      <a class="left carousel-control controlVisibility" href="#myCarousel3" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="right carousel-control controlVisibility" href="#myCarousel3" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </div>
-
-                    <a href="hotelDetails"target="_blank" ><div class="info">
-                        <p>Rental Unit</p>
-                        <p><b>Title</b></p>
-                        <p>Guest | Studio | Bath</p>
-                        <p>Wifi | Air Conditioning | Free Parking</p>
-                        <p>Price: </p>
-                        <span class="glyphicon">&#xe007; Review</span>
-                    </div></a>
+                  <div class="item">
+                    <img src="hotelImage3.jpg" alt="Image3"class="myCarousel4">
                   </div>
+                </div>
 
-                  <!-- copy -->
-                  <div class="container">
-                    <div id="myCarousel4" class="carousel slide itemBox sizeCarousel">
-                      <!-- Indicators -->
-                      <ol class="carousel-indicators">
-                        <li data-target="#myCarousel4" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel4" data-slide-to="1"></li>
-                        <li data-target="#myCarousel4" data-slide-to="2"></li>
-                      </ol>
 
-                      <!-- Wrapper for slides -->
-                      <div class="carousel-inner">
-                        <div class="item active">
-                          <img src="hotelImage1.jpg" alt="Image1">
-                        </div>
+                <!-- Left and right controls -->
+                <a class="left carousel-control controlVisibility" href="#myCarousel4" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control controlVisibility" href="#myCarousel4" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+              <a href="hotelDetails"target="_blank" ><div class="info">
+                  <p>Rental Unit</p>
+                  <p><b>Title</b></p>
+                  <p>Guest | Studio | Bath</p>
+                  <p>Wifi | Air Conditioning | Free Parking</p>
+                  <p>Price: </p>
+                  <span class="glyphicon">&#xe007; Review</span>
+              </div></a>
 
-                        <div class="item">
-                          <img src="hotelImage2.jpg" alt="Image2"class="carouselImage">
-                        </div>
+            </div>
+            <!-- copy-->
+            <div class="carousel-info-box">
+              <div class="carouselBox">
+                  <div id="myCarousel5" class="carousel slide itemBox">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                      <li data-target="#myCarousel5" data-slide-to="0" class="active"></li>
+                      <li data-target="#myCarousel5" data-slide-to="1"></li>
+                      <li data-target="#myCarousel5" data-slide-to="2"></li>
+                    </ol>
 
-                        <div class="item">
-                          <img src="hotelImage3.jpg" alt="Image3"class="carouselImage">
-                        </div>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                      <div class="item active">
+                        <img src="hotelImage1.jpg" alt="Image1">
                       </div>
 
+                      <div class="item">
+                        <img src="hotelImage2.jpg" alt="Image2"class="carouselImage">
+                      </div>
 
-                      <!-- Left and right controls -->
-                      <a class="left carousel-control controlVisibility" href="#myCarousel4" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="right carousel-control controlVisibility" href="#myCarousel4" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                        <span class="sr-only">Next</span>
-                      </a>
+                      <div class="item">
+                        <img src="hotelImage3.jpg" alt="Image3"class="carouselImage">
+                      </div>
                     </div>
 
-                    <a href="hotelDetails"target="_blank" ><div class="info">
-                        <p>Rental Unit</p>
-                        <p><b>Title</b></p>
-                        <p>Guest | Studio | Bath</p>
-                        <p>Wifi | Air Conditioning | Free Parking</p>
-                        <p>Price: </p>
-                        <span class="glyphicon">&#xe007; Review</span>
-                    </div></a>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control controlVisibility" href="#myCarousel5" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control controlVisibility" href="#myCarousel5" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                </div>
+                  <a href="hotelDetails"target="_blank" ><div class="info">
+                      <p>Rental Unit</p>
+                      <p><b>Title</b></p>
+                      <p>Guest | Studio | Bath</p>
+                      <p>Wifi | Air Conditioning | Free Parking</p>
+                      <p>Price: </p>
+                      <span class="glyphicon">&#xe007; Review</span>
+                  </div></a>
+
+                </div>
+
+
+
+
+
+
+
                   </div>
 
 
@@ -307,27 +420,13 @@
 
             </div>
 
-            <div class="clearfix"></div>
-
-            <div class="rightContent">
-            <div id="map" style="width:100%;height:100%"></div>
-            </div>
 
 
 
 
 
-            <script>
-
-            var mapCanvas = document.getElementById("map");
-            var mapOptions = {
-            center: new google.maps.LatLng(15.2229, 120.5744), zoom: 12
-            }
-            var map = new google.maps.Map(mapCanvas, mapOptions);
 
 
-
-        </script>
     </body>
 
 

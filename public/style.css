@@ -13,7 +13,7 @@ body{
     border-bottom:1px solid grey;
 }
 .headBox1{
-    width:1100px;
+    width:1200px;
     height:100px;
     margin:0 auto;
     padding:40px;
@@ -55,72 +55,43 @@ body{
 .borderBlack{
     border-color:black;
 }
+/* .content of imagegallery */
 .content{
-    width:50%;
+    width:100%;
     height:100%;
     position:relative;
     bottom:0;
     top:200px;
     z-index:0;
 }
-.productBox{
+.hotelWrapper{
+    width:1200px;
+    margin:0 auto;
     padding:15px;
+
 }
-.divImage{
-    width:300px;
-    height:auto;
-    float:left;
-    padding:15px;
-}
-img{width:100%;height:auto;}
-.info{
-    float:left;
+.carouselBox{
     width:300px;
     height:200px;
+}
+
+.info{
+    width:300px;
     margin-top:15px;
-    padding:15px;
     color:#000;
     cursor: pointer;
 }
-
-.container{
-    width:100%;
-    padding:0px 0px 15px 0px;
-    border-bottom:1px solid grey;
-}
-.container:hover{
-    background-color:#f1f1f1;
-}
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-.rightContent{
-    width:50%;
+.carousel-info-box{
+    width:350px;
     height:auto;
-    background-color:grey;
-    position:fixed;
-    top:200px;
-    bottom:0;
-    margin-left:50%;
+    display:inline-block;
+    margin-top:5px;
+    padding:25px;
 }
-.controlVisibility{
-    display:none;
+.carousel-info-box:hover{
+    background-color:#f1f1f1;
+    border-radius:10px;
 }
-.itemBox:hover .controlVisibility{
-    display:block;
-}
-
-/* change the carousel size*/
-.sizeCarousel{
-    float:left;
-    width:300px;
-    margin-top:15px;
-}
-
-
-
 
 /* style for header of hotelDetails.html file*/
 .detailsHeader{
@@ -130,9 +101,10 @@ img{width:100%;height:auto;}
     z-index:1;
     border-top:1px solid grey;
     border-bottom:1px solid grey;
+    position:relative;
 }
 .centerHeader{
-    width:1100px;
+    width:1200px;
     margin:0 auto;
     padding:5px;
 }
@@ -294,13 +266,15 @@ img{width:100%;height:auto;}
     box-shadow: 5px 10px 18px #888888;
 }
 .reserveBox .checkDate tr td p{
-    text-align:center;
+    padding:15px;
 }
 .reserveBox .checkDate tr td{
     width:300px;
     height:100px;
-    text-align:center;
     border:1px solid grey;
+}
+.reserveBox .checkDate tr td b{
+    padding:10px 5px 5px 15px;
 }
 .reserveBox .buttonReserve{
     width:100%;
@@ -503,6 +477,7 @@ div.profileCommentBox{
     bottom:0;
     padding:15px 15px 15px 0px;
     display:none;
+    z-index:4;
 }
 .reservebutton-hidden button{
     width:100px;
@@ -541,17 +516,22 @@ p{font-family: Arial, Helvetica, sans-serif;}
 /* filter */
 .divFilter{
     width:100%;
+    height:99%;
     background-color:#ddd;
     display:none;
     padding:15px 25px 25px 15px;
     font-size:20px;
     position:fixed;
     bottom:0;
-    top:10px;
     z-index:2;
     overflow:auto;
     border-radius:15px 15px 0px 0px;
 }
+.divFilter::-webkit-scrollbar {
+        width: 1px;
+
+}
+
 .divFilter .filter{
     display:block;
     width:100%;
@@ -562,6 +542,27 @@ p{font-family: Arial, Helvetica, sans-serif;}
 .filter input{
     float:right;
 }
+.filterBox{
+    width:100%;
+    height:100%;
+    z-index:3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* showPayment sa hoteldetails.blade.php */
 
@@ -604,6 +605,12 @@ p{font-family: Arial, Helvetica, sans-serif;}
 }
 .showpayment-closebutton{
     margin-bottom:15px;
+    background-color:black;
+    width:100px;
+    border:1px solid #000;
+    color:#fff;
+    padding:10px;
+    border-radius:15px;
 }
 
 
@@ -616,9 +623,9 @@ p{font-family: Arial, Helvetica, sans-serif;}
     font-weight:bold;
 }
 .searchbar-header{
-    width:500px;
+    width:700px;
     border:1px solid #ddd;
-    text-align:center;
+
     margin:0 auto;
     padding:15px;
     position:relative;
@@ -628,7 +635,7 @@ p{font-family: Arial, Helvetica, sans-serif;}
 }
 .searchbar-header .inputlocation{
     border-width:0px;
-    width:100px;
+    width:150px;
 }
 .searchbar-header .inputdate{
     border-width:0px;
@@ -637,6 +644,7 @@ p{font-family: Arial, Helvetica, sans-serif;}
 .searchbar-header .inputguest{
     border-width:0px;
     width:100px;
+    overflow:hidden;
 }
 
 
@@ -646,7 +654,7 @@ p{font-family: Arial, Helvetica, sans-serif;}
     width:1100px;
     height:100px;
     margin:0 auto;
-    padding:20px;
+    padding:20px 0px 20px 0px;
 }
 .logo-header-hoteldetails{
     width:200px;
@@ -655,9 +663,9 @@ p{font-family: Arial, Helvetica, sans-serif;}
 
 }
 .searchbar-header-hoteldetails{
-    width:500px;
+    width:700px;
     border:1px solid #ddd;
-    text-align:center;
+
     margin:0 auto;
     padding:15px;
     position:relative;
@@ -665,17 +673,19 @@ p{font-family: Arial, Helvetica, sans-serif;}
     border-radius:35px;
     box-shadow: 1px 1px 3px #888888;
 }
-.searchbar-header-hoteldetails .inputlocation-hoteldetails{
+.inputlocation-hoteldetails{
     border-width:0px;
-    width:100px;
+    width:150px;
 }
-.searchbar-header-hoteldetails .inputdate-hoteldetails{
+.inputdate-hoteldetails{
     border-width:0px;
     width:100px;
+    cursor:pointer;
 }
-.searchbar-header-hoteldetails .inputguest-hoteldetails{
+.inputguest-hoteldetails{
     border-width:0px;
-    width:100px;
+    width:150px;
+    cursor:pointer;
 }
 
 
@@ -687,19 +697,20 @@ p{font-family: Arial, Helvetica, sans-serif;}
   }
 .imageCell-whole{
     width:100%;
+    height:100%;
     background-color:#fff;
     display:none;
-    height:100%;
+    padding:15px 25px 25px 15px;
     font-size:20px;
     position:fixed;
-    top:0;
+    bottom:0;
     z-index:2;
     overflow:auto;
+
 }
 .imageCell-each{
-    width:1200px;
+    width:100%;
     height:100%;
-    background-color:#fff;
     margin:0 auto;
 }
 .imageCell-each img{
@@ -708,6 +719,305 @@ p{font-family: Arial, Helvetica, sans-serif;}
     float:left;
     padding:5px;
 }
+@media (max-width: 1200px) {
+    .imageCell-each img{
+      width:50%;
+    }
+} /* just for the responsiveness of imageCell-whole --only */
+
+
+
+/* close button "x" */
+.closebutton{
+    cursor:pointer;
+    font-size: 28px;
+    font-weight: bold;
+}
+.closebutton:hover{
+    color:red;
+}
+
+
+/* show all ameneties toggle*/
+.showAmeneties-box{
+    width:600px;
+    height:90%;
+    background-color:#ddd;
+    display:none;
+    font-size:20px;
+    position:fixed;
+    bottom:5%;
+    right:0;
+    left:0;
+    margin:0 auto;
+    z-index:2;
+    border-radius:15px 15px 15px 15px;
+}
+
+.amenetiestitle-box{
+    width:600px;
+    height:5%;
+	color:#fff;
+	position: fixed;
+    background-color:black;
+    border-radius:15px 15px 0px 0px;
+    z-index:2;
+    border:1px solid #000;
+    padding:0px 0px 0px 0px;
+}
+.amenetiestitle-box span{
+    float:right;
+    padding:0px 15px 0px 0px;
+}
+.amenetiestitle-box b{
+    float:left;
+    padding:5px 0px 0px 15px;
+}
+
+
+
+.showameneties-item-box{
+    width:100%;
+    height:95%;
+    position:relative;
+    top:30px;
+    padding:15px 0px 5px 15px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+
+}
+.showameneties-item-box ul li{
+    list-style-type: none;
+    margin-left:0;
+}
+.showameneties-item-box ul{
+    width:570px;
+    border-bottom:1px solid #000;
+}
+
+.disableBody{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(128,128,128,0.5);
+    display: none;
+    z-index:1;
+}
+
+
+
+
+/*show all review box */
+
+.showReview-box{
+    width:600px;
+    height:90%;
+    background-color:#f1f1f1;
+    display:none;
+    font-size:20px;
+    position:fixed;
+    bottom:5%;
+    right:0;
+    left:0;
+    margin:0 auto;
+    z-index:2;
+    border-radius:15px 15px 15px 15px;
+}
+
+.reviewtitle-box{
+    width:600px;
+    height:50px;
+	color:#fff;
+	position: fixed;
+    background-color:black;
+    border-radius:15px 15px 0px 0px;
+    z-index:2;
+    border:1px solid #000;
+}
+
+
+.searchReview{
+    padding:15px;
+}
+
+.searchboxReview{
+    height:40px;
+    border:1px solid grey;
+    width:400px;
+    float:left;
+}
+.sortreview-button{
+    height:40px;
+    width:40px;
+    border:1px solid grey;
+}
+
+.closebutton-reviews{
+    float:right;
+    font-weight:bold;
+    font-size:30px;
+    cursor:pointer;
+    padding:0px 15px 0px 0px;
+}
+
+
+.allReviews{
+    width: 100%;
+    height:650px;
+    background-color:#f1f1f1;
+    position:relative;
+    top:50px;
+    padding:15px;
+    overflow: scroll;
+    overflow-x:hidden;
+}
+.allreviews-each{
+    margin: 5px;
+    width:100%;
+    float:left;
+    position:relative;
+    bottom:0;
+    border-bottom:1px solid #000;
+}
+.each-imagebox{
+    width:200px;
+    height:100px;
+    margin-right:5px;
+}
+
+.each-imagebox img{
+    width:100px;
+    height:100px;
+    border-radius:100%;
+    float:left;
+    margin-right:15px;
+}
+.allreviews-each .comment p{
+    font-size:15px;
+}
+.review-container{
+    background-color:#f1f1f1;
+    display:inline-block;
+}
+
+
+
+
+/* add guest */
+.addguest{
+    width:92%;
+    height:250px;
+    background-color:#d1d1d1;
+    position:absolute;
+    padding:15px;
+    display:none;
+    border-radius:5px;
+    margin-top:2px;
+}
+
+.addguest tr td{
+    width:200px;
+}
+
+.qtybutton{
+    width:30px;
+    height:30px;
+    font-size:20px;
+    font-weight: bold;
+    background-color:#fff;
+    border:1px solid #000;
+    border-radius:100%;
+}
+.addguestheader{
+    width:300px;
+    height:250px;
+    background-color:#d1d1d1;
+    position:absolute;
+    left:300px;
+    padding:15px;
+    display:none;
+    border-radius:5px;
+    margin-top:2px;
+}
+
+.addguestheader tr td{
+    width:200px;
+}
+.addguestheader{
+    width:300px;
+    height:250px;
+    background-color:#d1d1d1;
+    position:absolute;
+    left:300px;
+    padding:15px;
+    display:none;
+    border-radius:5px;
+    margin-top:2px;
+}
+
+.addguestmobile tr td{
+    width:200px;
+}
+.addguestmobile{
+    width:95%;
+    height:300px;
+    background-color:#d1d1d1;
+    position:absolute;
+
+    padding:15px;
+    display:none;
+    border-radius:5px;
+    margin-top:2px;
+}
+
+.addguestheader tr td{
+    width:200px;
+}
+.addguest-closebutton{
+    float:right;
+    background-color:#000;
+    color:#fff;
+    border:1px solid #000;
+}
+
+
+
+
+
+
+.addguestheader-imagegallery tr td{
+    width:200px;
+}
+.addguestheader-imagegallery{
+    width:300px;
+    height:250px;
+    background-color:#d1d1d1;
+    position:absolute;
+    left:650px;
+    top:100px;
+    padding:15px;
+    display:none;
+    border-radius:5px;
+    margin-top:2px;
+}
+.inputguest-imagegallery{
+    cursor: pointer;
+}
+
+
+/* search button */
+.searchButton{
+    float:right;
+    width:40px;
+    height:40px;
+    margin-top:-9px;
+    border-radius:100%;
+    border:1px solid red;
+    background-color:red;
+    color:#fff;
+}
 
 
 
@@ -725,6 +1035,10 @@ p{font-family: Arial, Helvetica, sans-serif;}
 
 
 
+
+hr{height: 1px;
+    background-color: red;
+    border: none;}
 
 /* for responsivenes of hoteldetails.blade.php*/
 @media (max-width: 700px) {
@@ -798,14 +1112,7 @@ p{font-family: Arial, Helvetica, sans-serif;}
         padding:40px 0px 40px 0px;
         border-bottom:1px solid grey;
     }
-    .gmap{
-        width:100%;
-        position:relative;
-        bottom:0;
-        top:362px;
-        border-bottom:1px solid grey;
-        padding:40px 0px 40px 0px;
-    }
+
     .hostProfile{
         width:100%;
         height:auto;
@@ -826,6 +1133,7 @@ p{font-family: Arial, Helvetica, sans-serif;}
     }
     .reservebutton-hidden{
         display:block;
+
     }
     .footer3{
         width:100%;
@@ -853,6 +1161,16 @@ p{font-family: Arial, Helvetica, sans-serif;}
         width:100%;
         margin-top:50px;
     }
+    .inputlocation-hoteldetails{
+        width:60px;
+    }
+    .inputguest-hoteldetails{
+        width:200px;
+        font-size:8px;
+    }
+    .inputguest-hoteldetails span{
+        font-size:12px;
+    }
     .headBox-hoteldetails{
         width:100%;
     }
@@ -860,7 +1178,41 @@ p{font-family: Arial, Helvetica, sans-serif;}
         width:100%;
         height:auto;
     }
+    .showAmeneties-box{
+        width:100%;
+        height:80%;
+        bottom:15%;
+    }.amenetiestitle-box{
+        width:100%;
+    }
+    .showReview-box{width:100%;z-index:5;height:80%;bottom:15%}
+    .reviewtitle-box{width:100%;}
+    .searchboxReview{width:300px;}
+    .allReviews{height:70%;}
+    .addguestheader{
+        left:150px;
+    }
+    .inputdate-hoteldetails{
+        width:80px;
+    }
+    .hotelWrapper{
+        width:100%;
+        padding:0px;
+    }
+    .carousel-info-box{
+        width:100%;
+    }
+    .carouselBox{
+        width:100%;
+    }
+    .info{
+        width:100%;
+        margin-top:100px;
+    }
+    .carousel-info-box:hover{
+        background-color:#f1f1f1;
 
+    }
   }
   @media (max-width: 700px) {
     [class*="image"] {
@@ -898,16 +1250,35 @@ p{font-family: Arial, Helvetica, sans-serif;}
     .headBox2{
         width:100%;text-align:center;
     }
-    .rightContent{
-        display:none;
-    }
+
     .content{
         width:100%;
     }
     .item img{
         width:100%;
     }
-    .container{width:100%;}
+    .container1{
+        width:100%;
+        height:550px;
+    }
+    .searchbar-header{
+        width:100%;
+    }
+    .searchbar-header .inputlocation{
+        border-width:0px;
+        width:50px;
+    }
+    .searchbar-header .inputdate{
+        border-width:0px;
+        width:50px;
+    }
+    .addguestheader-imagegallery{
+        left:0;
+    }
+    .searchbar-header b:not(first-child){
+        font-size:10px;
+    }
+
 
 }
 
@@ -929,55 +1300,3 @@ p{font-family: Arial, Helvetica, sans-serif;}
 
 }
 
-/*
-
-@media (min-width: 5000px){
-    .content{
-        width:30%;
-        background-color:red;
-    }
-    .rightContent{
-        width:70%;
-        height:auto;
-        background-color:grey;
-        position:fixed;
-        top:200px;
-        bottom:0;
-        margin-left:30%;
-    }
-
-}
-@media (min-width: 3000px){
-    .content{
-        width:40%;
-        background-color:red;
-    }
-    .rightContent{
-        width:70%;
-        height:auto;
-        background-color:grey;
-        position:fixed;
-        top:200px;
-        bottom:0;
-        margin-left:30%;
-    }
-
-}
-@media (min-width: 2000px){
-    .content{
-        width:30%;
-        background-color:red;
-    }
-    .rightContent{
-        width:70%;
-        height:auto;
-        background-color:grey;
-        position:fixed;
-        top:200px;
-        bottom:0;
-        margin-left:30%;
-    }
-
-}
-
-*/

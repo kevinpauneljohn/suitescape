@@ -11,9 +11,150 @@
     <script src="https://maps.googleapis.com/maps/api/js"></script>
 </head>
 <body>
-    <!-- display:none din to -->
+    <!-- display:none din to --show all reviews  //it will show up once you click the link reviews-->
+    <div class="showReview-box"id="showReview-box">
+
+    <div class="searchReview">
+        <b>Reviews</b>
+        <span class="closebutton-reviews"onclick="showallReviews()">&times;</span>
+        <br>
+    <input type="text"id="searchboxReview"class="searchboxReview"placeholder="Search Review">
+    <button onclick="sortreview()"class="sortreview-button"><i class="fa fa-search"></i></button>
+    </div>
+    <div class="allReviews">
+
+    <div class="allreviews-each">
+        <div class="review-container">
+        <div class="each-imagebox">
+        <img src="hotelImage1.jpg">
+        <p><b>Lester</b></p>
+        <p>Date</p>
+        </div>
+        <div class="comment">
+        <p>And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss
+        And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss</p>
+        </div>
+        </div>
+        </div>
+
+        <div class="allreviews-each">
+        <div class="review-container">
+        <div class="each-imagebox">
+        <img src="hotelImage1.jpg">
+        <p><b>Lester</b></p>
+        <p>Date</p>
+        </div>
+        <div class="comment">
+        <p>And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss
+        And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss</p>
+        </div>
+        </div>
+        </div>
+
+        <div class="allreviews-each">
+        <div class="review-container">
+        <div class="each-imagebox">
+        <img src="hotelImage1.jpg">
+        <p><b>Lester</b></p>
+        <p>Date</p>
+        </div>
+        <div class="comment">
+        <p>And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss
+        And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss</p>
+        </div>
+        </div>
+        </div>
+
+        <div class="allreviews-each">
+        <div class="review-container">
+        <div class="each-imagebox">
+        <img src="hotelImage1.jpg">
+        <p><b>Lester</b></p>
+        <p>Date</p>
+        </div>
+        <div class="comment">
+        <p>And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss
+        And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss</p>
+        </div>
+        </div>
+        </div>
+
+        <div class="allreviews-each">
+        <div class="review-container">
+        <div class="each-imagebox">
+        <img src="hotelImage1.jpg">
+        <p><b>Lester</b></p>
+        <p>Date</p>
+        </div>
+        <div class="comment">
+        <p>And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss
+        And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss And daming ipis boss</p>
+        </div>
+        </div>
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+    </div>
+
+
+    <!-- display:none din to --show all ameneties  //it will show up once you click the link ameneties-->
+    <div class="showAmeneties-box"id="showAmeneties-box">
+    <header class="amenetiestitle-box"><span class="closebutton"onclick="showAmeneties()">&times;</span><b>Ameneties</b></header>
+    <div class="showameneties-item-box">
+        <p><b>What is this place can offer?</b></p>
+        <ul>
+            <li>Nothing</li>
+            <li>Nothing</li>
+            <li>Nothing</li>
+            <li>Nothing</li>
+        </ul>
+        <p><b>What is this place can offer?</b></p>
+        <ul>
+            <li>Nothing</li>
+            <li>Nothing</li>
+            <li>Nothing</li>
+            <li>Nothing</li>
+        </ul>
+        <p><b>What is this place can offer?</b></p>
+        <ul>
+            <li>Nothing</li>
+            <li>Nothing</li>
+            <li>Nothing</li>
+            <li>Nothing</li>
+        </ul>
+        <p><b>What is this place can offer?</b></p>
+        <ul>
+            <li>Nothing</li>
+            <li>Nothing</li>
+            <li>Nothing</li>
+            <li>Nothing</li>
+        </ul>
+        <p><b>What is this place can offer?</b></p>
+        <ul>
+            <li>Nothing</li>
+            <li>Nothing</li>
+            <li>Nothing</li>
+            <li>Nothing</li>
+        </ul>
+
+
+    </div>
+    </div>
+
+
+
+
+
+    <!-- display:none din to --imagecell  //it will show up once you click an image-->
     <div class="imagecell-whole"id="imagecell-whole">
-    <button type="button"onclick="closeshowimagecell()"class="showpayment-closebutton">Close</button>
+    <span class="closebutton"onclick="closeshowimagecell()">&times;</span>
         <div class="imagecell-each">
         <img src="hotelImage1.jpg">
         <img src="hotelImage1.jpg">
@@ -33,7 +174,7 @@
 
 
 
-    <!-- display:none to -->
+    <!-- display:none to //this is for the mobile size //it will show up once you click the reserve button-->
 
     <div class="showPayment" id="showpaymentbox">
     <div class="showpayment-content">
@@ -44,10 +185,38 @@
         <td>Check Out<Input type="date"name="checkOut"></td>
     </tr>
     <tr>
-        <td colspan=2>Guest</td>
+    <td colspan=2 onclick="showGuestmobile()"style="cursor:pointer;"><p><b>Guest</b></p>
+        <b id="inputguestmobile"value="1">1 guest</b>
+        <b id="inputchildrenmobile" value="0"></b>
+        <b id="inputinfantmobile" value="0"></b>
     </tr>
 
     </table>
+    <div class="addguestmobile" id="addguestmobile">
+        <table>
+            <tr>
+                <td><b>Guest</b><p>Age 13+</p></td>
+                <td><input type="button"value="-"class="qtybutton"onclick="guestQuantity('minus')">
+                    <label id="guestQtymobile"value="1">1</label>
+                <input type="button"value="+"class="qtybutton"onclick="guestQuantity('add',)"></td>
+            </tr>
+            <tr>
+                <td><b>Children</b><p>Ages 2-12</p></td>
+                <td><input type="button"value="-"class="qtybutton"onclick="childrenQuantity('minus')">
+                    <label id="childrenQtymobile"value="0">0</label>
+                    <input type="button"value="+"class="qtybutton"onclick="childrenQuantity('add')"></td>
+            </tr>
+            <tr>
+                <td><b>Infants</b><p>Under 2</p></td>
+                <td><input type="button"value="-"class="qtybutton"onclick="infantQuantity('minus')">
+                    <label id="infantQtymobile"value="0">0</label>
+                    <input type="button"value="+"class="qtybutton"onclick="infantQuantity('add')"></td>
+            </tr>
+
+        </table>
+        <p>This place has a maximum of # guest.</p>
+        <input type="button" onclick="closeaddguest('guestboxmobile')"value="Close"class="addguest-closebutton">
+        </div>
     <table class="showpayment-resPrice">
         <tr>
         <td>PHP 1,000 x 20 nights</td>
@@ -92,9 +261,43 @@
                 </div>
                 <div class="searchbar-header-hoteldetails">
                  <input type="text"class="inputlocation-hoteldetails"placeholder="Location">
-                 <input type="text"class="inputdate-hoteldetails"placeholder="CheckIn-CheckOut">
-                 <input type="text"class="inputguest-hoteldetails"placeholder="Guest">
+                 <input type="date"class="inputdate-hoteldetails"placeholder="CheckIn-CheckOut">
+                 <input type="date"class="inputdate-hoteldetails"placeholder="CheckIn-CheckOut">
+                 <b id="inputguest-hoteldetails"class="inputguest-hoteldetails"placeholder="Guest"onclick="showGuestheader()"><span>Guest:</span>
+                <b id="guestheaderNum"value=1>1guest</b>
+                <b id="inputchildrenHeader"value=0></b>
+                <b id="inputinfantHeader"value=0></b>
+                </b>
+                <button type="submit"class="searchButton"><i class="fa fa-search"></i></button>
+<!-- add guest -display:none -->
+<div class="addguestheader" id="addguestheader">
+<table>
+<tr>
+<td><b>Guest</b><p>Age 13+</p></td>
+<td><input type="button"value="-"class="qtybutton"onclick="guestQuantity('minus')">
+<label id="guestQtyheader"value="1">1</label>
+<input type="button"value="+"class="qtybutton"onclick="guestQuantity('add')"></td>
+</tr>
+<tr>
+<td><b>Children</b><p>Ages 2-12</p></td>
+<td><input type="button"value="-"class="qtybutton"onclick="childrenQuantity('minus')">
+<label id="childrenQtyheader"value="0">0</label>
+<input type="button"value="+"class="qtybutton"onclick="childrenQuantity('add')"></td>
+</tr>
+<tr>
+<td><b>Infants</b><p>Under 2</p></td>
+<td><input type="button"value="-"class="qtybutton"onclick="infantQuantity('minus')">
+<label id="infantQtyheader"value="0">0</label>
+<input type="button"value="+"class="qtybutton"onclick="infantQuantity('add')"></td>
+</tr>
+
+</table>
+<p>This place has a maximum of # guest.</p>
+<input type="button" onclick="closeaddguest('addguestheader')"value="Close"class="addguest-closebutton">
+</div>
+
                 </div>
+
             </div>
 
     </div>
@@ -105,10 +308,10 @@
         <p>TITLE HERE</p>
         <p><span class="glyphicon">&#xe007; Review | Location</span></p>
         <img src="hotelImage1.jpg"width="200"class="imageHead"onclick="showImageCell()">
-        <img src="hotelImage1.jpg"width="200"class="imageChild1">
-        <img src="hotelImage1.jpg"width="200"class="imageChild2">
-        <img src="hotelImage1.jpg"width="200"class="imageChild3">
-        <img src="hotelImage1.jpg"width="200"class="imageChild4">
+        <img src="hotelImage1.jpg"width="200"class="imageChild1"onclick="showImageCell()">
+        <img src="hotelImage1.jpg"width="200"class="imageChild2"onclick="showImageCell()">
+        <img src="hotelImage1.jpg"width="200"class="imageChild3"onclick="showImageCell()">
+        <img src="hotelImage1.jpg"width="200"class="imageChild4"onclick="showImageCell()">
         </div>
 <!-- all info box / from info1 to 5 wrapper -->
         <div class="allinfoBox">
@@ -146,7 +349,7 @@
             <p>Kitchen</p>
             <p>Air Condition</p>
             <p>Crib</p>
-            <button type="button"class="showallamenetiesStyle">Show all ameneties</button>
+            <button type="button"class="showallamenetiesStyle"onclick="showAmeneties()">Show all ameneties</button>
         </div>
 
         </div>
@@ -178,9 +381,43 @@
             <td><p>Check Out</p><input type="date"name="checkOut"></td>
         </tr>
         <tr>
-            <td colspan=2><p>Guest</p></td>
+            <td colspan=2 onclick="showGuest()"style="cursor:pointer;"><p><b>Guest</b></p>
+            <b id="inputguest"value=1>1 guest</b>
+            <b id="inputchildren" value=0></b>
+            <b id="inputinfant" value=0></b>
+
+        </td>
         </tr>
         </table>
+        <!-- add guest -display:none -->
+        <div class="addguest" id="addguest">
+        <table>
+            <tr>
+                <td><b>Guest</b><p>Age 13+</p></td>
+                <td><input type="button"value="-"class="qtybutton"onclick="guestQuantity('minus')">
+                    <label id="guestQty"value="1">1</label>
+                <input type="button"value="+"class="qtybutton"onclick="guestQuantity('add')"></td>
+            </tr>
+            <tr>
+                <td><b>Children</b><p>Ages 2-12</p></td>
+                <td><input type="button"value="-"class="qtybutton"onclick="childrenQuantity('minus')">
+                    <label id="childrenQty"value="0">0</label>
+                    <input type="button"value="+"class="qtybutton"onclick="childrenQuantity('add')"></td>
+            </tr>
+            <tr>
+                <td><b>Infants</b><p>Under 2</p></td>
+                <td><input type="button"value="-"class="qtybutton"onclick="infantQuantity('minus')">
+                    <label id="infantQty"value="0">0</label>
+                    <input type="button"value="+"class="qtybutton"onclick="infantQuantity('add')"></td>
+            </tr>
+
+        </table>
+        <p>This place has a maximum of # guest.</p>
+        <input type="button" onclick="closeaddguest('guestbox')"value="Close"class="addguest-closebutton">
+        </div>
+
+
+
         <button type="submit"class="buttonReserve">Reserve</button>
         <p style="text-align:center;padding:5px;">You won't be charged yet</p>
 
@@ -207,6 +444,8 @@
         </tr>
         </table>
         </div>
+
+
 
         <!-- review section -->
         <div class="reviewSection">
@@ -257,7 +496,7 @@
         And daming ipis boss
         </div>
         </div>
-        <button type="button"class="buttonreviewStyle">Show all reviews</button>
+        <button type="button"class="buttonreviewStyle"onclick="showallReviews()">Show all reviews</button>
 
 
         </div>
@@ -463,14 +702,23 @@
         </div>
 
 
-    <script>
-        var mapCanvas = document.getElementById("map");
-        var mapOptions = {
-        center: new google.maps.LatLng(15.2229, 120.5744), zoom: 12
-        }
-        var map = new google.maps.Map(mapCanvas, mapOptions);
+
+
+
+
+
+<div class="disableBody" id="disableBody">
+</div><!--- end of disableBody class -->
+<script>
+    var mapCanvas = document.getElementById("map");
+    var mapOptions = {
+    center: new google.maps.LatLng(15.2229, 120.5744), zoom: 12
+    }
+    var map = new google.maps.Map(mapCanvas, mapOptions);
 
 
 </script>
+
+
 </body>
 </html>
