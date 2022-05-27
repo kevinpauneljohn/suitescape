@@ -32,7 +32,7 @@
             @endrole
         </tr>
 	    @foreach ($staycations as $staycation)
-	    <tr> 
+	    <tr onclick="window.location='{{ route('staycations.show', $staycation->id) }}'" style="cursor: pointer;">
 	        <td>{{ ++$i }}</td>
 	        <td>{{ $staycation->name }}</td>
 	        <td>{{ $staycation->detail }}</td>

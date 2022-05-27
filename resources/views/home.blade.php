@@ -50,7 +50,7 @@
             <div class="exclusive">
             @foreach ($staycations as $staycation)
                 <div>
-                    <img src="{{ asset("images/{$staycation->mainImg}") }}">
+                    <img src="{{ asset("images/{$staycation->mainImg}") }}" style="height:225px">
                     <span>
                         <h4>{{ $staycation->name }}</h4>
                         <p>Price = P {{ $staycation->price }}</p>

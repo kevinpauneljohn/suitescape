@@ -15,7 +15,7 @@ class StaycationController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:staycation-list|staycation-create|staycation-edit|staycation-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:staycation-list|staycation-create|staycation-edit|staycation-delete', ['only' => ['index','show','display']]);
          $this->middleware('permission:staycation-create', ['only' => ['create','store']]);
          $this->middleware('permission:staycation-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:staycation-delete', ['only' => ['destroy']]);
@@ -46,6 +46,13 @@ class StaycationController extends Controller
             return view('home',compact('staycations'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
+    public function indexess()
+    {
+        $staycations = Staycation::latest()->paginate(5);
+
+            return view('imagegallery',compact('staycations'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -66,16 +73,69 @@ class StaycationController extends Controller
     public function store(Request $request)
     {
         request()->validate([
+            'typeofPlace' => 'required',
+            'typeofHouse' => 'required',
+            'privacyType' => 'required',
+            'address' => 'required',
+            'numberGuest' => 'required',
+            'numberBed' => 'required',
+            'numberBedrooms' => 'required',
+            'numberBathrooms' => 'required',
+            'amenities' => 'required',
+            'guestFavorite' => 'required',
+            'safetyItem' => 'required',
+            'mainImg' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'subImg1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'subImg2' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'subImg3' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'subImg4' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'name' => 'required',
+            'highlight' => 'required',
             'detail' => 'required',
             'price' => 'required',
-            'mainImg' => 'required',
-            'subImg1' => 'required',
-            'address' => 'required',
+            'security' => 'required',
             'userid' => 'required',
         ]);
 
-        Staycation::create($request->all());
+        $imageName = $request->mainImg->getClientOriginalName();  
+        $imageName1 = $request->subImg1->getClientOriginalName();  
+        $imageName2 = $request->subImg2->getClientOriginalName();  
+        $imageName3 = $request->subImg3->getClientOriginalName();  
+        $imageName4 = $request->subImg3->getClientOriginalName();  
+       
+        $request->mainImg->move(public_path('images'), $imageName);
+        $request->subImg1->move(public_path('images'), $imageName1);
+        $request->subImg2->move(public_path('images'), $imageName2);
+        $request->subImg3->move(public_path('images'), $imageName3);
+        $request->subImg4->move(public_path('images'), $imageName4);
+
+        $staycation = Staycation::create([
+            'typeofPlace' =>  $request->input('typeofPlace'),
+            'typeofHouse' =>  $request->input('typeofHouse'),
+            'privacyType' =>  $request->input('privacyType'),
+            'address' =>  $request->input('address'),
+            'numberGuest' =>  $request->input('numberGuest'),
+            'numberBed' =>  $request->input('numberBed'),
+            'numberBedrooms' =>  $request->input('numberBedrooms'),
+            'numberBathrooms' =>  $request->input('numberBathrooms'),
+            'amenities' => json_encode($request->input('amenities')),
+            'guestFavorite' => json_encode($request->input('guestFavorite')),
+            'safetyItem' => json_encode($request->input('safetyItem')),
+            'mainImg' => $imageName,
+            'subImg1' => $imageName1,
+            'subImg2' => $imageName2,
+            'subImg3' => $imageName3,
+            'subImg4' => $imageName4,
+            'name' => $request->input('name'),
+            'highlight' => json_encode($request->input('highlight')),
+            'detail' => $request->input('detail'),
+            'price' => $request->input('price'),
+            'security' => json_encode($request->input('security')),
+            'userid' => $request->input('userid'),
+            
+
+            
+        ]);
 
         return redirect()->route('staycations.index')
                         ->with('success','Staycation created successfully.');
@@ -89,7 +149,14 @@ class StaycationController extends Controller
      */
     public function show(Staycation $staycation)
     {
+        
         return view('staycations.show',compact('staycation'));
+
+    }
+
+    public function display(Staycation $staycation)
+    {
+        return view('staycations.display',compact('staycation'));
     }
 
     /**

@@ -15,15 +15,27 @@ class Staycation extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'detail',
-        'price',
+        'typeofPlace',
+        'typeofHouse',
+        'privacyType',
+        'address',
+        'numberGuest',
+        'numberBed',
+        'numberBedrooms',
+        'numberBathrooms',
+        'amenities',
+        'guestFavorite',
+        'safetyItem',
         'mainImg',
         'subImg1',
         'subImg2',
         'subImg3',
         'subImg4',
-        'address',
+        'name',
+        'highlight',
+        'detail',
+        'price',
+        'security',
         'userid',
     ];
 

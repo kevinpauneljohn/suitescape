@@ -23,35 +23,132 @@
         </div>
     @endif
 
-    <form action="{{ route('staycations.store') }}" method="POST">
+    <form action="{{ route('staycations.store') }}" method="POST" enctype="multipart/form-data">
+	<input type="hidden" name="userid" value="{{ auth()->user()->id }}">
     	@csrf
+		
+		<div class="row">
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+                <label for="typeofPlace">Kind Of Listing</label>
+    			<select class="form-control" name="typeofPlace" id="typeofPlace">
+     			<option value="Boutique Hotel">Boutique Hotel</option>
+      			<option value="Bed and Breakfast">Bed and Breakfast</option>
+      			<option value="Unique Space">Unique Space</option>
+      			<option value="Secondary Unit">Secondary Unit</option>
+      			<option value="Apartment">Apartment</option>
+      			<option value="House">House</option>
+    			</select>
+		        </div>
+		    </div>
 
-         <div class="row">
-		    <div class="col-xs-12 col-sm-12 col-md-12">
+		    <div class="col-xs-12 col-sm-12 col-md-12" style="display: none;" id="typeofHouse">
 		        <div class="form-group">
-                <input type="hidden" name="userid" value="{{ auth()->user()->id }}">
-		            <strong>Name:</strong>
-		            <input type="text" name="name" class="form-control" placeholder="Name">
+                <label for="typeofHouse">Type of House</label>
+    			<select class="form-control" name="typeofHouse">
+				<option value="null" style="display: none;" checked></option>
+     			<option value="Home">Home</option>
+      			<option value="Cabin">Cabin</option>
+      			<option value="Villa">Villa</option>
+      			<option value="Townhouse">Townhouse</option>
+      			<option value="Cottage">Cottage</option>
+      			<option value="Bungalow">Bungalow</option>
+      			<option value="Earthen Home">Earthen Home</option>
+      			<option value="Houseboat">Houseboat</option>
+      			<option value="Hut">Hut</option>
+      			<option value="Farm Stay">Farm Stay</option>
+      			<option value="Dome">Dome</option>
+      			<option value="Cycladic Home">Cycladic Home</option>
+      			<option value="Chalet">Chalet</option>
+      			<option value="Dammuso">Dammuso</option>
+      			<option value="Lighthouse">Lighthouse</option>
+      			<option value="Shepherd">Shepherd's hut</option>
+      			<option value="Tiny Home">Tiny Home</option>
+      			<option value="Trullo">Trullo</option>
+      			<option value="Casa Particular">Casa Particular</option>
+      			<option value="Pension">Pension</option>
+      			<option value="Vacation Home">Vacation Home</option>
+      			
+    			</select>
 		        </div>
 		    </div>
-		    <div class="col-xs-12 col-sm-12 col-md-12">
+
+			<div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
-		            <strong>Detail:</strong>
-		            <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail"></textarea>
+                <label for="privacyType">Privacy Type</label>
+    			<select class="form-control" name="privacyType">
+     			<option value="An entire place">An entire place</option>
+      			<option value="A private room">A private room</option>
+      			<option value="A shared room">A shared room</option>
+    			</select>
 		        </div>
 		    </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-		        <div class="form-group">
-		            <strong>Price:</strong>
-		            <input type="number" name="price" class="form-control" placeholder="Price">
-		        </div>
-		    </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+
+		 <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
 		            <strong>Address:</strong>
 		            <textarea class="form-control" style="height:150px" name="address" placeholder="Address"></textarea>
 		        </div>
 		    </div>
+
+			<div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Floor Plan:</strong><br>
+					<label for="numberGuest">Guests</label>
+		            <input type="number" name="numberGuest">
+
+					<label for="numberBed">Beds</label>
+		            <input type="number" name="numberBed">
+
+					<label for="numberBedrooms">Bedrooms</label>
+		            <input type="number" name="numberBedrooms">
+
+					<label for="numberBathrooms">Bathrooms</label>
+		            <input type="number" name="numberBathrooms">
+		        </div>
+		    </div>
+
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Do you have any standout amenities?</strong><br>
+		            <label><input type="checkbox" name="amenities[]" value="Pool"> Pool</label>
+		            <label><input type="checkbox" name="amenities[]" value="Hot Tub"> Hot Tub</label>
+		            <label><input type="checkbox" name="amenities[]" value="Patio"> Patio</label>
+		            <label><input type="checkbox" name="amenities[]" value="BBQ Grill"> BBQ Grill</label>
+		            <label><input type="checkbox" name="amenities[]" value="Fire Pit"> Fire Pit</label>
+		            <label><input type="checkbox" name="amenities[]" value="Pool Table"> Pool Table</label>
+		            <label><input type="checkbox" name="amenities[]" value="Indoor Fireplace"> Indoor Fireplace</label>
+		            <label><input type="checkbox" name="amenities[]" value="Outdoor Dining Area"> Outdoor Dining Area</label>
+		            <label><input type="checkbox" name="amenities[]" value="Exercise Equipment"> Exercise Equipment</label>
+		        </div>
+		    </div>
+
+			<div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>What about these guest favorites?</strong><br>
+		            <label><input type="checkbox" name="guestFavorite[]" value="Wifi"> Wifi</label>
+		            <label><input type="checkbox" name="guestFavorite[]" value="TV"> TV</label>
+		            <label><input type="checkbox" name="guestFavorite[]" value="Kitchen"> Kitchen</label>
+		            <label><input type="checkbox" name="guestFavorite[]" value="Washer"> Washer</label>
+		            <label><input type="checkbox" name="guestFavorite[]" value="Free Parking on Premises"> Free Parking on Premises</label>
+		            <label><input type="checkbox" name="guestFavorite[]" value="Paid Parking on Premises"> Paid Parking on Premises</label>
+		            <label><input type="checkbox" name="guestFavorite[]" value="Air Conditioning"> Air Conditioning</label>
+		            <label><input type="checkbox" name="guestFavorite[]" value="Dedicated Workspace"> Dedicated Workspace</label>
+		            <label><input type="checkbox" name="guestFavorite[]" value="Outdoor Shower"> Outdoor Shower</label>
+		        </div>
+		    </div>
+
+			<div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Have any of these safety items?</strong><br>
+		            <label><input type="checkbox" name="safetyItem[]" value="Smoke Alarm"> Smoke Alarm</label>
+		            <label><input type="checkbox" name="safetyItem[]" value="First Aid Kit"> First Aid Kit</label>
+		            <label><input type="checkbox" name="safetyItem[]" value="Carbon Monoxide Alarm"> Carbon Monoxide Alarm</label>
+		            <label><input type="checkbox" name="safetyItem[]" value="Fire Extinguisher"> Fire Extinguisher</label>
+		        </div>
+		    </div>
+
+			
             <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
 		            <strong>Main Image:</strong>
@@ -82,10 +179,75 @@
 		            <input type="file" name="subImg4" class="form-control">
 		        </div>
 		    </div>
+
+			<div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Title:</strong>
+		            <input type="text" name="name" class="form-control" placeholder="Title">
+		        </div>
+		    </div>
+
+			<div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Choose up to 2 highlights</strong><br>
+		            <label><input type="checkbox" class="highlight" name="highlight[]" value="Smoke Alarm"> Peaceful</label>
+		            <label><input type="checkbox" class="highlight" name="highlight[]" value="First Aid Kit"> Unique</label>
+		            <label><input type="checkbox" class="highlight" name="highlight[]" value="Carbon Monoxide Alarm"> Family-friendly</label>
+		            <label><input type="checkbox" class="highlight" name="highlight[]" value="Fire Extinguisher"> Stylish</label>
+		            <label><input type="checkbox" class="highlight" name="highlight[]" value="Fire Extinguisher"> Central</label>
+		            <label><input type="checkbox" class="highlight" name="highlight[]" value="Fire Extinguisher"> Spacious</label>
+		        </div>
+		    </div>
+
+		    <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Detail:</strong>
+		            <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail"></textarea>
+		        </div>
+		    </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Price:</strong>
+		            <input type="number" name="price" class="form-control" placeholder="Price">
+		        </div>
+		    </div>
+
+			<div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Do you have any of these at your place?</strong><br>
+		            <label><input type="checkbox" class="security" name="security[]" value="Security Camera"> Security Camera(s)</label>
+		            <label><input type="checkbox" class="security" name="security[]" value="Weapons"> Weapons</label>
+		            <label><input type="checkbox" class="security" name="security[]" value="Dangerous Animals"> Dangerous Animals</label>
+		        </div>
+		    </div>
+
 		    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 		            <button type="submit" class="btn btn-primary">Submit</button>
 		    </div>
 		</div>
 
     </form>
+
+<script>
+	document.getElementById('typeofPlace').addEventListener("change", function (e) {
+    if (e.target.value === 'House') {
+        document.getElementById('typeofHouse').style.display = 'block';
+    } else {
+        document.getElementById('typeofHouse').style.display = 'none';
+    }
+});
+</script>
+<<script type="text/javascript"> 
+var max_limit = 2; // Max Limit
+$(document).ready(function (){
+    $(".highlight:input:checkbox").each(function (index){
+        this.checked = (".highlight:input:checkbox" < max_limit);
+    }).change(function (){
+        if ($(".highlight:input:checkbox:checked").length > max_limit){
+            this.checked = false;
+        }
+    });
+});
+</script>
+
 @endsection

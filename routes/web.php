@@ -34,6 +34,9 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
+    Route::get('home', [StaycationController::class, 'indexes']);
+    Route::get('image', [StaycationController::class, 'indexess']);
+    Route::get('staycations/{staycation}/display', [StaycationController::class, 'display'])->name('staycations.display');
     Route::resource('staycations', StaycationController::class);
     // Route::get('/calendar', 'App\Http\Controllers\StaycationController@calendar')->name('staycations.calendar');
     // Route::get('/index', 'StaycationController@index')->name('staycations.index');
@@ -70,4 +73,3 @@ Route::group(['prefix' => 'teams', 'namespace' => 'Teamwork'], function()
 });
 Route::get('calendar-event', [CalenderController::class, 'index'])->name('calendar.index');
 Route::post('calendar-crud-ajax', [CalenderController::class, 'calendarEvents']);
-Route::get('home', [StaycationController::class, 'indexes']);

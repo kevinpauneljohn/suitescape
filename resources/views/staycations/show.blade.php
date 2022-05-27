@@ -20,8 +20,11 @@
     <div class="container">
         <section class="col-xs-14 col-sm-12 col-md-12">
             <div id="name" class="form-group">
-                <strong>Name:</strong>
-                <p>{{ $staycation->name }}</p>
+                <strong>Amenities:</strong>
+                @php $amenitieses = $staycation->amenities ? json_decode($staycation->amenities, true) : []; @endphp
+                    @foreach($amenitieses as $amenities)
+                    <p>{{$amenities}}</p>
+                    @endforeach
             </div>
         </section>
         <hr>

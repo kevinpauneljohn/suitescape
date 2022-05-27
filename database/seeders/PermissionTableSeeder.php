@@ -71,6 +71,25 @@ class PermissionTableSeeder extends Seeder
         
         $user->assignRole($role5);
 
+        $user1 = User::create([
+            'fname' => 'admin', 
+            'lname' => 'admin', 
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('12345678')
+        ]);
+        
+        $user1->assignRole($role4);
+
+
+        $user2 = User::create([
+            'fname' => 'host', 
+            'lname' => 'host', 
+            'email' => 'host@gmail.com',
+            'password' => bcrypt('12345678')
+        ]);
+        
+        $user2->assignRole($role1);
+
 
     }
 }
