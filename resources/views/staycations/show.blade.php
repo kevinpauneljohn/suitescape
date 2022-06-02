@@ -18,12 +18,107 @@
 
     <!-- details -->
     <div class="container">
+        <section class="col-xs-12 col-sm-12 col-md-12">
+            <div id="details" class="form-group">
+                <strong>Type of Listings:</strong>
+                <p>{{ $staycation->typeofPlace }}</p>
+            </div>
+        </section>
+        <hr>
+        @if(!$staycation->typeofHouse == "null")
+        <section class="col-xs-12 col-sm-12 col-md-12">
+            <div id="details" class="form-group">
+                <strong>Type of House:</strong>
+                <p>{{ $staycation->typeofHouse }}</p>
+            </div>
+        </section>
+        <hr>
+        @endif
+        <section class="col-xs-12 col-sm-12 col-md-12">
+            <div id="details" class="form-group">
+                <strong>Privacy Type:</strong>
+                <p>{{ $staycation->privacyType }}</p>
+            </div>
+        </section>
+        <hr>
+        <section class="col-xs-12 col-sm-12 col-md-12">
+            <div id="details" class="form-group">
+                <strong>Address:</strong>
+                <p>{{ $staycation->address }}</p>
+            </div>
+        </section>
+        <hr>
+        <section class="col-xs-12 col-sm-12 col-md-12">
+            <div id="details" class="form-group">
+                <strong>Maximum Number of Guest:</strong>
+                <p>{{ $staycation->numberGuest }}</p>
+            </div>
+        </section>
+        <hr>
+        <section class="col-xs-12 col-sm-12 col-md-12">
+            <div id="details" class="form-group">
+                <strong>Number of Bed:</strong>
+                <p>{{ $staycation->numberBed }}</p>
+            </div>
+        </section>
+        <hr>
+        <section class="col-xs-12 col-sm-12 col-md-12">
+            <div id="details" class="form-group">
+                <strong>Number of Bedrooms:</strong>
+                <p>{{ $staycation->numberBedrooms }}</p>
+            </div>
+        </section>
+        <hr>
+        <section class="col-xs-12 col-sm-12 col-md-12">
+            <div id="details" class="form-group">
+                <strong>Number of Bathrooms:</strong>
+                <p>{{ $staycation->numberBathrooms }}</p>
+            </div>
+        </section>
+        <hr>
         <section class="col-xs-14 col-sm-12 col-md-12">
             <div id="name" class="form-group">
                 <strong>Amenities:</strong>
                 @php $amenitieses = $staycation->amenities ? json_decode($staycation->amenities, true) : []; @endphp
                     @foreach($amenitieses as $amenities)
                     <p>{{$amenities}}</p>
+                    @endforeach
+            </div>
+        </section>
+        <hr>
+        <section class="col-xs-14 col-sm-12 col-md-12">
+            <div id="name" class="form-group">
+                <strong>Guest Favorites:</strong>
+                @php $guestFavorites = $staycation->guestFavorite ? json_decode($staycation->guestFavorite, true) : []; @endphp
+                    @foreach($guestFavorites as $guestFavorite)
+                    <p>{{$guestFavorite}}</p>
+                    @endforeach
+            </div>
+        </section>
+        <hr>
+        <section class="col-xs-14 col-sm-12 col-md-12">
+            <div id="name" class="form-group">
+                <strong>Safety Items:</strong>
+                @php $safetyItems = $staycation->safetyItem ? json_decode($staycation->safetyItem, true) : []; @endphp
+                    @foreach($safetyItems as $safetyItem)
+                    <p>{{$safetyItem}}</p>
+                    @endforeach
+            </div>
+        </section>
+        <hr>
+        <section class="col-xs-12 col-sm-12 col-md-12">
+            <div id="details" class="form-group">
+                <strong>Title:</strong>
+                <p>{{ $staycation->name }}</p>
+            </div>
+        </section>
+        <hr>
+        <section class="col-xs-14 col-sm-12 col-md-12">
+            <div id="name" class="form-group">
+                <strong>Highlights:</strong>
+                @php $highlights = $staycation->highlight ? json_decode($staycation->highlight, true) : []; @endphp
+                    @foreach($highlights as $highlight)
+                    <p>{{$highlight}}</p>
                     @endforeach
             </div>
         </section>
@@ -39,6 +134,16 @@
             <div id="price" class="form-group">
                 <strong>Price:</strong>
                 <p>{{ $staycation->price }}</p>
+            </div>
+        </section>
+        <hr>
+        <section class="col-xs-14 col-sm-12 col-md-12">
+            <div id="name" class="form-group">
+                <strong>Security:</strong>
+                @php $securities = $staycation->security ? json_decode($staycation->security, true) : []; @endphp
+                    @foreach($securities as $security)
+                    <p>{{$security}}</p>
+                    @endforeach
             </div>
         </section>
         <hr>

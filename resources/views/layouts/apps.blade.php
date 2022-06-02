@@ -55,6 +55,8 @@
                         @can('staycation-list')
                             <li><a class="nav-link" href="{{ route('staycations.index') }}">Manage Staycations</a></li>
                         @endcan
+                        <li><a class="nav-link" href="#">Reservation</a></li>
+                        <li><a class="nav-link" href="#">Messages</a></li>
 
                             
                        
@@ -86,6 +88,9 @@
                                      @role('Host')
                                     <a class="dropdown-item" href="{{ route('teams.index') }}">
                                         {{ __('Manage Co-host') }}
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        {{ __('Transaction History') }}
                                     </a>
                                     @endrole
 

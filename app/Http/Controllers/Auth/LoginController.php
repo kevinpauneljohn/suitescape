@@ -33,7 +33,7 @@ class LoginController extends Controller
 if ( Auth::user()->hasRole('Super-Admin') ) {// do your magic here
     return redirect()->route('users.index');
 }
-else if(Auth::user()->hasRole('admin') ) {// do your magic here
+else if(Auth::user()->hasRole('Admin') ) {// do your magic here
     return redirect()->route('users.index');
 }
  return redirect('/home');

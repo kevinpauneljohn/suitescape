@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Staycation;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,16 +28,21 @@ class StaycationController extends Controller
      */
     public function index()
     {
-        if(auth()->user()->role('admin') || auth()->user()->role('Super-Admin')){
-            $staycations = Staycation::latest()->paginate(5);
+        if(Auth::user()->hasRole('Super-Admin') || Auth::user()->hasRole('Admin')){
+            
+        $staycations = Staycation::latest()->paginate(5);
 
-            return view('staycations.index',compact('staycations'))
+        return view('staycations.index',compact('staycations'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
         }
+        else{
         $staycations = Staycation::where('userid', Auth::id())->latest()->paginate(5);
 
         return view('staycations.index',compact('staycations'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
+        }
+
+        
     }
 
     public function indexes()
@@ -156,7 +162,9 @@ class StaycationController extends Controller
 
     public function display(Staycation $staycation)
     {
-        return view('staycations.display',compact('staycation'));
+        $idd = $staycation->userid;
+        $user = User::find($idd);
+        return view('staycations.display',compact('staycation','user'));
     }
 
     /**

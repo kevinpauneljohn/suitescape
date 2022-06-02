@@ -317,8 +317,8 @@
         <div class="allinfoBox">
         <div class="hotelInfo1">
         <img src="hotelImage1.jpg" class="profLogo"width="300">
-        <p><b>Entire Rental Unit Hosted by Lester</b></p>
-        <span>2 Guest | Studio | 1 Bed | 1 Bath</span>
+        <p><b>{{ $staycation->privacyType }} Hosted by {{$user->fname}}</b></p>
+        <span>{{ $staycation->numberGuest }} Guest | {{ $staycation->typeofPlace }} | {{ $staycation->numberBed }} Bed | {{ $staycation->numberBathrooms }} Bath</span>
 
         </div>
         <div class="hotelInfo2">
@@ -337,11 +337,10 @@
         <div class="hotelInfo4">
             <p><b>What this place offers</b></p>
             <div class="offerLeft">
-            <p><i class="fa fa-car"></i> Free parking</p>
-            <p><i class="fa fa-tv"></i> TV</li></p>
-            <p>Kitchen</p>
-            <p>Air Condition</p>
-            <p>Crib</p>
+            @php $amenitieses = $staycation->amenities ? json_decode($staycation->amenities, true) : []; @endphp
+                    @foreach($amenitieses as $amenities)
+                    <p>{{$amenities}}</p>
+                    @endforeach
             </div>
             <div class="offerRight">
             <p><i class="fa fa-car"></i> Free parking</p>
@@ -422,9 +421,11 @@
         <p style="text-align:center;padding:5px;">You won't be charged yet</p>
 
         <table class="resPrice">
+        <input type="hidden" name="price" id="price" value="{{$staycation->price}}">
         <tr>
-        <td>PHP {{$staycation->price}} x 20 nights</td>
-        <td>PHP 20,000</td>
+        <td>Price </td>
+        
+        <td id="inputguestss" value="1">PHP {{number_format($staycation->price)}}</td>
         </tr>
         <tr>
         <td>Weekly Discount</td>
@@ -432,15 +433,15 @@
         </tr>
         <tr>
         <td>Cleaning Fee</td>
-        <td>PHP 300</td>
+        <td>PHP 0</td>
         </tr>
         <tr>
         <td>Service Fee</td>
-        <td>PHP 300</td>
+        <td>PHP 0</td>
         </tr>
         <tr style="border-top:1px solid grey;">
         <td><b>Total</b></td>
-        <td><b>totalPrice</b></td>
+        <td><b id="inputguestsss" value="1">PHP {{number_format($staycation->price)}}</b></td>
         </tr>
         </table>
         </div>

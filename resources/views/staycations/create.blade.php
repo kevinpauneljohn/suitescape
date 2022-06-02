@@ -87,7 +87,7 @@
 		 <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
 		            <strong>Address:</strong>
-		            <textarea class="form-control" style="height:150px" name="address" placeholder="Address"></textarea>
+		            <textarea class="form-control" style="height:150px" name="address" placeholder="Address" required autocomplete="address" autofocus></textarea>
 		        </div>
 		    </div>
 
@@ -95,16 +95,16 @@
 		        <div class="form-group">
 		            <strong>Floor Plan:</strong><br>
 					<label for="numberGuest">Guests</label>
-		            <input type="number" name="numberGuest">
+		            <input type="number" name="numberGuest" required autocomplete="numberGuest" autofocus>
 
 					<label for="numberBed">Beds</label>
-		            <input type="number" name="numberBed">
+		            <input type="number" name="numberBed" required autocomplete="numberBed" autofocus>
 
 					<label for="numberBedrooms">Bedrooms</label>
-		            <input type="number" name="numberBedrooms">
+		            <input type="number" name="numberBedrooms" required autocomplete="numberBedrooms" autofocus>
 
 					<label for="numberBathrooms">Bathrooms</label>
-		            <input type="number" name="numberBathrooms">
+		            <input type="number" name="numberBathrooms" required autocomplete="numberBathrooms" autofocus>
 		        </div>
 		    </div>
 
@@ -152,63 +152,63 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
 		            <strong>Main Image:</strong>
-		            <input type="file" name="mainImg" class="form-control">
+		            <input type="file" name="mainImg" class="form-control" required autocomplete="mainImg" autofocus>
 		        </div>
 		    </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
 		            <strong>Sub Image 1:</strong>
-		            <input type="file" name="subImg1" class="form-control">
+		            <input type="file" name="subImg1" class="form-control" required autocomplete="subImg1" autofocus>
 		        </div>
 		    </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
 		            <strong>Sub Image 2:</strong>
-		            <input type="file" name="subImg2" class="form-control">
+		            <input type="file" name="subImg2" class="form-control" required autocomplete="subImg2" autofocus>
 		        </div>
 		    </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
 		            <strong>Sub Image 3:</strong>
-		            <input type="file" name="subImg3" class="form-control">
+		            <input type="file" name="subImg3" class="form-control" required autocomplete="subImg3" autofocus>
 		        </div>
 		    </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
 		            <strong>Sub Image 4:</strong>
-		            <input type="file" name="subImg4" class="form-control">
+		            <input type="file" name="subImg4" class="form-control" required autocomplete="subImg4" autofocus>
 		        </div>
 		    </div>
 
 			<div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
 		            <strong>Title:</strong>
-		            <input type="text" name="name" class="form-control" placeholder="Title">
+		            <input type="text" name="name" class="form-control" placeholder="Title" required autocomplete="name" autofocus>
 		        </div>
 		    </div>
 
 			<div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
 		            <strong>Choose up to 2 highlights</strong><br>
-		            <label><input type="checkbox" class="highlight" name="highlight[]" value="Smoke Alarm"> Peaceful</label>
-		            <label><input type="checkbox" class="highlight" name="highlight[]" value="First Aid Kit"> Unique</label>
-		            <label><input type="checkbox" class="highlight" name="highlight[]" value="Carbon Monoxide Alarm"> Family-friendly</label>
-		            <label><input type="checkbox" class="highlight" name="highlight[]" value="Fire Extinguisher"> Stylish</label>
-		            <label><input type="checkbox" class="highlight" name="highlight[]" value="Fire Extinguisher"> Central</label>
-		            <label><input type="checkbox" class="highlight" name="highlight[]" value="Fire Extinguisher"> Spacious</label>
+		            <label><input type="checkbox" class="highlight" name="highlight[]" value="Peaceful"> Peaceful</label>
+		            <label><input type="checkbox" class="highlight" name="highlight[]" value="Unique"> Unique</label>
+		            <label><input type="checkbox" class="highlight" name="highlight[]" value="Family-friendly"> Family-friendly</label>
+		            <label><input type="checkbox" class="highlight" name="highlight[]" value="Stylish"> Stylish</label>
+		            <label><input type="checkbox" class="highlight" name="highlight[]" value="Central"> Central</label>
+		            <label><input type="checkbox" class="highlight" name="highlight[]" value="Spacious"> Spacious</label>
 		        </div>
 		    </div>
 
 		    <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
 		            <strong>Detail:</strong>
-		            <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail"></textarea>
+		            <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail" required autocomplete="detail" autofocus></textarea>
 		        </div>
 		    </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
 		            <strong>Price:</strong>
-		            <input type="number" name="price" class="form-control" placeholder="Price">
+		            <input type="number" name="price" class="form-control" placeholder="Price" required autocomplete="price" autofocus>
 		        </div>
 		    </div>
 

@@ -180,7 +180,11 @@ function guestQuantity(operation) {
     for(a=0;a<=2;a++){
         conbox[a].innerHTML=getgvalue+" guest";
     }
-
+    price = document.getElementById("price").value;
+    
+    var prices = price*getgvalue;
+    document.getElementById("inputguestss").innerHTML="PHP "+prices.toLocaleString();
+    document.getElementById("inputguestsss").innerHTML="PHP "+prices.toLocaleString();
 
 
 
@@ -209,6 +213,11 @@ function guestQuantity(operation) {
         for(a=0;a<=2;a++){
             conbox[a].innerHTML=getgvalue+" guest";
         }
+        price = document.getElementById("price").value;
+    
+    var prices = price*getgvalue;
+    document.getElementById("inputguestss").innerHTML="PHP "+prices.toLocaleString();
+    document.getElementById("inputguestsss").innerHTML="PHP "+prices.toLocaleString();
 
 
     }
