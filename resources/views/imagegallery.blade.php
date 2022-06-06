@@ -154,9 +154,7 @@
         if(guestNumber == 0){
             guestNumber=1;
         }
-        if(inputPrice == 0){
-            inputPrice=1;
-        }
+
         var selectedType=$('#privacyType option:selected').val();
         var selectedPlace=$('#typeofPlace option:selected').val();
         var amenities = [];
