@@ -100,19 +100,25 @@ function closeaddguest(guestbox){
 function asd(operation, type){
     if(operation == 'add' && type== 'guest'){
         document.getElementById("guestQtygallery").value= ++addGuest;
+        document.getElementById("guestNumber").value= addGuest+addChildren;
         getgvalue= document.getElementById("guestQtygallery").value;
         inputguests=getgvalue;
         document.getElementById("guestQtygallery").innerHTML = getgvalue;
         document.getElementById('inputguestgallery').innerHTML=getgvalue+" guest";
-    }else if(operation == 'minus' && type== 'guest' && inputguests>1){
+    }else if(operation == 'minus' && type== 'guest' && inputguests>0){
         document.getElementById("guestQtygallery").value= --addGuest;
+        document.getElementById("guestNumber").value= addGuest+addChildren;
         getgvalue= document.getElementById("guestQtygallery").value;
         inputguests=getgvalue;
         document.getElementById("guestQtygallery").innerHTML = getgvalue;
         document.getElementById('inputguestgallery').innerHTML=getgvalue+" guest";
+        if(inputguests<=0){
+            document.getElementById('inputguestgallery').innerHTML="";
+        }
     }
     else if(operation == 'add' && type== 'children'){
         document.getElementById("childrenQtyheader-imagegallery").value= ++addChildren;
+        document.getElementById("guestNumber").value= addGuest+addChildren;
         getchildrenvalue= document.getElementById("childrenQtyheader-imagegallery").value;
         inputchildren=getchildrenvalue;
         document.getElementById("childrenQtyheader-imagegallery").innerHTML = getchildrenvalue;
@@ -120,6 +126,7 @@ function asd(operation, type){
     }
     else if(operation == 'minus' && type== 'children' && inputchildren>0){
         document.getElementById("childrenQtyheader-imagegallery").value= --addChildren;
+        document.getElementById("guestNumber").value= addGuest+addChildren;
         getchildrenvalue= document.getElementById("childrenQtyheader-imagegallery").value;
         inputchildren=getchildrenvalue;
         document.getElementById("childrenQtyheader-imagegallery").innerHTML = getchildrenvalue;
@@ -150,12 +157,16 @@ function asd(operation, type){
 
 
 //hoteldetails adding guest function
-var addGuest=1;
+var addGuest=0;
 var getgvalue;
 var inputguests;
+
 function guestQuantity(operation) {
-    if(operation == 'add'){
+    var numGuest=document.getElementById('numGuest').value;
+    var totalGuest=document.getElementById('totalGuest').value;
+    if(operation == 'add' && totalGuest<numGuest){
     document.getElementById("guestQty").value= ++addGuest;
+    totalGuest=document.getElementById("totalGuest").value=addGuest+addChildren;
     getgvalue= document.getElementById("guestQty").value;
     /*
     document.getElementById("guestQty").innerHTML = getgvalue;
@@ -180,12 +191,13 @@ function guestQuantity(operation) {
     for(a=0;a<=2;a++){
         conbox[a].innerHTML=getgvalue+" guest";
     }
+    /*
     price = document.getElementById("price").value;
-    
+
     var prices = price*getgvalue;
     document.getElementById("inputguestss").innerHTML="PHP "+prices.toLocaleString();
     document.getElementById("inputguestsss").innerHTML="PHP "+prices.toLocaleString();
-
+*/
 
 
 
@@ -193,6 +205,7 @@ function guestQuantity(operation) {
     }else if(operation == 'minus' && inputguests>1){
         document.getElementById("guestQty").value= --addGuest;
         var getgvalue= document.getElementById("guestQty").value;
+        totalGuest=document.getElementById("totalGuest").value=addGuest+addChildren;
         /*
         document.getElementById("guestQtyheader").innerHTML = getgvalue;
         document.getElementById("guestQty").innerHTML = getgvalue;
@@ -214,7 +227,7 @@ function guestQuantity(operation) {
             conbox[a].innerHTML=getgvalue+" guest";
         }
         price = document.getElementById("price").value;
-    
+
     var prices = price*getgvalue;
     document.getElementById("inputguestss").innerHTML="PHP "+prices.toLocaleString();
     document.getElementById("inputguestsss").innerHTML="PHP "+prices.toLocaleString();
@@ -230,9 +243,12 @@ var addChildren=0;
 var getchildrenvalue;
 var inputchildren;
 function childrenQuantity(operation) {
-    if(operation == 'add'){
+    var numGuest=document.getElementById('numGuest').value;
+    var totalGuest=document.getElementById('totalGuest').value;
+    if(operation == 'add' && totalGuest<numGuest){
     document.getElementById("childrenQty").value= ++addChildren;
     getchildrenvalue= document.getElementById("childrenQty").value;
+    totalGuest=document.getElementById("totalGuest").value=addGuest+addChildren;
     /*
     document.getElementById("childrenQty").innerHTML = getchildrenvalue;
     document.getElementById("childrenQtyheader").innerHTML = getchildrenvalue;
@@ -258,6 +274,7 @@ function childrenQuantity(operation) {
     }else if(operation == 'minus' && inputchildren>0){
         document.getElementById("childrenQty").value= --addChildren;
         getchildrenvalue= document.getElementById("childrenQty").value;
+        totalGuest=document.getElementById("totalGuest").value=addGuest+addChildren;
         /*
         document.getElementById("childrenQty").innerHTML = getchildrenvalue;
         document.getElementById("childrenQtyheader").innerHTML = getchildrenvalue;
@@ -294,6 +311,7 @@ function infantQuantity(operation) {
     if(operation == 'add'){
     document.getElementById("infantQty").value= ++addInfant;
     getinfantvalue= document.getElementById("infantQty").value;
+
     /*
     document.getElementById("infantQty").innerHTML = getinfantvalue;
     document.getElementById("infantQtyheader").innerHTML = getinfantvalue;
@@ -363,3 +381,86 @@ window.addEventListener('resize',function(){
 })
 
 
+
+
+
+/*
+$(document).on('change','#typeofPlace',function(e){
+    e.preventDefault();
+    e.disabled = true;
+    var selectedType = $(this).val();
+    $.ajax({
+        method:"GET",
+        url: "{{route('staycations.indexess')}}",
+        cache:false,
+        data:{
+            $pType: selectedType
+        },
+
+    });
+
+
+});
+*/
+
+$(document).ready(function(){
+    $('#typeofPlace').on('change', function(){
+
+        var value=$(this).val();
+        alert(value);
+    });
+
+
+});
+
+/*
+.done(function(response) {
+        console.log(response)
+    });
+*/
+/*
+    $(document).ready(function(){
+        $('#typeofPlace').on('change', function(){
+
+        var value=$(this).val();
+        //alert(value);
+        $.ajax({
+            url:"{{route('staycations.indexess')}}",
+            type: "POST",
+            data: {value:value},
+            beforeSend:function(){
+                $('.content').html("<span>Working...</span>");
+            },
+            success:function(data){
+                $('.content').html(data);
+            }
+
+
+
+        });
+    });
+
+
+    });
+    */
+/*
+    function filter(){
+        var selectedType=$('#typeofPlace option:selected').val();
+
+        $.ajax({
+            type: "GET",
+            data: {
+                'selectedType': selectedType
+            },
+            url: "{{route('users.indexess')}}",
+            success:function(data){
+                $('.content').html(data);
+            }
+
+        });
+    }
+
+    function hehe(){
+        filter();
+    }
+*/

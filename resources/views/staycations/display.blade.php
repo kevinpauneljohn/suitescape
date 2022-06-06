@@ -254,53 +254,7 @@
 
 
     <!-- body starts here -->
-    <div class="detailsHeader">
-    <div class="headBox-hoteldetails">
-                <div class="logo-header-hoteldetails">
-                    Airdreamhome
-                </div>
-                <div class="searchbar-header-hoteldetails">
-                 <input type="text"class="inputlocation-hoteldetails"placeholder="Location">
-                 <input type="date"class="inputdate-hoteldetails"placeholder="CheckIn-CheckOut">
-                 <input type="date"class="inputdate-hoteldetails"placeholder="CheckIn-CheckOut">
-                 <b id="inputguest-hoteldetails"class="inputguest-hoteldetails"placeholder="Guest"onclick="showGuestheader()"><span>Guest:</span>
-                <b id="guestheaderNum"value=1>1guest</b>
-                <b id="inputchildrenHeader"value=0></b>
-                <b id="inputinfantHeader"value=0></b>
-                </b>
-                <button type="submit"class="searchButton"><i class="fa fa-search"></i></button>
-<!-- add guest -display:none -->
-<div class="addguestheader" id="addguestheader">
-<table>
-<tr>
-<td><b>Guest</b><p>Age 13+</p></td>
-<td><input type="button"value="-"class="qtybutton"onclick="guestQuantity('minus')">
-<label id="guestQtyheader"value="1">1</label>
-<input type="button"value="+"class="qtybutton"onclick="guestQuantity('add')"></td>
-</tr>
-<tr>
-<td><b>Children</b><p>Ages 2-12</p></td>
-<td><input type="button"value="-"class="qtybutton"onclick="childrenQuantity('minus')">
-<label id="childrenQtyheader"value="0">0</label>
-<input type="button"value="+"class="qtybutton"onclick="childrenQuantity('add')"></td>
-</tr>
-<tr>
-<td><b>Infants</b><p>Under 2</p></td>
-<td><input type="button"value="-"class="qtybutton"onclick="infantQuantity('minus')">
-<label id="infantQtyheader"value="0">0</label>
-<input type="button"value="+"class="qtybutton"onclick="infantQuantity('add')"></td>
-</tr>
 
-</table>
-<p>This place has a maximum of # guest.</p>
-<input type="button" onclick="closeaddguest('addguestheader')"value="Close"class="addguest-closebutton">
-</div>
-
-                </div>
-
-            </div>
-
-    </div>
     <!-- detailsContent is the wrapper of this webpage -->
     <div class="detailsContent">
         <!-- image center box/ include the 5 front hotel image-->
@@ -320,6 +274,9 @@
         <p><b>{{ $staycation->privacyType }} Hosted by {{$user->fname}}</b></p>
         <span>{{ $staycation->numberGuest }} Guest | {{ $staycation->typeofPlace }} | {{ $staycation->numberBed }} Bed | {{ $staycation->numberBathrooms }} Bath</span>
 
+
+        <input type="hidden" id="numGuest"class="numGuest"value="{{$staycation->numberGuest}}">
+        <input type="hidden" id="totalGuest"class="totalGuest"value="0">
         </div>
         <div class="hotelInfo2">
         <p><i class="fa fa-wifi"></i> Fast Wifi</p>
@@ -381,7 +338,7 @@
         </tr>
         <tr>
             <td colspan=2 onclick="showGuest()"style="cursor:pointer;"><p><b>Guest</b></p>
-            <b id="inputguest"value=1>1 guest</b>
+            <b id="inputguest"value=0></b>
             <b id="inputchildren" value=0></b>
             <b id="inputinfant" value=0></b>
 
@@ -394,7 +351,7 @@
             <tr>
                 <td><b>Guest</b><p>Age 13+</p></td>
                 <td><input type="button"value="-"class="qtybutton"onclick="guestQuantity('minus')">
-                    <label id="guestQty"value="1">1</label>
+                    <label id="guestQty"value="0">0</label>
                 <input type="button"value="+"class="qtybutton"onclick="guestQuantity('add')"></td>
             </tr>
             <tr>
@@ -424,7 +381,7 @@
         <input type="hidden" name="price" id="price" value="{{$staycation->price}}">
         <tr>
         <td>Price </td>
-        
+
         <td id="inputguestss" value="1">PHP {{number_format($staycation->price)}}</td>
         </tr>
         <tr>

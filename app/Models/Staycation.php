@@ -50,4 +50,7 @@ class Staycation extends Model
      *
      * @var array<string, string>
      */
+
+
+
 }

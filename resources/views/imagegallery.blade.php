@@ -56,17 +56,19 @@
                  <input type="date"class="inputdate"name="checkIn">
                  <input type="date"class="inputdate"name="checkOut">
                  <b id="inputguest-imagegallery"class="inputguest-imagegallery"placeholder="Guest"onclick="showguestImagegallery()"><span style="font-size:15px;">Guest:</span>
-                <b id="inputguestgallery">1guest</b>
+                <input type="hidden" value="1"id="guestNumber">
+                 <b id="inputguestgallery"></b>
                 <b id="inputchildrenHeader-imagegallery"></b>
                 <b id="inputinfantHeader-imagegallery"></b>
                 </b>
+                <input type="submit" value="Search" id="searchHotel"class="searchHotel"name="searchHotel"style="float:right">
                 </div>
 <div class="addguestheader-imagegallery" id="addguestheader-imagegallery">
 <table>
 <tr>
 <td><b>Guest</b><p>Age 13+</p></td>
 <td><input type="button"value="-"class="qtybutton"onclick="asd('minus','guest')">
-<label id="guestQtygallery"value="1">1</label>
+<label id="guestQtygallery"value="1">0</label>
 <input type="button"value="+"class="qtybutton"onclick="asd('add','guest')"></td>
 </tr>
 <tr>
@@ -90,95 +92,51 @@
             </div>
             <div class="headBox2">
                     <ul>
-                        <li><input type="text"class="selectPrice"placeholder="Price"></li>
-                        <li><select class="selectPlace">
-                            <option value="place">Place</option>
-                            <option value="entirePlace">Entire Place</option>
-                            <option value="privateRoom">Private room</option>
-                            <option value="shareRoom">Share room</option>
+                        <li><input type="text"class="inputPrice"name="inputPrice"id="inputPrice"placeholder="Price"></li>
+                        <li><select class="selectPlace"id="typeofPlace"name="typeofPlace"onchange="typeofPlace()">
+                            <option value="all"id="all">All</option>
+                            <option value="Boutique Hotel"id="entirePlace">Boutique Hotel</option>
+                            <option value="Bed and Breakfast"id="privateRoom">Bed and Breakfast</option>
+                            <option value="Unique Space"id="sharedRoom">Unique Space</option>
+                            <option value="Secondary Unit"id="sharedRoom">Secondary Unit</option>
+                            <option value="Apartment"id="sharedRoom">Apartment</option>
+                            <option value="House"id="sharedRoom">House</option>
                         </select></li>
+                        <li><select class="selectPlace"id="privacyType"name="privacyType"onchange="privacyType()">
+                            <option value="all"id="all">All</option>
+                            <option value="An entire place"id="entirePlace">An entire Place</option>
+                            <option value="A private room"id="privateRoom">A private room</option>
+                            <option value="A shared room"id="sharedRoom">A shared room</option>
+                        </select></li>
+                        <b>AMENITIES</b>
+                        <li><input type="checkbox"class="amenities"name="amenities"id="amenities"value="Pool">Pool</li>
+                        <li><input type="checkbox"class="amenities"name="amenities"id="amenities"value="Hot Tub">Hot Tub</li>
+                        <li><input type="checkbox"class="amenities"name="amenities"id="amenities"value="Patio">Patio</li>
+                        <b>GUEST FAVORITE</b>
+                        <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="Wifi">Wifi</li>
+                        <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="TV">TV</li>
+                        <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="Kitchen">Kitchen</li>
+                        <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="Washer">Washer</li>
+                        <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="Outdoor Shower">Outdoor Shower</li>
 
-                        <li><button type="button" class="selectFilter"onclick="openfilterBox()"id="filterbutton">Filter</button></li>
-
-
-                        <li><input type="submit" value="Wifi"class="inputStyle"onclick="changeColor('wifi')"id="wifi"></li>
-                        <li><input type="submit" value="Kitchen"class="inputStyle"onclick="changeColor('kitchen')"id="kitchen"></li>
-                        <li><input type="submit" value="Air Conditioning"class="inputStyle"onclick="changeColor('aircondition')"id="aircondition"></li>
-                        <li><input type="submit" value="Washer"class="inputStyle"onclick="changeColor('washer')"id="washer"></li>
-                        <li><input type="submit" value="Iron"class="inputStyle"onclick="changeColor('iron')"id="iron"></li>
-                        <li><input type="submit" value="Free Parking"class="inputStyle"onclick="changeColor('freeparking')"id="freeparking"></li>
-                        <li><input type="submit" value="Dedicated Workspace"class="inputStyle"onclick="changeColor('dworkspace')"id="dworkspace"></li>
-                        <li><input type="submit" value="Dryer"class="inputStyle"onclick="changeColor('dryer')"id="dryer"></li>
+                        <li><label>Bed<input type="number"value=1 min=1 id="numberBed"class="numberBed"></label></li>
+                        <li><label>Bedroom<input type="number"value=1 min=1 id="numberBedrooms"class="numberBedrooms"><label></li>
                     </ul>
                 </div>
 
         </div>
 
 
-        
+
         <div class="content">
-        
-                <div class="hotelWrapper">
-                @foreach ($staycations as $staycation)
-                <a href="{{ route('staycations.display',$staycation->id) }}" target="_blank">
-                <div class="carousel-info-box">
-                
-                <div class="carouselBox">
-                    <div id="{{'myCarousel' . $num = ++$i}}" class="carousel slide itemBox">
-                      <!-- Indicators -->
-                      <ol class="carousel-indicators">
-                        <li data-target="{{'#myCarousel' . $num}}" data-slide-to="0" class="active"></li>
-                        <li data-target="{{'#myCarousel' . $num}}" data-slide-to="1"></li>
-                        <li data-target="#{{'#myCarousel' . $num}}" data-slide-to="2"></li>
-                      </ol>
 
-                      <!-- Wrapper for slides -->
-                      <div class="carousel-inner">
-                        <div class="item active">
-                          <img src="images/{{$staycation->mainImg}}" style="height: 200px;" alt="Image1">
-                        </div>
-
-                        <div class="item">
-                          <img src="images/{{$staycation->subImg1}}" style="height: 200px;" alt="Image2">
-                        </div>
-
-                        <div class="item">
-                          <img src="images/{{$staycation->subImg2}}" style="height: 200px;" alt="Image3">
-                        </div>
-                      </div>
-
-
-                      <!-- Left and right controls -->
-                      <a class="left carousel-control controlVisibility" href="{{'#myCarousel' . $num}}" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="right carousel-control controlVisibility" href="{{'#myCarousel' . $num}}" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </div>
-                  </div>
-                    <div class="info">
-                        <p>Rental Unit</p>
-                        <p><b>{{$staycation->name}}</b></p>
-                        <p>Guest | Studio | Bath</p>
-                        <p>Wifi | Air Conditioning | Free Parking</p>
-                        <p>Price: </p>
-                        <span class="glyphicon">&#xe007; Review</span>
-                    </div>
-                  </div>
-                  </a>
-                 
-
-                  @endforeach
+            @include('staycationFilter');
 
 
 
 
 
                   </div>
-
 
 
 
@@ -186,9 +144,76 @@
 
 
 
+    <script>
 
+    function filter(){
+        var guestNumber=document.getElementById('guestNumber').value;
+        var numberBed=document.getElementById('numberBed').value;
+        var numberBedrooms=document.getElementById('numberBedrooms').value;
+        var inputPrice=document.getElementById('inputPrice').value;
+        if(guestNumber == 0){
+            guestNumber=1;
+        }
+        if(inputPrice == 0){
+            inputPrice=1;
+        }
+        var selectedType=$('#privacyType option:selected').val();
+        var selectedPlace=$('#typeofPlace option:selected').val();
+        var amenities = [];
+        $("input[name=amenities]:checked").each(function() {
+            amenities.push($(this).val());
+        });
 
+        var guestFavorite = [];
+        $("input[name=guestFavorite]:checked").each(function() {
+            guestFavorite.push($(this).val());
+        });
+        $.ajax({
+            type: "GET",
+            data: {
+                'selectedType': selectedType,
+                'selectedPlace': selectedPlace,
+                'amenities': amenities,
+                'guestNumber': guestNumber,
+                'numberBed' : numberBed,
+                'numberBedrooms' : numberBedrooms,
+                'guestFavorite' : guestFavorite,
+                'inputPrice' : inputPrice,
+            },
+            url: "{{route('staycations.filter')}}",
+            success:function(data){
+                $('.hotelWrapper').html(data);
+            }
 
+        });
+    }
+    function typeofPlace(){
+        filter();
+    }
+    function privacyType(){
+        filter();
+    }
+    $('.amenities').click(function(){
+        filter();
+    })
+
+    $('#searchHotel').click(function(){
+        filter();
+    })
+    $('#numberBed').on('input',function(){
+        filter();
+    })
+    $('#numberBedrooms').on('input',function(){
+        filter();
+    })
+    $('.guestFavorite').click(function(){
+        filter();
+    })
+    $('.inputPrice').keyup(function(){
+        filter();
+    })
+
+    </script>
 
 
     </body>
