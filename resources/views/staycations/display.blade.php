@@ -374,7 +374,7 @@
 
 
 
-        <button type="submit"class="buttonReserve">Reserve</button>
+        <a href="{{ url('/guestreservation') }}" target="_blank"><button type="submit"class="buttonReserve">Reserve</button></a>
         <p style="text-align:center;padding:5px;">You won't be charged yet</p>
 
         <table class="resPrice">

@@ -26,6 +26,14 @@ Route::get('/hotelDetails', function () {
 Route::get('/imagegallery', function () {
     return view('imagegallery');
 });
+Route::get('/Hreservation', function () {
+    return view('hostreservation');
+});
+Route::get('/guestreservation', function () {
+    return view('guestreservation');
+});
+
+Route::get('reservation', [StaycationController::class, 'reservation']);
 
 Auth::routes();
 
@@ -38,6 +46,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('image', [StaycationController::class, 'indexess'])->name('staycations.filter');
     Route::get('staycations/{staycation}/display', [StaycationController::class, 'display'])->name('staycations.display');
     Route::resource('staycations', StaycationController::class);
+    
     // Route::get('/calendar', 'App\Http\Controllers\StaycationController@calendar')->name('staycations.calendar');
     // Route::get('/index', 'StaycationController@index')->name('staycations.index');
 });
