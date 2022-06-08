@@ -254,7 +254,18 @@ class StaycationController extends Controller
 
 
                 //diko alam anong nangyare dito
-                else if($selectedType=="all"&& $selectedPlace!="all"&& $checkAmenities && $guestNumber && $numberBed && $numberBedrooms &&$inputPrice){
+                else if($selectedType!="all"&& $selectedPlace=="all"&& $checkAmenities && $checkFavorite==""&& $guestNumber && $numberBed && $numberBedrooms &&$inputPrice){
+                    $staycations=Staycation::
+                    where('privacyType',$selectedType)
+                    ->whereJsonContains('amenities',$checkAmenities)
+                    ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
+                    ->where('numberBedrooms','>=',$numberBedrooms)
+                    ->where('price','<=',$inputPrice)->latest()->paginate(6);
+                    return view('staycationFilter',compact('staycations'))
+                    ->with('i', (request()->input('page', 1) - 1) * 5);
+                }
+                //new
+                else if($selectedType=="all"&& $selectedPlace!="all"&& $checkAmenities && $checkFavorite==""&& $guestNumber && $numberBed && $numberBedrooms &&$inputPrice){
                     $staycations=Staycation::
                     where('typeofPlace',$selectedPlace)
                     ->whereJsonContains('amenities',$checkAmenities)
@@ -264,6 +275,8 @@ class StaycationController extends Controller
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
                 }
+
+
 
                 else if($selectedType!="all"&& $selectedPlace=="all"&& $checkAmenities==""&& $checkFavorite&& $guestNumber && $numberBed && $numberBedrooms &&$inputPrice){
                     $staycations=Staycation::
@@ -383,7 +396,18 @@ class StaycationController extends Controller
 
 
                 //diko alam anong nangyare dito
-                else if($selectedType=="all"&& $selectedPlace!="all"&& $checkAmenities && $guestNumber && $numberBed && $numberBedrooms &&$inputPrice==""){
+                else if($selectedType!="all"&& $selectedPlace=="all"&& $checkAmenities && $checkFavorite==""&& $guestNumber && $numberBed && $numberBedrooms &&$inputPrice==""){
+                    $staycations=Staycation::
+                    where('privacyType',$selectedType)
+                    ->whereJsonContains('amenities',$checkAmenities)
+                    ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
+                    ->where('numberBedrooms','>=',$numberBedrooms)
+                    ->latest()->paginate(6);
+                    return view('staycationFilter',compact('staycations'))
+                    ->with('i', (request()->input('page', 1) - 1) * 5);
+                }
+                //new without price
+                else if($selectedType=="all"&& $selectedPlace!="all"&& $checkAmenities && $checkFavorite==""&& $guestNumber && $numberBed && $numberBedrooms &&$inputPrice==""){
                     $staycations=Staycation::
                     where('typeofPlace',$selectedPlace)
                     ->whereJsonContains('amenities',$checkAmenities)

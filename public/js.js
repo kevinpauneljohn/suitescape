@@ -11,8 +11,16 @@ function changeColor(boxId){
 
 
 function openfilterBox(){
-    $(".divFilter").slideToggle();
+    $('.showAmeneties-box').slideToggle();
+    var dbody=document.getElementById('disableBody').style.display;
+
+    document.getElementById('disableBody').style.display="block";
     document.body.style.overflow="hidden";
+    if(dbody=="block"){
+        document.getElementById('disableBody').style.display="none";
+        document.body.style.overflow="auto";
+    }
+
 }
 function closefilterBox(){
     document.getElementById('divFilter').style.display="none";

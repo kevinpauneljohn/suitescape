@@ -108,23 +108,56 @@
                             <option value="A private room"id="privateRoom">A private room</option>
                             <option value="A shared room"id="sharedRoom">A shared room</option>
                         </select></li>
-                        <b>AMENITIES</b>
-                        <li><input type="checkbox"class="amenities"name="amenities"id="amenities"value="Pool">Pool</li>
-                        <li><input type="checkbox"class="amenities"name="amenities"id="amenities"value="Hot Tub">Hot Tub</li>
-                        <li><input type="checkbox"class="amenities"name="amenities"id="amenities"value="Patio">Patio</li>
-                        <b>GUEST FAVORITE</b>
-                        <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="Wifi">Wifi</li>
-                        <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="TV">TV</li>
-                        <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="Kitchen">Kitchen</li>
-                        <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="Washer">Washer</li>
-                        <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="Outdoor Shower">Outdoor Shower</li>
-
-                        <li><label>Bed<input type="number"value=1 min=1 id="numberBed"class="numberBed"></label></li>
-                        <li><label>Bedroom<input type="number"value=1 min=1 id="numberBedrooms"class="numberBedrooms"><label></li>
+                        <li><button type="button" class="selectFilter"onclick="openfilterBox()"id="filterbutton">Filter</button></li>
                     </ul>
                 </div>
 
         </div>
+
+    <!-- display none -->
+    <div class="showAmeneties-box"id="showAmeneties-box">
+    <header class="amenetiestitle-box"><span class="closebutton"onclick="openfilterBox()">&times;</span><b>Filter</b></header>
+    <div class="showameneties-item-box">
+
+
+    <b>AMENITIES</b>
+        <ul>
+            <li><input type="checkbox"class="amenities"name="amenities"id="amenities"value="Pool">Pool</li>
+            <li><input type="checkbox"class="amenities"name="amenities"id="amenities"value="Hot Tub">Hot Tub</li>
+            <li><input type="checkbox"class="amenities"name="amenities"id="amenities"value="Patio">Patio</li>
+            <li><input type="checkbox"class="amenities"name="amenities"id="amenities"value="BBQ Grill">BBQ Grill</li>
+            <li><input type="checkbox"class="amenities"name="amenities"id="amenities"value="Fire Pit">Fire Pit</li>
+            <li><input type="checkbox"class="amenities"name="amenities"id="amenities"value="Pool Table">Pool Table</li>
+            <li><input type="checkbox"class="amenities"name="amenities"id="amenities"value="Indoor Fireplace">Indoor Fireplace</li>
+            <li><input type="checkbox"class="amenities"name="amenities"id="amenities"value="Outdoor Dining Area">Outdoor Dining Area</li>
+            <li><input type="checkbox"class="amenities"name="amenities"id="amenities"value="Exercise Equipment">Exercise Equipment</li>
+        </ul>
+    <b>GUEST FAVORITE</b>
+        <ul>
+            <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="Wifi">Wifi</li>
+            <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="TV">TV</li>
+            <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="Kitchen">Kitchen</li>
+            <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="Washer">Washer</li>
+            <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="Free Parking on Premises">Free Parking on Premises</li>
+            <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="Paid Parking on Premises">Paid Parking on Premises</li>
+            <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="Air Conditioning">Air Conditioning</li>
+            <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="Dedicated Workspace">Dedicated Workspace</li>
+            <li><input type="checkbox"class="guestFavorite"name="guestFavorite"id="guestFavorite"value="Outdoor Shower">Outdoor Shower</li>
+        </ul>
+
+    <b>Bed and bedrooms</b>
+    <ul>
+            <li><label>Bed<input type="number"value=1 min=1 id="numberBed"class="numberBed"></label></li>
+            <li><label>Bedroom<input type="number"value=1 min=1 id="numberBedrooms"class="numberBedrooms"><label></li>
+    </ul>
+    </div>
+    </div>
+<!-- disable the body when filter open -->
+    <div class="disableBody" id="disableBody">
+    </div>
+
+
+
 
 
 
