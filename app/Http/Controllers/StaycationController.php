@@ -544,6 +544,13 @@ class StaycationController extends Controller
         $user = User::find($idd);
         return view('staycations.display',compact('staycation','user'));
     }
+    
+    public function guestreservation(Staycation $staycation)
+    {
+        $idd = $staycation->userid;
+        $user = User::find($idd);
+        return view('staycations.guestreservation',compact('staycation','user'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -602,7 +609,7 @@ class StaycationController extends Controller
 
 
 
-
+    
 
 
 }

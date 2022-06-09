@@ -26,14 +26,19 @@ Route::get('/hotelDetails', function () {
 Route::get('/imagegallery', function () {
     return view('imagegallery');
 });
-Route::get('/Hreservation', function () {
-    return view('hostreservation');
+Route::get('/reservation', function () {
+    return view('staycations.hostreservation');
 });
-Route::get('/guestreservation', function () {
-    return view('guestreservation');
-});
+// Route::get('/Greservation/{staycation}', function () {
+//     return view('guestreservation');
+// });
+Route::get('reservations/{staycation}', [StaycationController::class, 'guestreservation'])->name('staycations.guestreservation');
 
-Route::get('reservation', [StaycationController::class, 'reservation']);
+// Route::get('/Greservation/{staycation}', function ($staycation) {
+//     return view('guestreservation');
+// });
+
+//  
 
 Auth::routes();
 
