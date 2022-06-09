@@ -55,7 +55,7 @@
                         @can('staycation-list')
                             <li><a class="nav-link" href="{{ route('staycations.index') }}">Manage Staycations</a></li>
                         @endcan
-                        <li><a class="nav-link" href="{{ url('/reservation') }}">Reservation</a></li>
+                        <li><a class="nav-link" href="{{ url('/reservations') }}">Reservation</a></li>
                         <li><a class="nav-link" href="#">Messages</a></li>
 
                             
