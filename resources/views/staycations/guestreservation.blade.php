@@ -35,33 +35,34 @@
             <p>Check Out</p><input type="date"name="checkOut">
         
     </div>
+    <!-- Option for adding guests -->
     <div>
-        <b>Guest</b>
-        <div class="addguestheader" id="addguestheader">
-            <tr>
-                <td><b>Guest</b><p>Age 13+</p></td>
-                <td><input type="button"value="-"class="qtybutton"onclick="guestQuantity('minus')">
-                <label id="guestQtyheader"value="1">1</label>
-                <input type="button"value="+"class="qtybutton"onclick="guestQuantity('add')"></td>
-            </tr>
-            <tr>
-                <td><b>Children</b><p>Ages 2-12</p></td>
-                <td><input type="button"value="-"class="qtybutton"onclick="childrenQuantity('minus')">
-                <label id="childrenQtyheader"value="0">0</label>
-                <input type="button"value="+"class="qtybutton"onclick="childrenQuantity('add')"></td>
-            </tr>
-            <tr>
-                <td><b>Infants</b><p>Under 2</p></td>
-                <td><input type="button"value="-"class="qtybutton"onclick="infantQuantity('minus')">
-                <label id="infantQtyheader"value="0">0</label>
-                <input type="button"value="+"class="qtybutton"onclick="infantQuantity('add')"></td>
-            </tr>
-            
-        </table>
-        <p>This place has a maximum of # guest.</p>
-        <input type="button" onclick="closeaddguest('addguestheader')"value="Close"class="addguest-closebutton">
-    </div>
-    <table>
+    <b id="inputguest-imagegallery"class="inputguest-imagegallery"placeholder="Guest"onclick="showguestImagegallery()"><span style="font-size:15px;">Guest:</span>
+        <div class="addguestheader-guestreservation" id="addguestheader-guestreservation">
+<table>
+<tr>
+<td><b>Guest</b><p>Age 13+</p></td>
+<td><input type="button"value="-"class="qtybutton"onclick="asdf('minus','guest')">
+<label id="guestQtygallery"value="1">0</label>
+<input type="button"value="+"class="qtybutton"onclick="asdf('add','guest')"></td>
+</tr>
+<tr>
+<td><b>Children</b><p>Ages 2-12</p></td>
+<td><input type="button"value="-"class="qtybutton"onclick="asdf('minus','children')">
+<label id="childrenQtyheader-guestreservation"value="0">0</label>
+<input type="button"value="+"class="qtybutton"onclick="asdf('add','children')"></td>
+</tr>
+<tr>
+<td><b>Infants</b><p>Under 2</p></td>
+<td><input type="button"value="-"class="qtybutton"onclick="asdf('minus','infant')">
+<label id="infantQtyheader-guestreservation"value="0">0</label>
+<input type="button"value="+"class="qtybutton"onclick="asdf('add','infant')"></td>
+</tr>
+
+</table>
+<p>This place has a maximum of # guest.</p>
+<input type="button" onclick="closeaddguest('addguestheader-guestreservation')"value="Close"class="addguest-closebutton">
+</div>
 
                 </div>
 
@@ -131,37 +132,6 @@
         
         
     </div>
-
-
-
-<!-- javascript for coupon pop up modal -->
-<script>
-var modal = document.getElementById("myModal");
-
-var btn = document.getElementById("couponbtn");
-
-var span = document.getElementsByClassName("close")[0];
-
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
-
-   
-  
-</body>
-</html>
-
 
 <!-- CSS -->
 <style>
@@ -336,4 +306,97 @@ window.onclick = function(event) {
 }
 
 </style>
+
+
+
+<!-- javascript for coupon pop up modal -->
+<script>
+
+function showguestImagegallery() {
+    $('.addguestheader-imagegallery').toggle();
+}
+
+function asdf(operation, type){
+    if(operation == 'add' && type== 'guest'){
+        document.getElementById("guestQtygallery").value= ++addGuest;
+        document.getElementById("guestNumber").value= addGuest+addChildren;
+        getgvalue= document.getElementById("guestQtygallery").value;
+        inputguests=getgvalue;
+        document.getElementById("guestQtygallery").innerHTML = getgvalue;
+        document.getElementById('inputguestgallery').innerHTML=getgvalue+" guest";
+    }else if(operation == 'minus' && type== 'guest' && inputguests>0){
+        document.getElementById("guestQtygallery").value= --addGuest;
+        document.getElementById("guestNumber").value= addGuest+addChildren;
+        getgvalue= document.getElementById("guestQtygallery").value;
+        inputguests=getgvalue;
+        document.getElementById("guestQtygallery").innerHTML = getgvalue;
+        document.getElementById('inputguestgallery').innerHTML=getgvalue+" guest";
+        if(inputguests<=0){
+            document.getElementById('inputguestgallery').innerHTML="";
+        }
+    }
+    else if(operation == 'add' && type== 'children'){
+        document.getElementById("childrenQtyheader-guestreservation").value= ++addChildren;
+        document.getElementById("guestNumber").value= addGuest+addChildren;
+        getchildrenvalue= document.getElementById("childrenQtyheader-guestreservation").value;
+        inputchildren=getchildrenvalue;
+        document.getElementById("childrenQtyheader-guestreservation").innerHTML = getchildrenvalue;
+        document.getElementById('inputchildrenHeader-guestreservation').innerHTML=getchildrenvalue+" children";
+    }
+    else if(operation == 'minus' && type== 'children' && inputchildren>0){
+        document.getElementById("childrenQtyheader-guestreservation").value= --addChildren;
+        document.getElementById("guestNumber").value= addGuest+addChildren;
+        getchildrenvalue= document.getElementById("childrenQtyheader-guestreservation").value;
+        inputchildren=getchildrenvalue;
+        document.getElementById("childrenQtyheader-guestreservation").innerHTML = getchildrenvalue;
+        document.getElementById('inputchildrenHeader-guestreservation').innerHTML=getchildrenvalue+" children";
+        if(inputchildren<=0){
+            document.getElementById('inputchildrenHeader-guestreservation').innerHTML="";
+        }
+    }
+    else if(operation == 'add' && type== 'infant'){
+        document.getElementById("infantQtyheader-guestreservation").value= ++addInfant;
+        getinfantvalue= document.getElementById("infantQtyheader-guestreservation").value;
+        inputinfant=getinfantvalue;
+        document.getElementById("infantQtyheader-guestreservation").innerHTML = getinfantvalue;
+        document.getElementById('inputinfantHeader-guestreservation').innerHTML=getinfantvalue+" infant";
+    }
+    else if(operation == 'minus' && type== 'infant'&& inputinfant>0){
+        document.getElementById("infantQtyheader-guestreservation").value= --addInfant;
+        getinfantvalue= document.getElementById("infantQtyheader-guestreservation").value;
+        inputinfant=getinfantvalue;
+        document.getElementById("infantQtyheader-guestreservation").innerHTML = getinfantvalue;
+        document.getElementById('inputinfantHeader-guestreservation').innerHTML=getinfantvalue+" infant";
+        if(inputinfant<=0){
+            document.getElementById('inputinfantHeader-guestreservation').innerHTML="";
+        }
+    }
+}
+
+var modal = document.getElementById("myModal");
+
+var btn = document.getElementById("couponbtn");
+
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+   
+  
+</body>
+</html>
+
 
