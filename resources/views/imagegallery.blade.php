@@ -52,7 +52,7 @@
                     Airdreamhome
                 </div>
                 <div class="searchbar-header">
-                 <input type="text"class="inputlocation"placeholder="Location">
+                 <input type="text"class="inputlocation"id="inputlocation"placeholder="Location">
                  <input type="date"class="inputdate"name="checkIn">
                  <input type="date"class="inputdate"name="checkOut">
                  <b id="inputguest-imagegallery"class="inputguest-imagegallery"placeholder="Guest"onclick="showguestImagegallery()"><span style="font-size:15px;">Guest:</span>
@@ -184,6 +184,7 @@
         var numberBed=document.getElementById('numberBed').value;
         var numberBedrooms=document.getElementById('numberBedrooms').value;
         var inputPrice=document.getElementById('inputPrice').value;
+        var inputlocation=document.getElementById('inputlocation').value;
         if(guestNumber == 0){
             guestNumber=1;
         }
@@ -210,6 +211,7 @@
                 'numberBedrooms' : numberBedrooms,
                 'guestFavorite' : guestFavorite,
                 'inputPrice' : inputPrice,
+                'inputlocation':inputlocation,
             },
             url: "{{route('staycations.filter')}}",
             success:function(data){

@@ -1,5 +1,6 @@
 <html>
 <head>
+    <link rel="stylesheet" href="{{ asset( 'style.css')}}">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +18,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-    <script src="/js.js"></script>
+    <script src="{{ asset( 'js.js')}}"></script>
 </head>
 <body>
 <!-- Reservation for GUEST -->
@@ -33,36 +34,37 @@
             <p>Check In</p><input type="date"name="checkIn">
 
             <p>Check Out</p><input type="date"name="checkOut">
-        
+
     </div>
     <!-- Option for adding guests -->
     <div>
-    <b id="inputguest-imagegallery"class="inputguest-imagegallery"placeholder="Guest"onclick="showguestImagegallery()"><span style="font-size:15px;">Guest:</span>
-        <div class="addguestheader-guestreservation" id="addguestheader-guestreservation">
-<table>
+    <table>
+    <input type="text" value="1"id="reserveguestNumber">
 <tr>
+
 <td><b>Guest</b><p>Age 13+</p></td>
-<td><input type="button"value="-"class="qtybutton"onclick="asdf('minus','guest')">
-<label id="guestQtygallery"value="1">0</label>
-<input type="button"value="+"class="qtybutton"onclick="asdf('add','guest')"></td>
+<td><input type="button"value="-"class="qtybutton"onclick="reserve('minus','guest')">
+<label id="reserveguestQty"value="1">0</label>
+<input type="button"value="+"class="qtybutton"onclick="reserve('add','guest')"></td>
 </tr>
 <tr>
 <td><b>Children</b><p>Ages 2-12</p></td>
-<td><input type="button"value="-"class="qtybutton"onclick="asdf('minus','children')">
-<label id="childrenQtyheader-guestreservation"value="0">0</label>
-<input type="button"value="+"class="qtybutton"onclick="asdf('add','children')"></td>
+<td><input type="button"value="-"class="qtybutton"onclick="reserve('minus','children')">
+<label id="reservechildQty"value="0">0</label>
+<input type="button"value="+"class="qtybutton"onclick="reserve('add','children')"></td>
 </tr>
 <tr>
 <td><b>Infants</b><p>Under 2</p></td>
-<td><input type="button"value="-"class="qtybutton"onclick="asdf('minus','infant')">
-<label id="infantQtyheader-guestreservation"value="0">0</label>
-<input type="button"value="+"class="qtybutton"onclick="asdf('add','infant')"></td>
+<td><input type="button"value="-"class="qtybutton"onclick="reserve('minus','infant')">
+<label id="reserveinfantQty"value="0">0</label>
+<input type="button"value="+"class="qtybutton"onclick="reserve('add','infant')"></td>
 </tr>
 
 </table>
-<p>This place has a maximum of # guest.</p>
-<input type="button" onclick="closeaddguest('addguestheader-guestreservation')"value="Close"class="addguest-closebutton">
-</div>
+        <p>This place has a maximum of # guest.</p>
+        <input type="button" onclick="closeaddguest('addguestheader')"value="Close"class="addguest-closebutton">
+    </div>
+    <table>
 
                 </div>
 
@@ -109,7 +111,7 @@
         <b>Message to the host</b>
         <p><button type="submit"class="addbutton">Add</button></p>
         <p>Free cancellation before Jan 18. Cancel before Feb 10 for a partial refund.</p>
-        
+
         <b>Profile photo</b>
         <p><button type="submit"class="addbutton">Add</button></p>
         <p>Our Extenuating Circumstances policy does not cover travel disruptions caused by COVID-19.</p>
@@ -129,9 +131,43 @@
 
     <div class="reserveBox">
         <p>Price details</p>
-        
-        
+
+
     </div>
+
+
+
+<!-- javascript for coupon pop up modal -->
+<script>
+
+
+
+var modal = document.getElementById("myModal");
+
+var btn = document.getElementById("couponbtn");
+
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+
+
+</body>
+</html>
+
 
 <!-- CSS -->
 <style>
@@ -154,26 +190,26 @@
 
 #couponbtn:hover{
     transform: translate(-5px, -1px)
-    
+
 }
 
 .modal {
-  display: none; 
-  position: fixed; 
+  display: none;
+  position: fixed;
   z-index: 1;
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%; 
+  height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0); 
+  background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
 }
 
 #coupon{
     padding: 12px;
     border-radius: 5px;
-    
+
 }
 
 .modalcoupon{
@@ -188,15 +224,15 @@
 
 .modalcoupon:hover{
     transform: translate(-5px, -1px)
-    
+
 }
 
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; 
+  margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; 
+  width: 80%;
 }
 
 .close {
@@ -267,13 +303,13 @@
         width: 100%;
         max-width: 300px;
         transition: 0.2s linear;
-        
+
 
     }
     .reserveBox.is-active{
         left: 0;
     }
-    
+
 }
 
 /* Message Css */
@@ -394,8 +430,8 @@ window.onclick = function(event) {
 }
 </script>
 
-   
-  
+
+
 </body>
 </html>
 

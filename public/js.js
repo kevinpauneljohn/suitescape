@@ -113,6 +113,7 @@ function asd(operation, type){
         inputguests=getgvalue;
         document.getElementById("guestQtygallery").innerHTML = getgvalue;
         document.getElementById('inputguestgallery').innerHTML=getgvalue+" guest";
+
     }else if(operation == 'minus' && type== 'guest' && inputguests>0){
         document.getElementById("guestQtygallery").value= --addGuest;
         document.getElementById("guestNumber").value= addGuest+addChildren;
@@ -189,14 +190,14 @@ function guestQuantity(operation) {
         */
 
     inputguests=getgvalue;
-    var conbutton = document.querySelectorAll('#guestQty, #guestQtyheader, #guestQtymobile, #guestQtygallery');
-    var conbox = document.querySelectorAll('#inputguest, #guestheaderNum, #inputguestmobile, #inputguestgallery');
+    var conbutton = document.querySelectorAll('#guestQty, #guestQtymobile');
+    var conbox = document.querySelectorAll('#inputguest, #inputguestmobile');
 
-    for(a=0;a<=2;a++){
+    for(a=0;a<=1;a++){
         conbutton[a].innerHTML=getgvalue;
 
     }
-    for(a=0;a<=2;a++){
+    for(a=0;a<=1;a++){
         conbox[a].innerHTML=getgvalue+" guest";
     }
     /*
@@ -226,12 +227,12 @@ function guestQuantity(operation) {
         document.getElementById('inputguestmobile').innerHTML=getgvalue+" guest";
         */
         inputguests=getgvalue;
-        var conbutton = document.querySelectorAll('#guestQty, #guestQtyheader, #guestQtymobile');
-        var conbox = document.querySelectorAll('#inputguest, #guestheaderNum, #inputguestmobile');
-        for(a=0;a<=2;a++){
+        var conbutton = document.querySelectorAll('#guestQty,  #guestQtymobile');
+        var conbox = document.querySelectorAll('#inputguest, #inputguestmobile');
+        for(a=0;a<=1;a++){
             conbutton[a].innerHTML=getgvalue;
         }
-        for(a=0;a<=2;a++){
+        for(a=0;a<=1;a++){
             conbox[a].innerHTML=getgvalue+" guest";
         }
         price = document.getElementById("price").value;
@@ -269,12 +270,12 @@ function childrenQuantity(operation) {
     document.getElementById('inputchildrenmobile').innerHTML=getchildrenvalue+" children";
         */
     inputchildren=getchildrenvalue;
-    var conbutton = document.querySelectorAll('#childrenQty, #childrenQtyheader, #childrenQtymobile');
-    var conbox = document.querySelectorAll('#inputchildren, #inputchildrenHeader, #inputchildrenmobile');
-    for(a=0;a<=2;a++){
+    var conbutton = document.querySelectorAll('#childrenQty, #childrenQtymobile');
+    var conbox = document.querySelectorAll('#inputchildren, #inputchildrenmobile');
+    for(a=0;a<=1;a++){
         conbutton[a].innerHTML=getchildrenvalue;
     }
-    for(a=0;a<=2;a++){
+    for(a=0;a<=1;a++){
         conbox[a].innerHTML=getchildrenvalue+" children";
     }
 
@@ -295,17 +296,16 @@ function childrenQuantity(operation) {
         document.getElementById('inputchildrenmobile').innerHTML=getchildrenvalue+" children";
         */
         inputchildren=getchildrenvalue;
-        var conbutton = document.querySelectorAll('#childrenQty, #childrenQtyheader, #childrenQtymobile');
-        var conbox = document.querySelectorAll('#inputchildren, #inputchildrenHeader, #inputchildrenmobile');
-        for(a=0;a<=2;a++){
+        var conbutton = document.querySelectorAll('#childrenQty, #childrenQtymobile');
+        var conbox = document.querySelectorAll('#inputchildren, #inputchildrenmobile');
+        for(a=0;a<=1;a++){
             conbutton[a].innerHTML=getchildrenvalue;
         }
-        for(a=0;a<=2;a++){
+        for(a=0;a<=1;a++){
             conbox[a].innerHTML=getchildrenvalue+" children";
         }
         if(inputchildren<=0){
             document.getElementById('inputchildren').innerHTML="";
-            document.getElementById('inputchildrenHeader').innerHTML="";
             document.getElementById('inputchildrenmobile').innerHTML="";
         }
     }
@@ -331,12 +331,12 @@ function infantQuantity(operation) {
 
 
 
-    var conbutton = document.querySelectorAll('#infantQty, #infantQtyheader, #infantQtymobile');
-    var conbox = document.querySelectorAll('#inputinfant, #inputinfantHeader, #inputinfantmobile');
-    for(a=0;a<=2;a++){
+    var conbutton = document.querySelectorAll('#infantQty, #infantQtymobile');
+    var conbox = document.querySelectorAll('#inputinfant,  #inputinfantmobile');
+    for(a=0;a<=1;a++){
         conbutton[a].innerHTML=getinfantvalue;
     }
-    for(a=0;a<=2;a++){
+    for(a=0;a<=1;a++){
         conbox[a].innerHTML=getinfantvalue+" infants";
     }
 
@@ -355,17 +355,16 @@ function infantQuantity(operation) {
         document.getElementById('inputinfantmobile').innerHTML=getinfantvalue+" children";
         */
         inputinfant=getinfantvalue;
-        var conbutton = document.querySelectorAll('#infantQty, #infantQtyheader, #infantQtymobile');
-        var conbox = document.querySelectorAll('#inputinfant, #inputinfantHeader, #inputinfantmobile');
-        for(a=0;a<=2;a++){
+        var conbutton = document.querySelectorAll('#infantQty, #infantQtymobile');
+        var conbox = document.querySelectorAll('#inputinfant, #inputinfantmobile');
+        for(a=0;a<=1;a++){
             conbutton[a].innerHTML=getinfantvalue;
         }
-        for(a=0;a<=2;a++){
+        for(a=0;a<=1;a++){
             conbox[a].innerHTML=getinfantvalue+" infants";
         }
         if(inputinfant<=0){
             document.getElementById('inputinfant').innerHTML="";
-            document.getElementById('inputinfantHeader').innerHTML="";
             document.getElementById('inputinfantmobile').innerHTML="";
         }
     }
@@ -472,3 +471,53 @@ $(document).ready(function(){
         filter();
     }
 */
+
+function reserve(operation, type){
+    if(operation == 'add' && type== 'guest'){
+        document.getElementById("reserveguestQty").value= ++addGuest;
+        document.getElementById("reserveguestNumber").value= addGuest+addChildren;
+        getgvalue= document.getElementById("reserveguestQty").value;
+        inputguests=getgvalue;
+        document.getElementById("reserveguestQty").innerHTML = getgvalue;
+
+    }else if(operation == 'minus' && type== 'guest' && inputguests>0){
+        document.getElementById("reserveguestQty").value= --addGuest;
+        document.getElementById("reserveguestNumber").value= addGuest+addChildren;
+        getgvalue= document.getElementById("reserveguestQty").value;
+        inputguests=getgvalue;
+        document.getElementById("reserveguestQty").innerHTML = getgvalue;
+        document.getElementById('inputguestgallery').innerHTML=getgvalue+" guest";
+    }
+
+
+    else if(operation == 'add' && type== 'children'){
+        document.getElementById("reservechildQty").value= ++addChildren;
+        document.getElementById("reserveguestNumber").value= addGuest+addChildren;
+        getchildrenvalue= document.getElementById("reservechildQty").value;
+        inputchildren=getchildrenvalue;
+        document.getElementById("reservechildQty").innerHTML = getchildrenvalue;
+
+    }
+    else if(operation == 'minus' && type== 'children' && inputchildren>0){
+        document.getElementById("reservechildQty").value= --addChildren;
+        document.getElementById("reserveguestNumber").value= addGuest+addChildren;
+        getchildrenvalue= document.getElementById("reservechildQty").value;
+        inputchildren=getchildrenvalue;
+        document.getElementById("reservechildQty").innerHTML = getchildrenvalue;
+
+    }
+
+    else if(operation == 'add' && type== 'infant'){
+        document.getElementById("reserveinfantQty").value= ++addInfant;
+        getinfantvalue= document.getElementById("reserveinfantQty").value;
+        inputinfant=getinfantvalue;
+        document.getElementById("reserveinfantQty").innerHTML = getinfantvalue;
+    }
+    else if(operation == 'minus' && type== 'infant'&& inputinfant>0){
+        document.getElementById("reserveinfantQty").value= --addInfant;
+        getinfantvalue= document.getElementById("reserveinfantQty").value;
+        inputinfant=getinfantvalue;
+        document.getElementById("reserveinfantQty").innerHTML = getinfantvalue;
+
+    }
+}
