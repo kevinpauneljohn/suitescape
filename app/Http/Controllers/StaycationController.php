@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Staycation;
 use App\Models\User;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -1004,6 +1005,21 @@ class StaycationController extends Controller
 
         return view('staycations.calendar');
     }
+
+    // public function reservation(Request $request){
+    //     $reservation = Reservation::create([
+    //         'staycationId' => $request->input('staycationId'),
+    //         'userId' => $request->input('userId'),
+    //         'dateStart' => $request->input('dateStart'),
+    //         'dateEnd' => $request->input('dateEnd'),
+    //         'totalPrice' => $request->input('totalPrice'),
+    //         'status' => $request->input('status'),
+
+    //     ]);
+
+    //     return redirect('/home')
+    //                     ->with('success','Please wait for the confirmation of your reservation. Thank you');
+    // }
 
 
 

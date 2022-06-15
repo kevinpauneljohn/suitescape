@@ -29,13 +29,14 @@
         <h2>Reservation</h2>
         <div class="list">
             <div class="tab">
-                <button class="tablinks" onclick="tablist(event, 'Upcoming')" id="defaultOpen">Upcoming</button>
+                <button class="tablinks" onclick="tablist(event, 'Pending')" id="defaultOpen">Pending</button>
+                <button class="tablinks" onclick="tablist(event, 'Upcoming')">Upcoming</button>
                 <button class="tablinks" onclick="tablist(event, 'On-going')">On-going</button>
                 <button class="tablinks" onclick="tablist(event, 'Complete')">Complete</button>
                 <button class="tablinks" onclick="tablist(event, 'Cancelled')">Cancelled</button>
             </div>
 
-            <div id="Upcoming" class="tabcontent">
+            <div id="Pending" class="tabcontent">
                 @if($pendcount>=1)
                 <table class="table table-bordered">
                     <tr>
@@ -47,7 +48,8 @@
                     </tr>
                     @foreach($reservations as $reservation)
                         @if($reservation->status == 'Pending')
-                        <tr onclick="window.location='#'" style="cursor: pointer;">
+                        @if ((date('Y-m-d') <= $reservation->dateStart))
+                        <tr onclick="window.location='{{ route('reservations.show', $reservation->id) }}'" style="cursor: pointer;">
                             @foreach($users as $user)
                                 @if($user->id == $reservation->userId)
                                     <td>{{ $user->fname}} {{ $user->lname}}</td>
@@ -60,11 +62,46 @@
                             @endforeach
                                     <td>{{ $reservation->dateStart}}</td>
                                     <td>{{ $reservation->dateEnd}}</td>
-                            @foreach($staycations as $staycation)
-                                @if($staycation->id == $reservation->staycationId)
-                                    <td>{{ $staycation->price }}</td>
+                                    <td>PHP {{ number_format($reservation->totalPrice) }}</td>
+                        @endif
+                        @endif
+                        
+                    @endforeach
+                    </table>
+               
+                @else
+                <h3>You have no upcoming reservations</h3>
+                @endif
+            </div>
+
+            <div id="Upcoming" class="tabcontent">
+                @if($upComing>=1)
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Guest Name</th>
+                        <th>Staycation Name</th>
+                        <th>Check-In</th>
+                        <th>Check-Out</th>
+                        <th>Price</th>
+                    </tr>
+                    @foreach($reservations as $reservation)
+                        @if($reservation->status == 'Confirm')
+                        @if ((date('Y-m-d') < $reservation->dateStart))
+                        <tr>
+                            @foreach($users as $user)
+                                @if($user->id == $reservation->userId)
+                                    <td>{{ $user->fname}} {{ $user->lname}}</td>
                                 @endif
                             @endforeach
+                            @foreach($staycations as $staycation)
+                                @if($staycation->id == $reservation->staycationId)
+                                    <td>{{ $staycation->name }}</td>
+                                @endif
+                            @endforeach
+                                    <td>{{ $reservation->dateStart}}</td>
+                                    <td>{{ $reservation->dateEnd}}</td>
+                                    <td>PHP {{ number_format($reservation->totalPrice) }}</td>
+                        @endif
                         @endif
                         
                     @endforeach
@@ -89,7 +126,7 @@
                     @foreach($reservations as $reservation)
                         @if($reservation->status == 'Confirm')
                         @if ((date('Y-m-d') >= $reservation->dateStart) && (date('Y-m-d') <= $reservation->dateEnd))
-                        <tr onclick="window.location='#'" style="cursor: pointer;">
+                        <tr>
                             @foreach($users as $user)
                                 @if($user->id == $reservation->userId)
                                     <td>{{ $user->fname}} {{ $user->lname}}</td>
@@ -102,11 +139,7 @@
                             @endforeach
                                     <td>{{ $reservation->dateStart}}</td>
                                     <td>{{ $reservation->dateEnd}}</td>
-                            @foreach($staycations as $staycation)
-                                @if($staycation->id == $reservation->staycationId)
-                                    <td>{{ $staycation->price }}</td>
-                                @endif
-                            @endforeach
+                                    <td>PHP {{ number_format($reservation->totalPrice) }}</td>
                         @endif
                         @endif
                         
@@ -134,7 +167,7 @@
                 @foreach($reservations as $reservation)
                     @if($reservation->status == 'Confirm')
                     @if ((date('Y-m-d') >= $reservation->dateStart) && (date('Y-m-d') >= $reservation->dateEnd))
-                    <tr onclick="window.location='#'" style="cursor: pointer;">
+                    <tr>
                         @foreach($users as $user)
                             @if($user->id == $reservation->userId)
                                 <td>{{ $user->fname}} {{ $user->lname}}</td>
@@ -147,11 +180,7 @@
                         @endforeach
                                 <td>{{ $reservation->dateStart}}</td>
                                 <td>{{ $reservation->dateEnd}}</td>
-                        @foreach($staycations as $staycation)
-                            @if($staycation->id == $reservation->staycationId)
-                                <td>{{ $staycation->price }}</td>
-                            @endif
-                        @endforeach
+                                <td>PHP {{ number_format($reservation->totalPrice) }}</td>
                     @endif
                     @endif
                     
@@ -165,7 +194,7 @@
             </div>
 
             <div id="Cancelled" class="tabcontent">
-            @if($cancelled>=1)
+            @if(($cancelled>=1) || ($overdue>=1))
             
             <table class="table table-bordered">
                 <tr>
@@ -176,8 +205,8 @@
                     <th>Price</th>
                 </tr>
                 @foreach($reservations as $reservation)
-                    @if($reservation->status == 'Cancelled')
-                    <tr onclick="window.location='#'" style="cursor: pointer;">
+                    @if(($reservation->status == 'Pending')&&(date('Y-m-d') >= $reservation->dateStart) || ($reservation->status == 'Cancelled'))
+                    <tr>
                         @foreach($users as $user)
                             @if($user->id == $reservation->userId)
                                 <td>{{ $user->fname}} {{ $user->lname}}</td>
@@ -190,13 +219,8 @@
                         @endforeach
                                 <td>{{ $reservation->dateStart}}</td>
                                 <td>{{ $reservation->dateEnd}}</td>
-                        @foreach($staycations as $staycation)
-                            @if($staycation->id == $reservation->staycationId)
-                                <td>{{ $staycation->price }}</td>
-                            @endif
-                        @endforeach
+                                <td>PHP {{ number_format($reservation->totalPrice) }}</td>
                     @endif
-                    
                 @endforeach
                 </table>
            

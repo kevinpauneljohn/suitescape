@@ -29,12 +29,19 @@
         <h3>Your trip</h3>
     </div>
     <div>
+    <form action="{{ route('reservations.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="staycationId" value="{{$staycation->id}}">
+        <input type="hidden" name="userId" value="{{ auth()->user()->id }}">
+        <input type="hidden" name="totalPrice" value="{{$staycation->price}}">
+        <input type="hidden" name="status" value="Pending">
         <b>Dates</b>
+        
         <table class="checkDate">
-            <p>Check In</p><input type="date"name="checkIn">
+            <p>Check In</p><input type="date" name="dateStart">
 
-            <p>Check Out</p><input type="date"name="checkOut">
-
+            <p>Check Out</p><input type="date" name="dateEnd">
+        
     </div>
     <!-- Option for adding guests -->
     <div>
@@ -125,7 +132,13 @@
     <hr>
 
 
+    @if(Auth::user()->id == $staycation->userid)
+    <p class="text-danger">It looks like you are the owner of this place</p>
+    @else
     <button type="submit" class="requestbutton">Request to book</button>
+    @endif
+</form>
+    
 
     <!-- Price details right side -->
 

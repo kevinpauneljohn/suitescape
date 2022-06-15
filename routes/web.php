@@ -5,6 +5,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StaycationController;
 use App\Http\Controllers\CalenderController;
+use App\Http\Controllers\ReservationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,11 +27,9 @@ Route::get('/hotelDetails', function () {
 Route::get('/imagegallery', function () {
     return view('imagegallery');
 });
-Route::get('/reservations', function () {
-    return view('staycations.hostreservation');
-});
 
-Route::get('reservations/{staycation}', [StaycationController::class, 'guestreservation'])->name('staycations.guestreservation');
+
+Route::get('reservation/{staycation}', [StaycationController::class, 'guestreservation'])->name('staycations.guestreservation');
 
 Auth::routes();
 
@@ -42,7 +41,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('home', [StaycationController::class, 'indexes']);
     Route::get('image', [StaycationController::class, 'indexess'])->name('staycations.filter');
     Route::get('staycations/{staycation}/display', [StaycationController::class, 'display'])->name('staycations.display');
+    Route::post('staycations/reserve', [StaycationController::class, 'reservation'])->name('staycations.reserve');
     Route::resource('staycations', StaycationController::class);
+    Route::resource('reservations', ReservationController::class);
     
     // Route::get('/calendar', 'App\Http\Controllers\StaycationController@calendar')->name('staycations.calendar');
     // Route::get('/index', 'StaycationController@index')->name('staycations.index');

@@ -54,7 +54,7 @@
                         @role('Co-host')
                             <li><a class="nav-link" href="{{ route('staycations.index') }}">Manage Staycations</a></li>
                         @endrole -->
-
+                        <li><a class="nav-link" href="{{ route('staycations.filter') }}">Staycations</a></li>
 
                         @role('Guest')
                         @if(auth()->user()->isTeamOwner())
