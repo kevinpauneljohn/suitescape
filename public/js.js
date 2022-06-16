@@ -189,6 +189,10 @@ function guestQuantity(operation) {
     document.getElementById('inputguestmobile').innerHTML=getgvalue+" guest";
         */
 
+    //single input numeroGuest
+    document.getElementById('numeroGuest').value=addGuest;
+
+
     inputguests=getgvalue;
     var conbutton = document.querySelectorAll('#guestQty, #guestQtymobile');
     var conbox = document.querySelectorAll('#inputguest, #inputguestmobile');
@@ -226,6 +230,11 @@ function guestQuantity(operation) {
         document.getElementById("guestQtymobile").innerHTML = getgvalue;
         document.getElementById('inputguestmobile').innerHTML=getgvalue+" guest";
         */
+
+        //single input numeroGuest
+        document.getElementById('numeroGuest').value=addGuest;
+
+
         inputguests=getgvalue;
         var conbutton = document.querySelectorAll('#guestQty,  #guestQtymobile');
         var conbox = document.querySelectorAll('#inputguest, #inputguestmobile');
@@ -269,6 +278,11 @@ function childrenQuantity(operation) {
     document.getElementById("childrenQtymobile").innerHTML = getchildrenvalue;
     document.getElementById('inputchildrenmobile').innerHTML=getchildrenvalue+" children";
         */
+
+    //single input numeroGuest
+    document.getElementById('numeroChild').value=addChildren;
+
+
     inputchildren=getchildrenvalue;
     var conbutton = document.querySelectorAll('#childrenQty, #childrenQtymobile');
     var conbox = document.querySelectorAll('#inputchildren, #inputchildrenmobile');
@@ -295,6 +309,11 @@ function childrenQuantity(operation) {
         document.getElementById("childrenQtymobile").innerHTML = getchildrenvalue;
         document.getElementById('inputchildrenmobile').innerHTML=getchildrenvalue+" children";
         */
+        //single input numeroGuest
+        document.getElementById('numeroChild').value=addChildren;
+
+
+
         inputchildren=getchildrenvalue;
         var conbutton = document.querySelectorAll('#childrenQty, #childrenQtymobile');
         var conbox = document.querySelectorAll('#inputchildren, #inputchildrenmobile');
@@ -327,6 +346,9 @@ function infantQuantity(operation) {
     document.getElementById('inputinfantHeader').innerHTML=getinfantvalue+" infants";
     document.getElementById('inputinfant').value=getinfantvalue;
     */
+
+    //single input numeroGuest
+    document.getElementById('numeroInfant').value=addInfant;
     inputinfant=getinfantvalue;
 
 
@@ -354,6 +376,11 @@ function infantQuantity(operation) {
         document.getElementById("infantQtymobile").innerHTML = getinfantvalue;
         document.getElementById('inputinfantmobile').innerHTML=getinfantvalue+" children";
         */
+
+        //single input numeroGuest
+        document.getElementById('numeroInfant').value=addInfant;
+
+
         inputinfant=getinfantvalue;
         var conbutton = document.querySelectorAll('#infantQty, #infantQtymobile');
         var conbox = document.querySelectorAll('#inputinfant, #inputinfantmobile');
@@ -473,51 +500,57 @@ $(document).ready(function(){
 */
 
 function reserve(operation, type){
-    if(operation == 'add' && type== 'guest'){
-        document.getElementById("reserveguestQty").value= ++addGuest;
-        document.getElementById("reserveguestNumber").value= addGuest+addChildren;
-        getgvalue= document.getElementById("reserveguestQty").value;
+    var reservenumberGuest=document.getElementById('reservenumberGuest').value;
+    var count=document.getElementById("reserveguestNumber").value;
+    var numG=Number(document.getElementById('numGuest').value);
+    var numC=Number(document.getElementById('numChild').value);
+    var numI=Number(document.getElementById('numInfant').value);
+    var inputguests=numG;
+    var inputchildren=numC;
+    var inputinfant=numI;
+    if(operation == 'add' && type== 'guest' && reservenumberGuest>count){
+        document.getElementById("numGuest").value= ++numG;
+        document.getElementById("reserveguestNumber").value= numG+numC;
+
+        getgvalue= document.getElementById("numGuest").value;
         inputguests=getgvalue;
         document.getElementById("reserveguestQty").innerHTML = getgvalue;
 
-    }else if(operation == 'minus' && type== 'guest' && inputguests>0){
-        document.getElementById("reserveguestQty").value= --addGuest;
-        document.getElementById("reserveguestNumber").value= addGuest+addChildren;
-        getgvalue= document.getElementById("reserveguestQty").value;
-        inputguests=getgvalue;
+    }else if(operation == 'minus' && type== 'guest' && inputguests>1){
+        document.getElementById("numGuest").value= --numG;
+        document.getElementById("reserveguestNumber").value= numG+numC;
+        getgvalue= document.getElementById("numGuest").value;
         document.getElementById("reserveguestQty").innerHTML = getgvalue;
-        document.getElementById('inputguestgallery').innerHTML=getgvalue+" guest";
     }
 
 
-    else if(operation == 'add' && type== 'children'){
-        document.getElementById("reservechildQty").value= ++addChildren;
-        document.getElementById("reserveguestNumber").value= addGuest+addChildren;
-        getchildrenvalue= document.getElementById("reservechildQty").value;
+    else if(operation == 'add' && type== 'children' && reservenumberGuest>count){
+        document.getElementById("numChild").value= ++numC;
+        document.getElementById("reserveguestNumber").value= numG+numC;
+        getchildrenvalue= document.getElementById("numChild").value;
         inputchildren=getchildrenvalue;
         document.getElementById("reservechildQty").innerHTML = getchildrenvalue;
 
     }
     else if(operation == 'minus' && type== 'children' && inputchildren>0){
-        document.getElementById("reservechildQty").value= --addChildren;
-        document.getElementById("reserveguestNumber").value= addGuest+addChildren;
-        getchildrenvalue= document.getElementById("reservechildQty").value;
+        document.getElementById("numChild").value= --numC;
+        document.getElementById("reserveguestNumber").value= numG+numC;
+        getchildrenvalue= document.getElementById("numChild").value;
         inputchildren=getchildrenvalue;
         document.getElementById("reservechildQty").innerHTML = getchildrenvalue;
 
     }
 
     else if(operation == 'add' && type== 'infant'){
-        document.getElementById("reserveinfantQty").value= ++addInfant;
+        document.getElementById("numInfant").value= ++numI;
         getinfantvalue= document.getElementById("reserveinfantQty").value;
         inputinfant=getinfantvalue;
-        document.getElementById("reserveinfantQty").innerHTML = getinfantvalue;
+        document.getElementById("reserveinfantQty").innerHTML = numI;
     }
     else if(operation == 'minus' && type== 'infant'&& inputinfant>0){
-        document.getElementById("reserveinfantQty").value= --addInfant;
+        document.getElementById("numInfant").value= --numI;
         getinfantvalue= document.getElementById("reserveinfantQty").value;
-        inputinfant=getinfantvalue;
-        document.getElementById("reserveinfantQty").innerHTML = getinfantvalue;
+        document.getElementById("reserveinfantQty").innerHTML = numI;
 
     }
 }

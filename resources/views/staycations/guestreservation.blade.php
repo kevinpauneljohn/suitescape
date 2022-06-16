@@ -36,17 +36,26 @@
         <input type="hidden" name="totalPrice" value="{{$staycation->price}}">
         <input type="hidden" name="status" value="Pending">
         <b>Dates</b>
-        
+
         <table class="checkDate">
             <p>Check In</p><input type="date" name="dateStart">
+            <p>Check In</p><input type="date"name="checkIn"id="reserveCheckIn">
+
+            <p>Check Out</p><input type="date"name="checkOut"id="reserveCheckOut">
 
             <p>Check Out</p><input type="date" name="dateEnd">
-        
+
     </div>
     <!-- Option for adding guests -->
     <div>
+
     <table>
+    <input type="text" value="{{$staycation->numberGuest}}"id="reservenumberGuest">
     <input type="text" value="1"id="reserveguestNumber">
+    <input type="text" value="1"id="numGuest">
+    <input type="text" value="1"id="numChild">
+    <input type="text" value="1"id="numInfant">
+
 <tr>
 
 <td><b>Guest</b><p>Age 13+</p></td>
@@ -57,13 +66,13 @@
 <tr>
 <td><b>Children</b><p>Ages 2-12</p></td>
 <td><input type="button"value="-"class="qtybutton"onclick="reserve('minus','children')">
-<label id="reservechildQty"value="0">0</label>
+<b id="reservechildQty"value="0"></b>
 <input type="button"value="+"class="qtybutton"onclick="reserve('add','children')"></td>
 </tr>
 <tr>
 <td><b>Infants</b><p>Under 2</p></td>
 <td><input type="button"value="-"class="qtybutton"onclick="reserve('minus','infant')">
-<label id="reserveinfantQty"value="0">0</label>
+<b id="reserveinfantQty"value="0">0</b>
 <input type="button"value="+"class="qtybutton"onclick="reserve('add','infant')"></td>
 </tr>
 
@@ -138,7 +147,7 @@
     <button type="submit" class="requestbutton">Request to book</button>
     @endif
 </form>
-    
+
 
     <!-- Price details right side -->
 
@@ -365,62 +374,6 @@ function showguestImagegallery() {
     $('.addguestheader-imagegallery').toggle();
 }
 
-function asdf(operation, type){
-    if(operation == 'add' && type== 'guest'){
-        document.getElementById("guestQtygallery").value= ++addGuest;
-        document.getElementById("guestNumber").value= addGuest+addChildren;
-        getgvalue= document.getElementById("guestQtygallery").value;
-        inputguests=getgvalue;
-        document.getElementById("guestQtygallery").innerHTML = getgvalue;
-        document.getElementById('inputguestgallery').innerHTML=getgvalue+" guest";
-    }else if(operation == 'minus' && type== 'guest' && inputguests>0){
-        document.getElementById("guestQtygallery").value= --addGuest;
-        document.getElementById("guestNumber").value= addGuest+addChildren;
-        getgvalue= document.getElementById("guestQtygallery").value;
-        inputguests=getgvalue;
-        document.getElementById("guestQtygallery").innerHTML = getgvalue;
-        document.getElementById('inputguestgallery').innerHTML=getgvalue+" guest";
-        if(inputguests<=0){
-            document.getElementById('inputguestgallery').innerHTML="";
-        }
-    }
-    else if(operation == 'add' && type== 'children'){
-        document.getElementById("childrenQtyheader-guestreservation").value= ++addChildren;
-        document.getElementById("guestNumber").value= addGuest+addChildren;
-        getchildrenvalue= document.getElementById("childrenQtyheader-guestreservation").value;
-        inputchildren=getchildrenvalue;
-        document.getElementById("childrenQtyheader-guestreservation").innerHTML = getchildrenvalue;
-        document.getElementById('inputchildrenHeader-guestreservation').innerHTML=getchildrenvalue+" children";
-    }
-    else if(operation == 'minus' && type== 'children' && inputchildren>0){
-        document.getElementById("childrenQtyheader-guestreservation").value= --addChildren;
-        document.getElementById("guestNumber").value= addGuest+addChildren;
-        getchildrenvalue= document.getElementById("childrenQtyheader-guestreservation").value;
-        inputchildren=getchildrenvalue;
-        document.getElementById("childrenQtyheader-guestreservation").innerHTML = getchildrenvalue;
-        document.getElementById('inputchildrenHeader-guestreservation').innerHTML=getchildrenvalue+" children";
-        if(inputchildren<=0){
-            document.getElementById('inputchildrenHeader-guestreservation').innerHTML="";
-        }
-    }
-    else if(operation == 'add' && type== 'infant'){
-        document.getElementById("infantQtyheader-guestreservation").value= ++addInfant;
-        getinfantvalue= document.getElementById("infantQtyheader-guestreservation").value;
-        inputinfant=getinfantvalue;
-        document.getElementById("infantQtyheader-guestreservation").innerHTML = getinfantvalue;
-        document.getElementById('inputinfantHeader-guestreservation').innerHTML=getinfantvalue+" infant";
-    }
-    else if(operation == 'minus' && type== 'infant'&& inputinfant>0){
-        document.getElementById("infantQtyheader-guestreservation").value= --addInfant;
-        getinfantvalue= document.getElementById("infantQtyheader-guestreservation").value;
-        inputinfant=getinfantvalue;
-        document.getElementById("infantQtyheader-guestreservation").innerHTML = getinfantvalue;
-        document.getElementById('inputinfantHeader-guestreservation').innerHTML=getinfantvalue+" infant";
-        if(inputinfant<=0){
-            document.getElementById('inputinfantHeader-guestreservation').innerHTML="";
-        }
-    }
-}
 
 var modal = document.getElementById("myModal");
 
@@ -441,6 +394,31 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+
+$(document).ready(function() {
+    var getNum = localStorage.getItem("numberContainer");
+    var getnumeroG = localStorage.getItem("numerogContainer");
+    var getnumeroC = localStorage.getItem("numerocContainer");
+    var getnumeroI = localStorage.getItem("numeroiContainer");
+
+    var getcheckIn = localStorage.getItem("dateCheckIn");
+    var getcheckOut = localStorage.getItem("dateCheckOut");
+
+    $('#reserveguestNumber').val(getNum);
+    $('#numGuest').val(getnumeroG);
+    $('#numChild').val(getnumeroC);
+    $('#numInfant').val(getnumeroI);
+    $('#reserveCheckIn').val(getcheckIn);
+    $('#reserveCheckOut').val(getcheckOut);
+
+    document.getElementById('reserveguestQty').innerHTML=getnumeroG;
+    document.getElementById('reservechildQty').innerHTML=getnumeroC;
+    document.getElementById('reserveinfantQty').innerHTML=getnumeroI;
+});
+
+
+
 </script>
 
 

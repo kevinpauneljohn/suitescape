@@ -943,7 +943,7 @@ class StaycationController extends Controller
         $user = User::find($idd);
         return view('staycations.display',compact('staycation','user'));
     }
-    
+
     public function guestreservation(Staycation $staycation)
     {
         $idd = $staycation->userid;
@@ -1023,7 +1023,7 @@ class StaycationController extends Controller
 
 
 
-    
+
 
 
 }

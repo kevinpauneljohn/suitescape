@@ -276,7 +276,12 @@
 
 
         <input type="hidden" id="numGuest"class="numGuest"value="{{$staycation->numberGuest}}">
-        <input type="hidden" id="totalGuest"class="totalGuest"value="0">
+        <input type="text" id="totalGuest"value="1">
+        <!--single data input -->
+        <input type="text" id="numeroGuest"class="numeroGuest"value="0">
+        <input type="text" id="numeroChild"class="numeroChild"value="0">
+        <input type="text" id="numeroInfant"class="numeroInfant"value="0">
+
         </div>
         <div class="hotelInfo2">
         <p><i class="fa fa-wifi"></i> Fast Wifi</p>
@@ -333,8 +338,8 @@
         <p><b>PHP PRICE</b> /night</p>
         <table class="checkDate">
         <tr>
-            <td><p>Check In</p><input type="date"name="checkIn"></td>
-            <td><p>Check Out</p><input type="date"name="checkOut"></td>
+            <td><p>Check In</p><input type="date"name="checkIn"id="checkIn"></td>
+            <td><p>Check Out</p><input type="date"name="checkOut"id="checkOut"></td>
         </tr>
         <tr>
             <td colspan=2 onclick="showGuest()"style="cursor:pointer;"><p><b>Guest</b></p>
@@ -374,7 +379,7 @@
 
 
 
-        <a href="{{ route('staycations.guestreservation',$staycation->id) }}" target="_blank"><button type="submit"class="buttonReserve">Reserve</button></a>
+        <a href="{{ route('staycations.guestreservation',$staycation->id) }}"target="_blank"><button type="submit"class="buttonReserve">Reserve</button></a>
         <p style="text-align:center;padding:5px;">You won't be charged yet</p>
 
         <table class="resPrice">
@@ -673,6 +678,26 @@
     center: new google.maps.LatLng(15.2229, 120.5744), zoom: 12
     }
     var map = new google.maps.Map(mapCanvas, mapOptions);
+
+
+
+    $(document).on('click','.buttonReserve',function(){
+        var totalGuest=document.getElementById('totalGuest').value;
+        var numeroG=document.getElementById('numeroGuest').value;
+        var numeroC=document.getElementById('numeroChild').value;
+        var numeroI=document.getElementById('numeroInfant').value;
+        var checkIn=document.getElementById('checkIn').value;
+        var checkOut=document.getElementById('checkOut').value;
+
+        localStorage.setItem("numberContainer", totalGuest);
+        localStorage.setItem("numerogContainer", numeroG);
+        localStorage.setItem("numerocContainer", numeroC);
+        localStorage.setItem("numeroiContainer", numeroI);
+
+        localStorage.setItem("dateCheckIn", checkIn);
+        localStorage.setItem("dateCheckOut", checkOut);
+
+    })
 
 
 </script>

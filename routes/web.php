@@ -44,7 +44,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('staycations/reserve', [StaycationController::class, 'reservation'])->name('staycations.reserve');
     Route::resource('staycations', StaycationController::class);
     Route::resource('reservations', ReservationController::class);
-    
+
+
     // Route::get('/calendar', 'App\Http\Controllers\StaycationController@calendar')->name('staycations.calendar');
     // Route::get('/index', 'StaycationController@index')->name('staycations.index');
 });
