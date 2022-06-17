@@ -179,6 +179,18 @@
 		            <input type="file" name="subImg4" class="form-control" required autocomplete="subImg4" autofocus>
 		        </div>
 		    </div>
+			<div class="col-xs-12 col-sm-12 col-md-12" style="display: none;">
+		        <div class="form-group">
+		            <strong>Sub Image 5:</strong>
+		            <input type="file" name="subImg5" class="form-control" required autocomplete="subImg5" autofocus>
+		        </div>
+		    </div>
+
+			<div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <button type="submit" class="btn btn-primary">Add more Image</button>
+		        </div>
+		    </div>
 
 			<div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
@@ -237,6 +249,15 @@
     }
 });
 </script>
+<script>
+	document.getElementById('addImage').addEventListener("add", function (a){
+		
+	})
+</script>
+
+
+
+
 <<script type="text/javascript"> 
 var max_limit = 2; // Max Limit
 $(document).ready(function (){

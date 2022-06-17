@@ -30,6 +30,7 @@ Route::get('/imagegallery', function () {
 
 
 Route::get('reservation/{staycation}', [StaycationController::class, 'guestreservation'])->name('staycations.guestreservation');
+Route::get('checkout/{staycation}', [StaycationController::class, 'checkout'])->name('staycations.checkout');
 
 Auth::routes();
 

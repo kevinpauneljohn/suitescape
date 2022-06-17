@@ -951,6 +951,13 @@ class StaycationController extends Controller
         return view('staycations.guestreservation',compact('staycation','user'));
     }
 
+    public function checkout(Staycation $staycation)
+    {
+        $idd = $staycation->userid;
+        $user = User::find($idd);
+        return view('staycations.checkout',compact('staycation','user'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

@@ -156,16 +156,12 @@
     <div class="imagecell-whole"id="imagecell-whole">
     <span class="closebutton"onclick="closeshowimagecell()">&times;</span>
         <div class="imagecell-each">
-        <img src="images/{{$staycation->mainImg}}">
-        <img src="hotelImage1.jpg">
-        <img src="hotelImage2.jpg">
-        <img src="hotelImage2.jpg">
-        <img src="hotelImage3.jpg">
-        <img src="hotelImage3.jpg">
-        <img src="hotelImage3.jpg">
-        <img src="hotelImage3.jpg">
-        <img src="hotelImage3.jpg">
-        <img src="hotelImage3.jpg">
+        <img src="{{ asset('images/'. $staycation->mainImg)}}">
+        <img src="{{ asset('images/'. $staycation->subImg1)}}">
+        <img src="{{ asset('images/'. $staycation->subImg2)}}">
+        <img src="{{ asset('images/'. $staycation->subImg3)}}">
+        <img src="{{ asset('images/'. $staycation->subImg4)}}">
+        <img src="{{ asset('images/'. $staycation->subImg5)}}">
         </div>
     </div>
 

@@ -1,60 +1,92 @@
-<html>
-<head>
-    <link rel="stylesheet" href="{{ asset( 'style.css')}}">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+@extends('layouts.app')
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-    <script src="{{ asset( 'js.js')}}"></script>
-</head>
-<body>
-<!-- Reservation for GUEST -->
-    <div class="reservation">
-        <h1>Reservation</h1>
-    </div>
-    <div>
-        <h3>Your trip</h3>
-    </div>
-    <div>
+@section('content')
+    <section class="section-pagetop">
+        <div class="container clearfix">
+            <h2 class="title-page">Request to Book</h2>
+        </div>
+    </section>
+    <section class="section-content bg padding-y">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (Session::has('error'))
+                        <p class="alert alert-danger">{{ Session::get('error') }}</p>
+                    @endif
+                </div>
+            </div>
     <form action="{{ route('reservations.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="staycationId" value="{{$staycation->id}}">
         <input type="hidden" name="userId" value="{{ auth()->user()->id }}">
-        <input type="hidden" name="totalPrice" value="{{$staycation->price}}">
+        <input type="hidden" id="price" value="{{$staycation->price}}">
+        <input type="hidden" name="totalPrice" id="totalPrices">
         <input type="hidden" name="status" value="Pending">
-        <b>Dates</b>
 
-        <table class="checkDate">
-            <p>Check In</p><input type="date" name="dateStart">
-            <p>Check In</p><input type="date"name="checkIn"id="reserveCheckIn">
+        <div class="row">
+                    <div class="col-md-8 ">
+                        <div class="card border-0">
+                            <header class="card-header bg-white border-0">
+                                <h4 class="card-title mt-2 ">Your Trip</h4>
+                            </header>
+                            <article class="card-body">
+                                <div class="form-row">
+                                    <div class="col form-group">
+                                        <label><b><h5>Dates</h5></b></label>
+                                        <p id="checkIn"></p>
+                                    </div>
+                                    <div class="col form-group">
+                                        <label><b><a href="#" data-toggle="modal" data-target="#exampleModal">Edit</a></b></label>
+                                    </div>
+                                </div>
 
-            <p>Check Out</p><input type="date"name="checkOut"id="reserveCheckOut">
+                                <div class="form-row">
+                                    <div class="col form-group">
+                                        <label><b><h5>Guests</h5></b></label>
+                                        <p id="guests"></p>
+                                    </div>
+                                    <div class="col form-group">
+                                        <label><b><a href="#">Edit</a></b></label>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
 
-            <p>Check Out</p><input type="date" name="dateEnd">
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <header class="card-header">
+                                        <h4 class="card-title mt-2">Price details</h4>
+                                    </header>
+                                    <article class="card-body">
+                                        <dl class="dlist-align">
+                                            <dt>&#8369; {{number_format($staycation->price)}} X &nbsp<p id="days" style="display: inline-block;"></p>&emsp;&emsp;&emsp;&emsp;&#8369;<p id="totalPrice" style="display: inline-block;"></p></dt>
+                                            <dt>Service Fee&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&#8369;</dt>
+                                            <dd class="text-right h5 b">&#8369;<p id="sumPrice" style="display: inline-block;"></p> </dd>
+                                        </dl>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    </div>
-    <!-- Option for adding guests -->
-    <div>
 
-    <table>
-    <input type="text" value="{{$staycation->numberGuest}}"id="reservenumberGuest">
-    <input type="text" value="1"id="reserveguestNumber">
-    <input type="text" value="1"id="numGuest">
-    <input type="text" value="1"id="numChild">
-    <input type="text" value="1"id="numInfant">
+                                
+
+            
+
+       
+
+
+    <!-- <table>
+    <input type="hidden" value="{{$staycation->numberGuest}}"id="reservenumberGuest">
+    <input type="hidden" value="1"id="reserveguestNumber">
+    <input type="hidden" value="1"id="numGuest">
+    <input type="hidden" value="1"id="numChild">
+    <input type="hidden" value="1"id="numInfant">
 
 <tr>
 
@@ -80,14 +112,7 @@
         <p>This place has a maximum of # guest.</p>
         <input type="button" onclick="closeaddguest('addguestheader')"value="Close"class="addguest-closebutton">
     </div>
-    <table>
-
-                </div>
-
-            </div>
-
-    </div>
-    <hr>
+    <table> -->
 
     <!-- Payment area -->
     <div class="payment">
@@ -151,14 +176,10 @@
 
     <!-- Price details right side -->
 
-    <div class="reserveBox">
-        <p>Price details</p>
+    
 
 
-    </div>
-
-
-
+    <script src="{{ asset( 'js.js')}}"></script>
 <!-- javascript for coupon pop up modal -->
 <script>
 
@@ -186,20 +207,40 @@ window.onclick = function(event) {
 </script>
 
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <div class="col-md-4"><h4 id="daysModal" style="display: inline-block;"></h4>
+            <p>{{$staycation->numberBed}} beds &#183; {{$staycation->numberBathrooms}} bath</p>
+      </div>
+      <div class="col-md-4 ml-auto">
+        <p>Check In</p><input type="date" name="dateStart" id="reserveCheckIn">
 
+        <p>Check Out</p><input type="date" name="dateEnd" id="reserveCheckOut">
+      </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
 
 
 <!-- CSS -->
 <style>
-*{
-    margin: auto;
-    padding: 0;
-    max-width: 900px;
-    box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
-}
+
 
 /* Coupon area */
 #couponbtn{
@@ -215,18 +256,7 @@ window.onclick = function(event) {
 
 }
 
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-}
+
 
 #coupon{
     padding: 12px;
@@ -411,7 +441,49 @@ $(document).ready(function() {
     $('#numInfant').val(getnumeroI);
     $('#reserveCheckIn').val(getcheckIn);
     $('#reserveCheckOut').val(getcheckOut);
+    
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+    ];
+    //check in date
+    var checkIn = new Date(getcheckIn);
+    var monthIn = monthNames[checkIn.getMonth()];
+    var dayIn = checkIn.getUTCDate();
 
+    //check out date
+    var checkOut = new Date(getcheckOut);
+    var monthOut = monthNames[checkOut.getMonth()];
+    var dayOut = checkOut.getUTCDate();
+
+    // number of days
+    var time_difference = checkOut.getTime() - checkIn.getTime();
+    var result = time_difference / (1000 * 60 * 60 * 24);
+    document.getElementById('days').innerHTML=result + " nights";
+    document.getElementById('daysModal').innerHTML=result + " nights";
+
+    var price = document.getElementById('price').value;
+    var total = price*result;
+    document.getElementById('totalPrice').innerHTML=total.toLocaleString('en-US');
+    document.getElementById('sumPrice').innerHTML=total.toLocaleString('en-US');
+    $('#totalPrices').val(total);
+
+
+    if(monthOut == monthIn){
+        document.getElementById('checkIn').innerHTML=monthIn +" "+ dayIn + " - " + dayOut;
+    }
+    else{
+        document.getElementById('checkIn').innerHTML=monthIn +" "+ dayIn + " - " + monthOut + " " + dayOut;
+    }
+
+    // number of guest
+    if(getnumeroG > 1){
+    document.getElementById('guests').innerHTML=getnumeroG + " guests";
+    }
+    else{
+        document.getElementById('guests').innerHTML=getnumeroG + " guest"; 
+    }
+
+    
     document.getElementById('reserveguestQty').innerHTML=getnumeroG;
     document.getElementById('reservechildQty').innerHTML=getnumeroC;
     document.getElementById('reserveinfantQty').innerHTML=getnumeroI;
@@ -420,10 +492,6 @@ $(document).ready(function() {
 
 
 </script>
-
-
-
-</body>
-</html>
+@endsection
 
 
