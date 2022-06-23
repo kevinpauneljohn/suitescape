@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('province');
             $table->string('region');
+            $table->string('fullAddress');
             $table->integer('numberGuest');
             $table->integer('numberBed');
             $table->integer('numberBedrooms');
@@ -40,7 +41,8 @@ return new class extends Migration
             $table->string('highlight')->nullable();
             $table->string('detail');
             $table->float('price');
-            $table->float('sfee');
+            $table->float('sfee')->nullable();
+            $table->float('envfee')->nullable();
             $table->string('security')->nullable();
             $table->integer('userid');
             $table->timestamps();

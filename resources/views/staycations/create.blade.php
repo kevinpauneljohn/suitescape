@@ -136,13 +136,13 @@
 			<div class="col-xs-12 col-sm-12 col-md-12" style="display: none;" id="street">
 		        <div class="form-group">
 		            <strong>Address Line 1:(Optional)</strong>
-		            <input type="text" name="street" class="form-control" placeholder="Street/P.O box/Company Name">
+		            <input type="text" name="street" id="st"class="form-control" placeholder="Street/P.O box/Company Name">
 		        </div>
 		    </div>
 			<div class="col-xs-12 col-sm-12 col-md-12" style="display: none;" id="house">
 		        <div class="form-group">
 		            <strong>Address Line 2:(Optional)</strong>
-		            <input type="text" name="house" class="form-control" placeholder="Apartment/Suite/Unit/Building/Floor/etc">
+		            <input type="text" name="house" id="ho" class="form-control" placeholder="Apartment/Suite/Unit/Building/Floor/etc">
 		        </div>
 		    </div>
 
@@ -268,11 +268,16 @@
 		    </div>
 			<div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
-		            <strong>Service Fee:</strong>
-		            <input type="number" name="sfee" class="form-control" placeholder="Service Fee" required autocomplete="sfee" autofocus>
+		            <strong>Enviromental Fee(Optional):</strong>
+		            <input type="number" name="envfee" class="form-control" placeholder="Enviromental Fee">
 		        </div>
 		    </div>
-
+			<div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Service Fee:</strong>
+		            <input type="number" name="sfee" class="form-control" placeholder="Service Fee">
+		        </div>
+		    </div>
 			<div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
 		            <strong>Do you have any of these at your place?</strong><br>
@@ -283,7 +288,7 @@
 		    </div>
 
 		    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-		            <button type="submit" class="btn btn-primary">Submit</button>
+		            <button type="submit" class="btn btn-primary" onClick="address">Submit</button>
 		    </div>
 		</div>
 
@@ -403,6 +408,7 @@ function barangayFunction(sel) {
   	var barangay= sel.options[sel.selectedIndex].text;
 	$('#br').val(barangay);
 }
+
 </script>
 
 <<script type="text/javascript"> 

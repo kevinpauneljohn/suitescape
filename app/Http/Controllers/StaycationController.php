@@ -875,7 +875,6 @@ class StaycationController extends Controller
             'name' => 'required',
             'detail' => 'required',
             'price' => 'required',
-            'sfee' => 'required',
             'userid' => 'required',
         ]);
 
@@ -901,6 +900,7 @@ class StaycationController extends Controller
             'city' =>  $request->input('city'),
             'province' =>  $request->input('province'),
             'region' =>  $request->input('region'),
+            'fullAddress' =>  $request->input('barangay') . " , ". $request->input('city') . " , " .  $request->input('province'),
             'numberGuest' =>  $request->input('numberGuest'),
             'numberBed' =>  $request->input('numberBed'),
             'numberBedrooms' =>  $request->input('numberBedrooms'),
@@ -918,6 +918,7 @@ class StaycationController extends Controller
             'detail' => $request->input('detail'),
             'price' => $request->input('price'),
             'sfee' => $request->input('sfee'),
+            'envfee' => $request->input('envfee'),
             'security' => json_encode($request->input('security')),
             'userid' => $request->input('userid'),
 

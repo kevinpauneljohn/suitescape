@@ -24,6 +24,7 @@ class Staycation extends Model
         'city',
         'province',
         'region',
+        'fullAddress',
         'numberGuest',
         'numberBed',
         'numberBedrooms',
@@ -41,6 +42,7 @@ class Staycation extends Model
         'detail',
         'price',
         'sfee',
+        'envfee',
         'security',
         'userid',
     ];
