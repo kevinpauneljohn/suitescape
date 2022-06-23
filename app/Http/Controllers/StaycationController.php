@@ -442,7 +442,7 @@ class StaycationController extends Controller
                     $staycations=Staycation::where('numberGuest','>=',$guestNumber)
                     ->where('numberBed','>=',$numberBed)->where('numberBedrooms','>=',$numberBedrooms)
                     ->where('price','<=',$inputPrice)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')->latest()->paginate(6);
+                    ->where('city','LIKE', '%' . $inputlocation . '%')->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
 
@@ -451,7 +451,7 @@ class StaycationController extends Controller
                 else if($selectedType=="all" && $selectedPlace=="all"&&$inputlocation && $checkAmenities==""&& $checkFavorite=="" && $guestNumber && $numberBed && $numberBedrooms &&$inputPrice==""){
                     $staycations=Staycation::where('numberGuest','>=',$guestNumber)
                     ->where('numberBed','>=',$numberBed)->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -462,7 +462,7 @@ class StaycationController extends Controller
                     ->whereJsonContains('guestFavorite',$checkFavorite)
                     ->where('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->where('price','<=',$inputPrice)->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -473,7 +473,7 @@ class StaycationController extends Controller
                     ->whereJsonContains('guestFavorite',$checkFavorite)
                     ->where('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -482,7 +482,7 @@ class StaycationController extends Controller
                     $staycations=Staycation::whereJsonContains('amenities',$checkAmenities)
                     ->where('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->where('price','<=',$inputPrice)->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -492,7 +492,7 @@ class StaycationController extends Controller
                     $staycations=Staycation::whereJsonContains('amenities',$checkAmenities)
                     ->where('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -502,7 +502,7 @@ class StaycationController extends Controller
                     whereJsonContains('guestFavorite',$checkFavorite)
                     ->where('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->where('price','<=',$inputPrice)->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -513,7 +513,7 @@ class StaycationController extends Controller
                     whereJsonContains('guestFavorite',$checkFavorite)
                     ->where('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -526,7 +526,7 @@ class StaycationController extends Controller
                     ->where('typeofPlace',$selectedPlace)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->where('price','<=',$inputPrice)->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -536,7 +536,7 @@ class StaycationController extends Controller
                     ->where('typeofPlace',$selectedPlace)
                     ->whereJsonContains('amenities',$checkAmenities)->where('numberGuest','>=',$guestNumber)
                     ->where('numberBed','>=',$numberBed)->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->where('price','<=',$inputPrice)->latest()->paginate(5);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -546,7 +546,7 @@ class StaycationController extends Controller
                     ->where('typeofPlace',$selectedPlace)
                     ->whereJsonContains('guestFavorite',$checkFavorite)->where('numberGuest','>=',$guestNumber)
                     ->where('numberBed','>=',$numberBed)->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->where('price','<=',$inputPrice)->latest()->paginate(5);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -558,7 +558,7 @@ class StaycationController extends Controller
                     where('typeofPlace',$selectedPlace)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->where('price','<=',$inputPrice)->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -569,7 +569,7 @@ class StaycationController extends Controller
                     ->whereJsonContains('guestFavorite',$checkFavorite)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->where('price','<=',$inputPrice)->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -580,7 +580,7 @@ class StaycationController extends Controller
                     where('privacyType',$selectedType)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->where('price','<=',$inputPrice)->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -590,7 +590,7 @@ class StaycationController extends Controller
                     where('typeofPlace',$selectedPlace)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->where('price','<=',$inputPrice)->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -604,7 +604,7 @@ class StaycationController extends Controller
                     ->whereJsonContains('guestFavorite',$checkFavorite)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->where('price','<=',$inputPrice)->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -616,7 +616,7 @@ class StaycationController extends Controller
                     ->whereJsonContains('guestFavorite',$checkFavorite)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->where('price','<=',$inputPrice)->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -627,7 +627,7 @@ class StaycationController extends Controller
                     ->where('typeofPlace',$selectedPlace)
                     ->whereJsonContains('amenities',$checkAmenities)
                     ->whereJsonContains('guestFavorite',$checkFavorite)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
                     ->where('price','<=',$inputPrice)->latest()->paginate(6);
@@ -643,7 +643,7 @@ class StaycationController extends Controller
                     ->whereJsonContains('amenities',$checkAmenities)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->where('price','<=',$inputPrice)->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -655,7 +655,7 @@ class StaycationController extends Controller
                     ->whereJsonContains('amenities',$checkAmenities)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->where('price','<=',$inputPrice)->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -669,7 +669,7 @@ class StaycationController extends Controller
                     ->whereJsonContains('guestFavorite',$checkFavorite)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->where('price','<=',$inputPrice)->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -681,7 +681,7 @@ class StaycationController extends Controller
                     ->where('typeofPlace',$selectedPlace)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -691,7 +691,7 @@ class StaycationController extends Controller
                     ->where('typeofPlace',$selectedPlace)
                     ->whereJsonContains('amenities',$checkAmenities)->where('numberGuest','>=',$guestNumber)
                     ->where('numberBed','>=',$numberBed)->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(5);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -701,7 +701,7 @@ class StaycationController extends Controller
                     ->where('typeofPlace',$selectedPlace)
                     ->whereJsonContains('guestFavorite',$checkFavorite)->where('numberGuest','>=',$guestNumber)
                     ->where('numberBed','>=',$numberBed)->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(5);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -713,7 +713,7 @@ class StaycationController extends Controller
                     where('typeofPlace',$selectedPlace)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -724,7 +724,7 @@ class StaycationController extends Controller
                     ->whereJsonContains('guestFavorite',$checkFavorite)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -735,7 +735,7 @@ class StaycationController extends Controller
                     where('privacyType',$selectedType)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -745,7 +745,7 @@ class StaycationController extends Controller
                     where('typeofPlace',$selectedPlace)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -759,7 +759,7 @@ class StaycationController extends Controller
                     ->whereJsonContains('guestFavorite',$checkFavorite)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -771,7 +771,7 @@ class StaycationController extends Controller
                     ->whereJsonContains('guestFavorite',$checkFavorite)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -784,7 +784,7 @@ class StaycationController extends Controller
                     ->whereJsonContains('guestFavorite',$checkFavorite)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -798,7 +798,7 @@ class StaycationController extends Controller
                     ->whereJsonContains('amenities',$checkAmenities)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -810,7 +810,7 @@ class StaycationController extends Controller
                     ->whereJsonContains('amenities',$checkAmenities)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -822,7 +822,7 @@ class StaycationController extends Controller
                     ->whereJsonContains('guestFavorite',$checkFavorite)
                     ->where ('numberGuest','>=',$guestNumber)->where('numberBed','>=',$numberBed)
                     ->where('numberBedrooms','>=',$numberBedrooms)
-                    ->where('address','LIKE', '%' . $inputlocation . '%')
+                    ->where('city','LIKE', '%' . $inputlocation . '%')
                     ->latest()->paginate(6);
                     return view('staycationFilter',compact('staycations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -859,24 +859,23 @@ class StaycationController extends Controller
             'typeofPlace' => 'required',
             'typeofHouse' => 'required',
             'privacyType' => 'required',
-            'address' => 'required',
+            'barangay' => 'required',
+            'city' => 'required',
+            'province' => 'required',
+            'region' => 'required',
             'numberGuest' => 'required',
             'numberBed' => 'required',
             'numberBedrooms' => 'required',
             'numberBathrooms' => 'required',
-            'amenities' => 'required',
-            'guestFavorite' => 'required',
-            'safetyItem' => 'required',
             'mainImg' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'subImg1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'subImg2' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'subImg3' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'subImg4' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'name' => 'required',
-            'highlight' => 'required',
             'detail' => 'required',
             'price' => 'required',
-            'security' => 'required',
+            'sfee' => 'required',
             'userid' => 'required',
         ]);
 
@@ -896,7 +895,12 @@ class StaycationController extends Controller
             'typeofPlace' =>  $request->input('typeofPlace'),
             'typeofHouse' =>  $request->input('typeofHouse'),
             'privacyType' =>  $request->input('privacyType'),
-            'address' =>  $request->input('address'),
+            'street' =>  $request->input('street'),
+            'house' =>  $request->input('house'),
+            'barangay' =>  $request->input('barangay'),
+            'city' =>  $request->input('city'),
+            'province' =>  $request->input('province'),
+            'region' =>  $request->input('region'),
             'numberGuest' =>  $request->input('numberGuest'),
             'numberBed' =>  $request->input('numberBed'),
             'numberBedrooms' =>  $request->input('numberBedrooms'),
@@ -913,6 +917,7 @@ class StaycationController extends Controller
             'highlight' => json_encode($request->input('highlight')),
             'detail' => $request->input('detail'),
             'price' => $request->input('price'),
+            'sfee' => $request->input('sfee'),
             'security' => json_encode($request->input('security')),
             'userid' => $request->input('userid'),
 

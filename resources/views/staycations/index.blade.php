@@ -38,7 +38,7 @@
 	        <td>{{ $staycation->name }}</td>
 	        <td>{{ $staycation->detail }}</td>
 	        <td>{{ $staycation->price }}</td>
-            <td>{{ $staycation->address }}</td>
+            <td>{{ $staycation->house }} , {{ $staycation->street }} , {{ $staycation->barangay }} , {{ $staycation->city }} , {{ $staycation->province }}</td>
 	        <td>
                 <form action="{{ route('staycations.destroy',$staycation->id) }}" method="POST">
                     <a class="btn btn-info" href="{{ route('staycations.show',$staycation->id) }}">Show</a>

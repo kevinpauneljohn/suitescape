@@ -62,8 +62,8 @@
                                     </header>
                                     <article class="card-body">
                                         <dl class="dlist-align">
-                                            <dt>&#8369; {{number_format($staycation->price)}} X &nbsp<p id="days" style="display: inline-block;"></p>&emsp;&emsp;&emsp;&emsp;&#8369;<p id="totalPrice" style="display: inline-block;"></p></dt>
-                                            <dt>Service Fee&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&#8369;</dt>
+                                            <dt>&#8369; {{number_format($staycation->price)}} X &nbsp<p id="days" class="pr-4"style="display: inline-block;"></p>&#8369;<p id="totalPrice" style="display: inline-block;"></p></dt>
+                                            <dt>Service Fee&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&emsp;&#8369;</dt>
                                             <dd class="text-right h5 b">&#8369;<p id="sumPrice" style="display: inline-block;"></p> </dd>
                                         </dl>
                                     </article>

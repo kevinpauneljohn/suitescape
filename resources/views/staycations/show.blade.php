@@ -44,7 +44,7 @@
         <section class="col-xs-12 col-sm-12 col-md-12">
             <div id="details" class="form-group">
                 <strong>Address:</strong>
-                <p>{{ $staycation->address }}</p>
+                <p>{{ $staycation->house }} , {{ $staycation->street }} , {{ $staycation->barangay }} , {{ $staycation->city }} , {{ $staycation->province }}</p>
             </div>
         </section>
         <hr>
@@ -79,10 +79,16 @@
         <section class="col-xs-14 col-sm-12 col-md-12">
             <div id="name" class="form-group">
                 <strong>Amenities:</strong>
+                
                 @php $amenitieses = $staycation->amenities ? json_decode($staycation->amenities, true) : []; @endphp
+                @if($amenitieses === null)
+                <p>No available amenities</p>
+                @else
                     @foreach($amenitieses as $amenities)
                     <p>{{$amenities}}</p>
                     @endforeach
+                @endif
+                
             </div>
         </section>
         <hr>
@@ -90,9 +96,13 @@
             <div id="name" class="form-group">
                 <strong>Guest Favorites:</strong>
                 @php $guestFavorites = $staycation->guestFavorite ? json_decode($staycation->guestFavorite, true) : []; @endphp
+                    @if($guestFavorites === null)
+                        <p>Not available</p>
+                    @else
                     @foreach($guestFavorites as $guestFavorite)
                     <p>{{$guestFavorite}}</p>
                     @endforeach
+                    @endif
             </div>
         </section>
         <hr>
@@ -100,9 +110,13 @@
             <div id="name" class="form-group">
                 <strong>Safety Items:</strong>
                 @php $safetyItems = $staycation->safetyItem ? json_decode($staycation->safetyItem, true) : []; @endphp
-                    @foreach($safetyItems as $safetyItem)
-                    <p>{{$safetyItem}}</p>
-                    @endforeach
+                    @if($safetyItems === null)
+                        <p>Not available</p>
+                    @else
+                        @foreach($safetyItems as $safetyItem)
+                         <p>{{$safetyItem}}</p>
+                        @endforeach
+                    @endif
             </div>
         </section>
         <hr>
@@ -117,9 +131,13 @@
             <div id="name" class="form-group">
                 <strong>Highlights:</strong>
                 @php $highlights = $staycation->highlight ? json_decode($staycation->highlight, true) : []; @endphp
-                    @foreach($highlights as $highlight)
-                    <p>{{$highlight}}</p>
-                    @endforeach
+                    @if($highlights === null)
+                        <p>Not available</p>
+                    @else
+                        @foreach($highlights as $highlight)
+                        <p>{{$highlight}}</p>
+                        @endforeach
+                    @endif
             </div>
         </section>
         <hr>
@@ -141,9 +159,13 @@
             <div id="name" class="form-group">
                 <strong>Security:</strong>
                 @php $securities = $staycation->security ? json_decode($staycation->security, true) : []; @endphp
-                    @foreach($securities as $security)
-                    <p>{{$security}}</p>
-                    @endforeach
+                    @if($securities === null)
+                        <p>Not available</p>
+                    @else
+                        @foreach($securities as $security)
+                        <p>{{$security}}</p>
+                        @endforeach
+                    @endif
             </div>
         </section>
         <hr>

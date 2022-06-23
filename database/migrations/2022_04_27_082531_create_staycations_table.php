@@ -18,7 +18,12 @@ return new class extends Migration
             $table->string('typeofPlace');
             $table->string('typeofHouse')->nullable();
             $table->string('privacyType');
-            $table->string('address');
+            $table->string('house')->nullable();
+            $table->string('street')->nullable();
+            $table->string('barangay');
+            $table->string('city');
+            $table->string('province');
+            $table->string('region');
             $table->integer('numberGuest');
             $table->integer('numberBed');
             $table->integer('numberBedrooms');
@@ -35,6 +40,7 @@ return new class extends Migration
             $table->string('highlight')->nullable();
             $table->string('detail');
             $table->float('price');
+            $table->float('sfee');
             $table->string('security')->nullable();
             $table->integer('userid');
             $table->timestamps();

@@ -272,11 +272,11 @@
 
 
         <input type="hidden" id="numGuest"class="numGuest"value="{{$staycation->numberGuest}}">
-        <input type="text" id="totalGuest"value="1">
+        <input type="hidden" id="totalGuest"value="1">
         <!--single data input -->
-        <input type="text" id="numeroGuest"class="numeroGuest"value="0">
-        <input type="text" id="numeroChild"class="numeroChild"value="0">
-        <input type="text" id="numeroInfant"class="numeroInfant"value="0">
+        <input type="hidden" id="numeroGuest"class="numeroGuest"value="0">
+        <input type="hidden" id="numeroChild"class="numeroChild"value="0">
+        <input type="hidden" id="numeroInfant"class="numeroInfant"value="0">
 
         </div>
         <div class="hotelInfo2">
@@ -296,9 +296,13 @@
             <p><b>What this place offers</b></p>
             <div class="offerLeft">
             @php $amenitieses = $staycation->amenities ? json_decode($staycation->amenities, true) : []; @endphp
+                @if($amenitieses === null)
+                        <p>Not available</p>
+                @else
                     @foreach($amenitieses as $amenities)
                     <p>{{$amenities}}</p>
                     @endforeach
+                @endif
             </div>
             <div class="offerRight">
             <p><i class="fa fa-car"></i> Free parking</p>

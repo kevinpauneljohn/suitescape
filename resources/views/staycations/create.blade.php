@@ -86,8 +86,63 @@
 
 		 <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
-		            <strong>Address:</strong>
-		            <textarea class="form-control" style="height:150px" name="address" placeholder="Address" required autocomplete="address" autofocus></textarea>
+		            <strong>Region</strong>
+					<input type="hidden" name="region" id="reg"/>
+		            <select id="region" onChange="regionFunction(this);">
+					<option value="15">AUTONOMOUS REGION IN MUSLIM MINDANAO (ARMM)</option>
+					<option value="14">CORDILLERA ADMINISTRATIVE REGION (CAR)</option>
+					<option value="13">NATIONAL CAPITAL REGION (NCR)</option>
+					<option value="01">REGION I (ILOCOS REGION)</option>
+					<option value="02">REGION II (CAGAYAN VALLEY)</option>
+					<option value="03">REGION III (CENTRAL LUZON)</option>
+					<option value="04">REGION IV-A (CALABARZON)</option>
+					<option value="17">REGION IV-B (MIMAROPA)</option>
+					<option value="09">REGION IX (ZAMBOANGA PENINSULA)</option>
+					<option value="05">REGION V (BICOL REGION)</option>
+					<option value="06">REGION VI (WESTERN VISAYAS)</option>
+					<option value="07">REGION VII (CENTRAL VISAYAS)</option>
+					<option value="08">REGION VIII (EASTERN VISAYAS)</option>
+					<option value="10">REGION X (NORTHERN MINDANAO)</option>
+					<option value="11">REGION XI (DAVAO REGION)</option>
+					<option value="12">REGION XII (SOCCSKSARGEN)</option>
+					<option value="16">REGION XIII (Caraga)</option></select>
+		        </div>
+		    </div>
+
+			<div class="col-xs-12 col-sm-12 col-md-12" style="display: none;" id="prov">
+		        <div class="form-group">
+		            <strong>Province:</strong>
+					<input type="hidden" name="province" id="pr"/>
+		            <select id="province" onChange="provinceFunction(this);"></select>
+		        </div>
+		    </div>
+
+			<div class="col-xs-12 col-sm-12 col-md-12" style="display: none;" id="cities">
+		        <div class="form-group">
+		            <strong>City:</strong>
+					<input type="hidden" name="city" id="ct"/>
+		            <select id="city" onChange="cityFunction(this);"></select>
+		        </div>
+		    </div>
+
+			<div class="col-xs-12 col-sm-12 col-md-12" style="display: none;" id="brgy">
+		        <div class="form-group">
+		            <strong>Barangay:</strong>
+					<input type="hidden" name="barangay" id="br"/>
+		            <select id="barangay" onChange="barangayFunction(this);"></select>
+		        </div>
+		    </div>
+
+			<div class="col-xs-12 col-sm-12 col-md-12" style="display: none;" id="street">
+		        <div class="form-group">
+		            <strong>Address Line 1:(Optional)</strong>
+		            <input type="text" name="street" class="form-control" placeholder="Street/P.O box/Company Name">
+		        </div>
+		    </div>
+			<div class="col-xs-12 col-sm-12 col-md-12" style="display: none;" id="house">
+		        <div class="form-group">
+		            <strong>Address Line 2:(Optional)</strong>
+		            <input type="text" name="house" class="form-control" placeholder="Apartment/Suite/Unit/Building/Floor/etc">
 		        </div>
 		    </div>
 
@@ -179,18 +234,6 @@
 		            <input type="file" name="subImg4" class="form-control" required autocomplete="subImg4" autofocus>
 		        </div>
 		    </div>
-			<div class="col-xs-12 col-sm-12 col-md-12" style="display: none;">
-		        <div class="form-group">
-		            <strong>Sub Image 5:</strong>
-		            <input type="file" name="subImg5" class="form-control" required autocomplete="subImg5" autofocus>
-		        </div>
-		    </div>
-
-			<div class="col-xs-12 col-sm-12 col-md-12">
-		        <div class="form-group">
-		            <button type="submit" class="btn btn-primary">Add more Image</button>
-		        </div>
-		    </div>
 
 			<div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
@@ -223,6 +266,12 @@
 		            <input type="number" name="price" class="form-control" placeholder="Price" required autocomplete="price" autofocus>
 		        </div>
 		    </div>
+			<div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">
+		            <strong>Service Fee:</strong>
+		            <input type="number" name="sfee" class="form-control" placeholder="Service Fee" required autocomplete="sfee" autofocus>
+		        </div>
+		    </div>
 
 			<div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
@@ -241,6 +290,7 @@
     </form>
 
 <script>
+	// show/hide typeofhouse input fields
 	document.getElementById('typeofPlace').addEventListener("change", function (e) {
     if (e.target.value === 'House') {
         document.getElementById('typeofHouse').style.display = 'block';
@@ -248,15 +298,112 @@
         document.getElementById('typeofHouse').style.display = 'none';
     }
 });
+
+// show/hide province input fields
+	document.getElementById('region').addEventListener("change", function (p) {
+    if (p.target.value != null) {
+        document.getElementById('prov').style.display = 'block';
+    } else {
+        document.getElementById('prov').style.display = 'none';
+    }
+
+});
+
+// show/hide city input fields
+document.getElementById('province').addEventListener("change", function (c) {
+    if (c.target.value != null) {
+        document.getElementById('cities').style.display = 'block';
+    } else {
+        document.getElementById('cities').style.display = 'none';
+    }
+
+});
+
+// show/hide barangay input fields
+document.getElementById('city').addEventListener("change", function (b) {
+    if (b.target.value != null) {
+        document.getElementById('brgy').style.display = 'block';
+    } else {
+        document.getElementById('brgy').style.display = 'none';
+    }
+
+});
+
+// show/hide address line input fields
+document.getElementById('barangay').addEventListener("change", function (a) {
+    if (a.target.value != null) {
+        document.getElementById('street').style.display = 'block';
+        document.getElementById('house').style.display = 'block';
+    } else {
+        document.getElementById('street').style.display = 'none';
+        document.getElementById('house').style.display = 'none';
+    }
+
+});
+
 </script>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
+<script src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations-v1.0.0.js"></script>
+
+<script type="text/javascript">
+            
+            var my_handlers = {
+
+                fill_provinces:  function(){
+
+                    var region_code = $(this).val();
+                    $('#province').ph_locations('fetch_list', [{"region_code": region_code}]);
+                    
+                },
+
+                fill_cities: function(){
+
+                    var province_code = $(this).val();
+                    $('#city').ph_locations( 'fetch_list', [{"province_code": province_code}]);
+                },
+
+
+                fill_barangays: function(){
+
+                    var city_code = $(this).val();
+                    $('#barangay').ph_locations('fetch_list', [{"city_code": city_code}]);
+                }
+            };
+
+            $(function(){
+                $('#region').on('change', my_handlers.fill_provinces);
+                $('#province').on('change', my_handlers.fill_cities);
+                $('#city').on('change', my_handlers.fill_barangays);
+
+                $('#region').ph_locations({'location_type': 'regions'});
+                $('#province').ph_locations({'location_type': 'provinces'});
+                $('#city').ph_locations({'location_type': 'cities'});
+                $('#barangay').ph_locations({'location_type': 'barangays'});
+                $('#region').ph_locations('fetch_list');
+            });
+        </script>
 <script>
-	document.getElementById('addImage').addEventListener("add", function (a){
-		
-	})
+	function regionFunction(sel) {
+  	var region= sel.options[sel.selectedIndex].text;
+	$('#reg').val(region);
+}
+
+function provinceFunction(sel) {
+  	var province= sel.options[sel.selectedIndex].text;
+	$('#pr').val(province);
+}
+
+function cityFunction(sel) {
+  	var city= sel.options[sel.selectedIndex].text;
+	$('#ct').val(city);
+}
+function barangayFunction(sel) {
+  	var barangay= sel.options[sel.selectedIndex].text;
+	$('#br').val(barangay);
+}
 </script>
-
-
-
 
 <<script type="text/javascript"> 
 var max_limit = 2; // Max Limit
